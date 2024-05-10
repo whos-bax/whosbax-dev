@@ -13,16 +13,16 @@
   --black: #343434;
   --white: #fff;
 
-  --grey50: #f9fafb;
-  --grey100: #f2f4f6;
-  --grey200: #e5e8eb;
-  --grey300: #d1d6db;
-  --grey400: #b0b8c1;
-  --grey500: #8b95a1;
-  --grey600: #6b7684;
-  --grey700: #4e5968;
-  --grey800: #333d4b;
-  --grey900: #191f28;
+  --gray50: #f9fafb;
+  --gray100: #f2f4f6;
+  --gray200: #e5e8eb;
+  --gray300: #d1d6db;
+  --gray400: #b0b8c1;
+  --gray500: #8b95a1;
+  --gray600: #6b7684;
+  --gray700: #4e5968;
+  --gray800: #333d4b;
+  --gray900: #191f28;
 
   --navbar-height: 3.75rem;
 
@@ -57,7 +57,7 @@
   --card-border-rgb: 131, 134, 135;
 }
 
-p, h1, h2, h3, h4, h5, h6, span, a {
+p, h1, h2, h3, h4, h5, h6, span, a, div {
   font-size: 1rem;
   line-height: 1.5;
   letter-spacing: -0.5px;

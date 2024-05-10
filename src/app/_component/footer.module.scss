@@ -1,18 +1,18 @@
 .footer {
-  background-color: var(--grey50);
+  background-color: var(--gray50);
 }
 
 .container {
   max-width: var(--max-width);
   width: 92%;
   height: 100%;
-  padding: 4rem 0 8rem;
+  padding: 4rem 0 6rem;
   margin: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -33,20 +33,54 @@
     flex: 1;
 
     h3 {
-      font-size: 2rem;
-      padding-bottom: 0.5rem;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
 
       @media (max-width: 700px) {
         text-align: center;
       }
     }
     p {
-      color: var(--grey700);
+      font-weight: 200;
+      color: var(--gray700);
 
       @media (max-width: 700px) {
         flex-direction: column;
         white-space: pre-wrap;
         text-align: center;
+        margin-bottom: 0.3rem;
+      }
+
+      &.copyRight {
+        margin-top: 4rem;
+        font-size: 0.9rem;
+        color: var(--gray500);
+      }
+    }
+  }
+
+  .profileLinkList {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+
+    @media (max-width: 700px) {
+      justify-content: center;
+    }
+
+    .profileLinkIcon {
+      width: 2rem;
+      height: 2rem;
+      padding: 4px;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      &:hover {
+        border-radius: var(--border-radius);
+        background-color: var(--gray200);
       }
     }
   }
