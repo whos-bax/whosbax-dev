@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/_component/Header";
+import {utils} from "@/app/_utils/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "꿈이 많은 어른 아이 | 박상호",
-  description: "꿈이 많은 어른 아이 | 박상호",
+  title: `${utils.title} | ${utils.author}`,
+  description: `${utils.title} | ${utils.author}`,
 };
 
 export default function RootLayout({
