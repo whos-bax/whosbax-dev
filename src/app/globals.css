@@ -24,7 +24,7 @@
   --grey800: #333d4b;
   --grey900: #191f28;
 
-  --navbar-height: 60px;
+  --navbar-height: 3.75rem;
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -108,7 +108,6 @@ html,
 body {
   max-width: 100dvw;
   min-height: 100dvh;
-  overflow-x: hidden;
   background-color: var(--white);
 }
 

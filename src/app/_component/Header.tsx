@@ -10,14 +10,18 @@ export default function Header() {
                 <Link href={`/`} className={styles.mainTitle}>
                     {utils.title}
                 </Link>
-                <div className={styles.headerItemsList}>
-                    <Link href={`/about`}>
-                        저는요
-                    </Link>
-                    <Link href={`/about`}>
-                        저는요
-                    </Link>
-                </div>
+                <ul className={styles.headerItemsList}>
+                    <li>
+                        <Link href={`/about`}>
+                            저는요
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={`/about`}>
+                            저는요
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </nav>
     )
