@@ -14,7 +14,9 @@ export default function Header() {
                     <Link href={`/about`}>
                         저는요
                     </Link>
-                    <Link href={`/about`}>저는요</Link>
+                    <Link href={`/about`}>
+                        저는요
+                    </Link>
                 </div>
             </div>
         </nav>
