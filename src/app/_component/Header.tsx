@@ -1,8 +1,14 @@
+"use client";
+
 import styles from './header.module.scss';
+import cx from "classnames";
 import {utils} from "@/app/_utils/utils";
 import Link from "next/link";
+import {usePathname} from "next/navigation";
 
 export default function Header() {
+    const pathname = usePathname();
+    console.log(pathname)
     const items = []
     return (
         <nav className={styles.header}>
@@ -11,7 +17,7 @@ export default function Header() {
                     {utils.title}
                 </Link>
                 <ul className={styles.headerItemsList}>
-                    <li>
+                    <li className={cx(pathname === '/about' && styles.pageBorderBottom)}>
                         <Link href={`/about`}>
                             저는요
                         </Link>
