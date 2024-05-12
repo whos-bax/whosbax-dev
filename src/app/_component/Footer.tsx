@@ -37,7 +37,7 @@ export default function Footer() {
                     height={200}
                 />
                 <div className={styles.profileDiv}>
-                    <h3>박상호</h3>
+                    <h3>박상호{"\n"}SANGHO PARK</h3>
                     <p>
                         하고 싶은 것도 이루고 싶은 것도 너무나 많은,{"\n"}<b>어른이지만 아이처럼</b>
                     </p>

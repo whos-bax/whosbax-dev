@@ -6,10 +6,10 @@ import Experience from "@/app/about/_component/Experience";
 
 export default function About() {
     return (
-        <div className={cx(styles.container, styles.containerGap)}>
+        <main className={cx(styles.container, styles.containerGap)}>
             <Profile/>
             <Introduce title={'Introduce'}/>
             <Experience title={'Experience'}/>
-        </div>
+        </main>
     )
 }

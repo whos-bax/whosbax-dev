@@ -6,13 +6,13 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  //animation: containerHeight 1.2s;
+  animation: containerHeight 1.2s;
 }
 
 @keyframes containerHeight {
   from {
     opacity: 0;
-    transform: translateY(-20%);
+    transform: translateY(-3rem);
   }
   to {
     opacity: 1;
