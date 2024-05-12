@@ -40,6 +40,7 @@
         text-align: center;
       }
     }
+
     p {
       font-weight: 200;
       color: var(--gray700);
@@ -76,11 +77,34 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
 
       &:hover {
         border-radius: var(--border-radius);
         background-color: var(--gray200);
       }
+
+      &[title]:hover:before {
+        animation: fadeIn 0.6s;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, 8px);
+        content: attr(title);
+        border-radius: var(--border-radius);
+        font-size: 0.8rem;
+        background-color: var(--gray200);
+        padding: 3px 8px;
+      }
     }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

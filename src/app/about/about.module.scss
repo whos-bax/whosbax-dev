@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  animation: containerHeight 1.2s;
+  //animation: containerHeight 1.2s;
 }
 
 @keyframes containerHeight {
@@ -89,6 +89,7 @@
         a {
           color: var(--black);
           transition: color 0.1s;
+
           &:hover {
             color: var(--orange);
           }
@@ -182,7 +183,7 @@
     }
 
     .companyName {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 500;
       transition: color 0.1s;
 
@@ -220,5 +221,124 @@
 
   &:hover {
     border-bottom: solid 1px var(--gray500);
+  }
+}
+
+.experienceList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.experienceDetail {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--beige);
+  padding: 1.2rem;
+  border-radius: var(--border-radius);
+  position: relative;
+  gap: 0.3rem;
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .date {
+    font-size: 0.9rem;
+  }
+
+  .linkList {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .linkSvg {
+      background-color: inherit;
+      fill: var(--green);
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    a.link {
+      display: inline-block;
+      position: relative;
+      color: var(--green);
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 3px 8px;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      z-index: 1;
+
+      &:after {
+        content: '';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: var(--border-radius);
+        background-color: var(--green);
+        transition: all 0.3s;
+      }
+
+      &:hover {
+        color: white;
+      }
+
+      &:hover:after {
+        width: 100%;
+        z-index: -1;
+      }
+    }
+  }
+
+  .descriptionBody {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
+    border-radius: var(--border-radius);
+    background-color: var(--white);
+    gap: 0.5rem;
+
+    .detailDescription {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--orange);
+    }
+
+    .skillList {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .skill {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: var(--gray600);
+        font-style: italic;
+      }
+    }
+
+    .summaryList {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0.5rem 1.5rem;
+
+      .summary {
+        font-weight: 300;
+        color: var(--black);
+      }
+    }
   }
 }
