@@ -33,9 +33,19 @@
     align-items: center;
     justify-content: center;
 
+    .progress {
+        position: absolute;
+        max-width: 30%;
+        bottom: 8rem;
+
+        & > div > div {
+            background-color: var(--green);
+        }
+    }
+
     .overlayText {
         color: white;
-        font-size: 4rem;
+        font-size: 3.5rem;
         font-weight: bold;
         animation: textShow 1.5s forwards;
         height: fit-content;

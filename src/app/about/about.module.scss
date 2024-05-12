@@ -7,6 +7,7 @@
   flex-direction: column;
   position: relative;
   animation: containerHeight 1.2s;
+  padding-bottom: 6rem;
 }
 
 @keyframes containerHeight {
@@ -195,6 +196,9 @@
       font-size: 1.4rem;
       font-weight: 500;
       transition: color 0.1s;
+      display: flex;
+      align-items: center;
+      gap: 3px;
 
       svg {
         transition: fill 0.1s;
@@ -263,6 +267,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    flex-wrap: wrap;
 
     .linkSvg {
       background-color: inherit;
@@ -286,6 +291,7 @@
       font-size: 0.9rem;
       transition: all 0.3s;
       z-index: 1;
+      white-space: nowrap;
 
       &:after {
         content: '';
@@ -339,13 +345,14 @@
       }
     }
 
-    .summaryList {
+    .summaryDetailList {
       display: flex;
       flex-direction: column;
       gap: 5px;
       padding: 0.5rem 1.5rem;
+      list-style: circle;
 
-      .summary {
+      .summaryDetail {
         font-weight: 300;
         color: var(--black);
       }
@@ -368,9 +375,21 @@
     padding: 5px 16px;
     transition: all 0.2s;
     font-size: 0.9rem;
+
     &:hover {
       font-size: 1rem;
       color: var(--green);
     }
+  }
+}
+
+.educationList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li {
+    list-style: circle;
+    font-weight: 300;
   }
 }

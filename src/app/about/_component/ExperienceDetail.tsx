@@ -41,9 +41,9 @@ export default function ExperienceDetail({item}: Props) {
                         </p>
                     ))}
                 </div>
-                <ul className={styles.summaryList}>
+                <ul className={styles.summaryDetailList}>
                     {item.summaryList?.map((summary, idx) => (
-                        <li key={idx} className={styles.summary}>
+                        <li key={idx} className={styles.summaryDetail}>
                             {summary}
                         </li>
                     ))}

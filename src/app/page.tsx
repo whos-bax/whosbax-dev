@@ -3,8 +3,9 @@
 import styles from "./page.module.css";
 import firstImage from '../../public/assets/images/first-image.jpg'
 import Image from "next/image";
-import {MutableRefObject, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 import cx from "classnames";
+import {Progress} from "@nextui-org/react";
 
 const mentionList = [
     '성장하지 않는 내일이\n무섭습니다.',
@@ -21,8 +22,8 @@ export default function Home() {
     useEffect(() => {
         if (count <= 12) {
             timerRef.current = setInterval(() => {
-                setCount((prev) => prev + 0.1);
-            }, 100);
+                setCount((prev) => prev + 0.05);
+            }, 50);
 
             return () => {
                 clearInterval(timerRef.current as NodeJS.Timeout);
@@ -71,6 +72,12 @@ export default function Home() {
                         ))}
                     </div>
                 )}
+
+                <Progress
+                    className={styles.progress}
+                    size="sm"
+                    value={Math.round(count / 12 * 100)}
+                />
             </div>
         </main>
     );

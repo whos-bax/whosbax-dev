@@ -7,6 +7,7 @@ import Footer from "@/app/_component/Footer";
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
 import dayjs from "dayjs";
+import {Providers} from "@/app/Providers";
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+      <Providers>
       <Header/>
       {children}
       <Footer/>
+      </Providers>
       </body>
     </html>
   );
