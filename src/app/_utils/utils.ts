@@ -137,3 +137,8 @@ export const experienceList: ExperienceType[] = [
         ]
     },
 ]
+
+export const skillList = [
+    'JavaScript', 'TypeScript', 'React', 'Next.js', 'React Native', 'Redux', 'Zustand', 'React-query', 'AsyncStorage', 'Axios', 'Sass', 'Bootstrap', 'Tailwind', 'AntD',
+    'Github', 'IntelliJ', 'VSCode', 'AWS (EC2, S3, CloudFront 등)', 'SQL', 'Google Analytics', '네이버 서치어드바이저', 'Google Search Console'
+]

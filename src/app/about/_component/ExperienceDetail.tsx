@@ -34,7 +34,6 @@ export default function ExperienceDetail({item}: Props) {
             <div className={styles.descriptionBody}>
                 <p className={styles.detailDescription}>{item.description}</p>
                 <div className={styles.skillList}>
-                    <p>|</p>
                     {item.skills.map((skill, idx) => (
                         <p key={idx} className={styles.skill}>
                             {skill}

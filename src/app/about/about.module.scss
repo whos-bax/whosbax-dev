@@ -74,12 +74,20 @@
       flex-direction: column;
       padding: 1rem 0;
 
+      @media (max-width: 700px) {
+        gap: 0.5rem;
+      }
+
       .contactEach {
         display: flex;
         font-size: 1rem;
         color: var(--black);
         font-weight: 300;
         gap: 5px;
+
+        @media (max-width: 700px) {
+          flex-direction: column;
+        }
 
         p {
           font-weight: 600;
@@ -89,6 +97,7 @@
         a {
           color: var(--black);
           transition: color 0.1s;
+          white-space: pre-wrap;
 
           &:hover {
             color: var(--orange);
@@ -320,6 +329,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      flex-wrap: wrap;
 
       .skill {
         font-size: 0.9rem;
@@ -339,6 +349,28 @@
         font-weight: 300;
         color: var(--black);
       }
+    }
+  }
+}
+
+.skillItemList {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+
+  .skillItem {
+    list-style: none;
+    cursor: pointer;
+    background-color: var(--gray100);
+    width: fit-content;
+    border-radius: var(--border-radius);
+    padding: 5px 16px;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    &:hover {
+      font-size: 1rem;
+      color: var(--green);
     }
   }
 }
