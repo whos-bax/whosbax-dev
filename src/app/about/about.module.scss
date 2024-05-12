@@ -20,8 +20,38 @@
   display: flex;
   align-items: flex-end;
 
+  .profileSummaryContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gray600);
+    }
+
+    h3.profileName {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--black);
+      border-bottom: solid 1.5px var(--gray300);
+    }
+
+    .contactDiv {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0;
+      p {
+        font-size: 1rem;
+        color: var(--black);
+        font-weight: 300;
+      }
+    }
+  }
+
   .profileImageBackground {
-    background-color: var(--beige);
+    background-color: var(--gray400);
     padding: 4rem 1rem 1rem;
   }
   .profileImageDiv {
