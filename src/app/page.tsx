@@ -1,6 +1,6 @@
 'use client';
 
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import firstImage from '../../public/assets/images/first-image.jpg'
 import Image from "next/image";
 import {useEffect, useLayoutEffect, useRef, useState} from "react";
