@@ -8,7 +8,7 @@ export default function Profile() {
     return (
         <div className={styles.profileComponent}>
             <div className={styles.profileSummaryContent}>
-                <p>FRONTEND DEVELOPER</p>
+                <h4>FRONTEND DEVELOPER</h4>
                 <h3 className={styles.profileName}>SANGHO PARK</h3>
                 <div className={styles.contactDiv}>
                     <p>

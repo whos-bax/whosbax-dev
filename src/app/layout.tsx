@@ -4,6 +4,12 @@ import "./globals.css";
 import Header from "@/app/_component/Header";
 import {utils} from "@/app/_utils/utils";
 import Footer from "@/app/_component/Footer";
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/ko';
+import dayjs from "dayjs";
+
+dayjs.locale('ko');
+dayjs.extend(relativeTime)
 
 const inter = Inter({ subsets: ["latin"] });
 
