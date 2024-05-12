@@ -34,11 +34,11 @@
     li {
       list-style: none;
       height: 100%;
-      transition: ease-in 0.1s;
+      transition: ease-in-out 0.3s;
       border-bottom: solid 2px var(--white);
 
       a {
-        transition: ease-in 0.1s;
+        transition: ease-in-out 0.1s;
         height: 100%;
         display: flex;
         align-items: center;
