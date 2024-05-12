@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 import "./globals.css";
 import Header from "@/app/_component/Header";
 import {utils} from "@/app/_utils/utils";
@@ -12,27 +12,27 @@ import {Providers} from "@/app/Providers";
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: `${utils.title} | ${utils.author}`,
-  description: `${utils.title} | ${utils.author}`,
+    title: `${utils.title} | ${utils.author}`,
+    description: `${utils.title} | ${utils.author}`,
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
+                                       children,
+                                   }: Readonly<{
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-      <Providers>
-      <Header/>
-      {children}
-      <Footer/>
-      </Providers>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+        <body className={inter.className}>
+        <Providers>
+            <Header/>
+            {children}
+            <Footer/>
+        </Providers>
+        </body>
+        </html>
+    );
 }
