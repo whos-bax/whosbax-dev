@@ -11,15 +11,16 @@ export default function Comment() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setCommentShow(true);
-        }, 1500)
+        }, 2000)
 
         return () => clearTimeout(timer)
 
     }, []);
     return (
-        <div className={styles.container}>
+        <main className={styles.container}>
             <div className={styles.commentInfo}>
-                <p>남기신 말씀 소중히 간직하겠습니다😊</p>
+                <h3>방명록</h3>
+                <p>남기신 말씀 소중히 간직하겠습니다 😊</p>
                 <p>좋은 하루 되세요 :)</p>
             </div>
             <div className={styles.commentComponent}>
@@ -30,6 +31,6 @@ export default function Comment() {
                 )}
                 <UtteranceComment/>
             </div>
-        </div>
+        </main>
     )
 }

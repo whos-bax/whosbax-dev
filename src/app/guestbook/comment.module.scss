@@ -36,10 +36,24 @@
     width: 100%;
   }
 
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    color: var(--green);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: solid 1px var(--gray400);
+  }
+
   p {
     font-size: 1.3rem;
     font-weight: 600;
     letter-spacing: 0.3px;
+
+    @media (max-width: 700px) {
+      font-size: 1.1rem;
+    }
   }
 }
 
