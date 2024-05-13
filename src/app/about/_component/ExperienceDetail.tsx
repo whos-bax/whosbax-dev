@@ -1,7 +1,7 @@
 "use client";
 
 import styles from '../about.module.scss';
-import {ExperienceType} from "@/app/model/ExperienceType";
+import {ExperienceType} from "@/model/ExperienceType";
 import dayjs from "dayjs";
 import Link from "next/link";
 import {linkSvg} from "@/app/_utils/utils";

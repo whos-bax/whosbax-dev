@@ -42,7 +42,7 @@ export default function Profile() {
             </div>
             <div className={styles.profileImageBackground}>
                 <div className={styles.profileImageDiv}>
-                    <Image src={resumeProfile} alt={`profile`} width={300} height={300}/>
+                    <Image priority={true} src={resumeProfile} alt={`profile`} width={300} height={300}/>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import {ExperienceType} from "@/app/model/ExperienceType";
+import {ExperienceType} from "@/model/ExperienceType";
 
 export const utils = {
     title: `꿈이 많은 어른 아이`,
