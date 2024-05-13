@@ -1,2 +1,4 @@
-User-agent: *
-Allow:/
+User-Agent: *
+Allow: /
+
+Sitemap: https://whosbax.netlify.app/sitemap.xml
