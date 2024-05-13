@@ -13,7 +13,7 @@ export default function Education({title}: Props) {
             </h4>
 
             <div className={styles.educationList}>
-                <li>정보처리기사 : 2024.06.18 (예정)</li>
+                <li>고려대학교(세종) 수학과 : 2015.03 - 2023.02</li>
             </div>
         </div>
     )

@@ -2,7 +2,6 @@ import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "./globals.css";
 import Header from "@/app/_component/Header";
-import {utils} from "@/app/_utils/utils";
 import Footer from "@/app/_component/Footer";
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';

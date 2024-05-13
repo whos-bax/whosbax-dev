@@ -338,10 +338,40 @@
       flex-wrap: wrap;
 
       .skill {
-        font-size: 0.9rem;
-        font-weight: 300;
+        font-size: 1rem;
+        font-weight: 400;
         color: var(--gray600);
         font-style: italic;
+      }
+    }
+
+    .summaryDetailListButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+      margin: auto;
+      padding: 6px;
+
+      svg {
+        width: 1rem;
+        fill: var(--gray600);
+      }
+
+      &:hover {
+        animation: buttonJump 1s infinite;
+      }
+    }
+
+    @keyframes buttonJump {
+      0% {
+        transform: translateY(0%);
+      }
+      50% {
+        transform: translateY(25%);
+      }
+      100% {
+        transform: translateY(0%);
       }
     }
 
