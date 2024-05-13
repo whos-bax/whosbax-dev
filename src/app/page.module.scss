@@ -47,6 +47,20 @@
     }
   }
 
+  .progressButton {
+    animation: textShow 0.5s forwards;
+    background-color: var(--green);
+    border-radius: var(--border-radius);
+    padding: 3px 12px;
+    color: white;
+    transition: all .4s;
+
+    &:hover {
+      background-color: white;
+      color: var(--green);
+    }
+  }
+
   .overlayText {
     color: white;
     font-size: 3.5rem;

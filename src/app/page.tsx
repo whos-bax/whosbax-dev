@@ -6,6 +6,7 @@ import Image from "next/image";
 import {useEffect, useLayoutEffect, useRef, useState} from "react";
 import cx from "classnames";
 import {Progress} from "@nextui-org/react";
+import Link from "next/link";
 
 const mentionList = [
     '성장하지 않는 내일이\n무섭습니다.',
@@ -19,15 +20,24 @@ export default function Home() {
     // 1.5 -> 3, 3 -> 4.5, 4.5 -> 6, 6 -> 7.5
     const [count, setCount] = useState(0);
 
+    useLayoutEffect(() => {
+        const countOut = sessionStorage.getItem('count-out');
+        if (countOut && countOut === 'true') {
+            setCount(14)
+        }
+    }, []);
+
     useEffect(() => {
-        if (count <= 12) {
+        if (count <= 14) {
             timerRef.current = setInterval(() => {
-                setCount((prev) => prev + 0.05);
-            }, 50);
+                setCount((prev) => prev + 0.01);
+            }, 10);
 
             return () => {
                 clearInterval(timerRef.current as NodeJS.Timeout);
             };
+        } else {
+            sessionStorage.setItem('count-out', 'true');
         }
     }, [count]);
 
@@ -73,11 +83,21 @@ export default function Home() {
                     </div>
                 )}
 
-                <Progress
-                    className={styles.progress}
-                    size="sm"
-                    value={Math.round(count / 12 * 100)}
-                />
+                {count < 13 ? (
+                    <Progress
+                        aria-label="Loading..."
+                        className={styles.progress}
+                        style={count > 12 ? {
+                            width: `${(((13 - count) / 2) * 100).toFixed(5)}%`
+                        } : {}}
+                        size="sm"
+                        value={Math.round(count / 12 * 100)}
+                    />
+                ) : (
+                    <Link href={'/about'} className={cx(styles.progress, styles.progressButton)}>
+                        ABOUT ME
+                    </Link>
+                )}
             </div>
         </main>
     );

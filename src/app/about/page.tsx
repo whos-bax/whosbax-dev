@@ -5,6 +5,7 @@ import cx from "classnames";
 import Experience from "@/app/about/_component/Experience";
 import Skill from "@/app/about/_component/Skill";
 import Education from "@/app/about/_component/Education";
+import Certificate from "@/app/about/_component/Certificate";
 
 export default function About() {
     return (
@@ -14,6 +15,7 @@ export default function About() {
             <Experience title={'Experience'}/>
             <Skill title={'Skill'}/>
             <Education title={'Education'}/>
+            <Certificate title={'Certificate'}/>
         </main>
     )
 }

@@ -5,7 +5,7 @@ type Props = {
     title: string;
 }
 
-export default function Education({title}: Props) {
+export default function Certificate({title}: Props) {
     return (
         <div className={styles.columnComponent}>
             <h4 className={styles.componentTitle}>
