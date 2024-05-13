@@ -144,3 +144,17 @@
     //backdrop-filter: brightness(30%);
   }
 }
+
+.resetButton {
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 2rem;
+  fill: var(--green);
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
