@@ -1,0 +1,57 @@
+.container {
+  min-height: 100dvh;
+  max-width: var(--max-width);
+  width: 92%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: containerHeight 1.2s;
+  padding-bottom: 6rem;
+}
+
+@keyframes containerHeight {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.commentInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  border-bottom: solid 1px var(--gray100);
+  width: 80%;
+  margin: 0 auto 2rem;
+
+  @media (max-width: 590px) {
+    width: 100%;
+  }
+
+  p {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+}
+
+.commentComponent {
+  position: relative;
+}
+
+.loadingComponent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+

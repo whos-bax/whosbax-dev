@@ -8,7 +8,16 @@ import {usePathname} from "next/navigation";
 
 export default function Header() {
     const pathname = usePathname();
-    const items = []
+    const linkItems = [
+        {
+            title: 'about',
+            link: '/about'
+        },
+        {
+            title: 'guestbook',
+            link: '/guestbook'
+        }
+    ]
     return (
         <nav className={styles.header}>
             <div className={styles.container}>
@@ -16,16 +25,13 @@ export default function Header() {
                     {utils.title}
                 </Link>
                 <ul className={styles.headerItemsList}>
-                    <li className={cx(pathname === '/about' && styles.pageBorderBottom)}>
-                        <Link href={`/about`}>
-                            ABOUT
-                        </Link>
-                    </li>
-                    {/*<li>*/}
-                    {/*    <Link href={`/about`}>*/}
-                    {/*        저는요*/}
-                    {/*    </Link>*/}
-                    {/*</li>*/}
+                    {linkItems.map((item, idx) => (
+                        <li className={cx(pathname === item.link && styles.pageBorderBottom)} key={idx}>
+                            <Link href={item.link}>
+                                {item.title.toUpperCase()}
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </nav>
