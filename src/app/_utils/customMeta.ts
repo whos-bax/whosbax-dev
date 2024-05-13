@@ -2,13 +2,13 @@ import {utils} from "@/app/_utils/utils";
 
 export const customMeta = {
     metadataBase: new URL("https://whosbax.netlify.app"),
-    title: `${utils.title} : ${utils.author}`,
-    description: `하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - ${utils.title}`,
+    title: `꿈이 많은 어른 아이 | 박상호`,
+    description: `하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - 꿈이 많은 어른 아이`,
     applicationName: "whosbax",
     authors: [{ name: "whosbax", url: "https://whosbax.netlify.app" }],
     openGraph: {
-        title: `${utils.title} : ${utils.author}`,
-        description: "하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - ${utils.title}",
+        title: `꿈이 많은 어른 아이 | 박상호`,
+        description: "하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - 꿈이 많은 어른 아이",
         url: "https://whosbax.netlify.app",
         siteName: "whosbax",
         images: [
