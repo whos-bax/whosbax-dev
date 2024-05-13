@@ -8,16 +8,14 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
 import dayjs from "dayjs";
 import {Providers} from "@/app/Providers";
+import {customMeta} from "@/app/_utils/customMeta";
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
 const inter = Inter({subsets: ["latin"]});
 
-export const metadata: Metadata = {
-    title: `${utils.title} | ${utils.author}`,
-    description: `${utils.title} | ${utils.author}`,
-};
+export const metadata: Metadata = customMeta;
 
 export default function RootLayout({
                                        children,
