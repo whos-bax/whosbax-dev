@@ -194,7 +194,7 @@
 
     .companyName {
       font-size: 1.4rem;
-      font-weight: 500;
+      font-weight: 700;
       transition: color 0.1s;
       display: flex;
       align-items: center;
@@ -220,6 +220,9 @@
       border-radius: var(--border-radius);
       margin: 0.5rem 0;
       padding: 10px 15px;
+      b {
+        font-weight: bold;
+      }
     }
   }
 }
@@ -248,6 +251,7 @@
   height: fit-content;
   display: flex;
   flex-direction: column;
+  border: solid 1px var(--gray100);
   background-color: var(--beige);
   padding: 1.2rem;
   border-radius: var(--border-radius);
@@ -255,12 +259,13 @@
   gap: 0.3rem;
 
   .title {
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 600;
   }
 
   .date {
     font-size: 0.9rem;
+    letter-spacing: -0.8px;
   }
 
   .linkList {
@@ -325,10 +330,14 @@
     background-color: var(--white);
     gap: 0.5rem;
 
+    @media (max-width: 700px) {
+      padding: 0.8rem;
+    }
+
     .detailDescription {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--orange);
+      font-size: 1rem;
+      font-weight: 600;
+      //color: var(--orange);
     }
 
     .skillList {
@@ -338,9 +347,13 @@
       flex-wrap: wrap;
 
       .skill {
-        font-size: 1rem;
+        font-size: 0.8rem;
         font-weight: 400;
-        color: var(--gray600);
+        background-color: white;
+        color: var(--gray400);
+        border-radius: var(--border-radius);
+        border: solid 1px var(--gray400);
+        padding: 2px 8px;
         font-style: italic;
       }
     }
@@ -355,7 +368,7 @@
 
       svg {
         width: 1rem;
-        fill: var(--gray600);
+        fill: var(--gray800);
       }
 
       &:hover {
@@ -378,9 +391,13 @@
     .summaryDetailList {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 3px;
       padding: 0.5rem 1.5rem;
       list-style: circle;
+
+      @media (max-width: 700px) {
+        padding: 0.5rem 1.2rem;
+      }
 
       .summaryDetail {
         font-weight: 300;

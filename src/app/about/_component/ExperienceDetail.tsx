@@ -19,12 +19,14 @@ export default function ExperienceDetail({item}: Props) {
     const handleDetailShow = () => setDetailShow(!detailShow);
     return (
         <div className={styles.experienceDetail}>
-            <h6 className={styles.title}>
-                {item.title}
-            </h6>
-            <p className={styles.date}>
-                {dayjs(item.startDate).format("YYYY.MM")} - {dayjs(item.endDate).format("YYYY.MM")}
-            </p>
+            <div>
+                <h6 className={styles.title}>
+                    {item.title}
+                </h6>
+                <p className={styles.date}>
+                    {dayjs(item.startDate).format("YYYY.MM")} - {dayjs(item.endDate).format("YYYY.MM")}
+                </p>
+            </div>
             {item.linkList.length > 0 && (
                 <div className={styles.linkList}>
                     <div
@@ -44,7 +46,6 @@ export default function ExperienceDetail({item}: Props) {
                     {item.skills.map((skill, idx) => (
                         <p key={idx} className={styles.skill}>
                             {skill}
-                            {idx !== item.skills.length - 1 && ","}
                         </p>
                     ))}
                 </div>

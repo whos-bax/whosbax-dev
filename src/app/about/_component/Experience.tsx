@@ -4,7 +4,6 @@ import styles from '../about.module.scss'
 import cx from "classnames";
 import dayjs from "dayjs";
 import Link from "next/link";
-import {MouseEventHandler, useState} from "react";
 import {experienceList, linkSvg} from "@/app/_utils/utils";
 import ExperienceDetail from "@/app/about/_component/ExperienceDetail";
 
@@ -23,11 +22,6 @@ const expList = [
     }
 ]
 export default function Experience({title}: Props) {
-    // const [moreShow, setMoreShow] = useState<boolean>(false);
-    //
-    // const handleMoreShow: MouseEventHandler<HTMLButtonElement> = (e) => {
-    //     setMoreShow(!moreShow);
-    // }
 
     return (
         <div className={styles.columnComponent}>
@@ -40,20 +34,18 @@ export default function Experience({title}: Props) {
                         <p>{dayjs(item.startDate).format("YYYY.MM")} - {dayjs(item.endDate).format("YYYY.MM")}</p>
                     </div>
                     <div className={styles.content}>
-                        <Link href={item.link} className={styles.companyName} target={'_blank'}
-                              dangerouslySetInnerHTML={{__html: item.name + ' ' + linkSvg}}/>
+                        <Link href={item.link}
+                              target={'_blank'}
+                              className={styles.companyName}
+                              dangerouslySetInnerHTML={{__html: item.name + ' ' + linkSvg}}
+                        />
                         <p>{item.department}</p>
                         <p className={styles.description} dangerouslySetInnerHTML={{__html: item.description}}/>
-                        {/*<button className={styles.moreShowButton} onClick={handleMoreShow}>*/}
-                        {/*    더보기*/}
-                        {/*</button>*/}
-                        {/*{!moreShow && (*/}
-                            <div className={cx(styles.experienceList)}>
-                                {experienceList.map((item, idx) => (
-                                    <ExperienceDetail key={`experience-${idx}`} item={item}/>
-                                ))}
-                            </div>
-                        {/*)}*/}
+                        <div className={cx(styles.experienceList)}>
+                            {experienceList.map((item, idx) => (
+                                <ExperienceDetail key={`experience-${idx}`} item={item}/>
+                            ))}
+                        </div>
                     </div>
                 </div>
             ))}
