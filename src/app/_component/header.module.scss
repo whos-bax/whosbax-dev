@@ -16,6 +16,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: white;
 
   .mainTitle {
     font-size: 1.2rem;
@@ -63,6 +64,7 @@
 
     @media (max-width: 700px) {
       gap: 0.5rem;
+      display: none;
     }
 
     li {
@@ -92,6 +94,51 @@
 
         a {
           color: var(--green);
+        }
+      }
+    }
+
+
+    &.mobile {
+      display: none;
+
+      @media (max-width: 700px) {
+        display: flex;
+      }
+
+      .headerIcon {
+        width: 1.5rem;
+        height: var(--navbar-height);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .headerMobileList {
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        flex-direction: column;
+        overflow: hidden;
+        transition: all 0.5s;
+        transform: translateY(-100%);
+        z-index: -1;
+        gap: 0.5rem;
+        border-bottom: solid 1px var(--gray200);
+
+        &.headerMobileListShow {
+          display: flex;
+          transform: translateY(0%);
+          padding: 1rem 0;
+        }
+
+        li {
+          width: 92%;
+          margin: auto;
+          padding: 0.3rem 0;
         }
       }
     }
