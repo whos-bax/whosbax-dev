@@ -168,6 +168,12 @@
   display: flex;
   flex-direction: row;
   gap: 5%;
+  padding: 1rem 0;
+  border-bottom: solid 1px var(--gray200);
+
+  &:last-child {
+    border: none;
+  }
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -222,6 +228,7 @@
       border-radius: var(--border-radius);
       margin: 0.5rem 0;
       padding: 10px 15px;
+
       b {
         font-weight: bold;
       }
