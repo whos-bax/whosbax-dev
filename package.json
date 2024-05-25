@@ -9,14 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.2.3",
     "@nextui-org/react": "^2.3.6",
+    "@types/mdx": "^2.0.13",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.11",
     "framer-motion": "^11.1.9",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.77.0"
+    "sass": "^1.77.0",
+    "sharp": "^0.33.4"
   },
   "devDependencies": {
     "@types/node": "^20",

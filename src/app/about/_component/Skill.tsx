@@ -14,7 +14,7 @@ export default function Skill({title}: Props) {
 
             <div className={styles.skillItemList}>
                 {skillList.map((item, idx) => (
-                    <li className={styles.skillItem} key={idx}>
+                    <li className={styles.skillItem} key={`skills-${idx}`}>
                         {item}
                     </li>
                 ))}

@@ -83,7 +83,7 @@ export default function Home() {
                     ) : (
                         <div className={cx(styles.overlayAllTextDiv)}>
                             {mentionList.map((mention, idx) => (
-                                <p key={idx} className={styles.overlayAllText}>
+                                <p key={`mention-${idx}`} className={styles.overlayAllText}>
                                     {mention}
                                 </p>
                             ))}

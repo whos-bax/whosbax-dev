@@ -1,7 +1,7 @@
 "use client";
 
 import styles from '../about.module.scss';
-import resumeProfile from '../../../../public/assets/images/resume_profile.jpg'
+import resumeProfile from '../../../../public/assets/images/resume-profile.jpeg'
 import Image from "next/image";
 import Link from "next/link";
 

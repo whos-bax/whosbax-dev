@@ -114,9 +114,10 @@
   }
 
   .profileImageDiv {
-    width: 13rem;
+    width: 15rem;
     position: relative;
     margin: auto;
+    overflow: hidden;
 
     &:after {
       padding-bottom: 100%;
@@ -131,7 +132,8 @@
       top: 0;
       display: block;
       object-fit: cover;
-      object-position: center;
+      object-position: center 20%;
+      scale: 1;
     }
   }
 }

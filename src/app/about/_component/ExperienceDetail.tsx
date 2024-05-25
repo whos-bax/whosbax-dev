@@ -34,7 +34,11 @@ export default function ExperienceDetail({item}: Props) {
                         dangerouslySetInnerHTML={{__html: linkSvg}}
                     />
                     {item.linkList?.map((link, idx) => (
-                        <Link href={link.link} key={idx} className={styles.link} target={"_blank"}>
+                        <Link
+                            href={link.link}
+                            key={`experience-${idx}`}
+                            className={styles.link} target={"_blank"}
+                        >
                             {link.title}
                         </Link>
                     ))}
@@ -44,7 +48,7 @@ export default function ExperienceDetail({item}: Props) {
                 <p className={styles.detailDescription}>{item.description}</p>
                 <div className={styles.skillList}>
                     {item.skills.map((skill, idx) => (
-                        <p key={idx} className={styles.skill}>
+                        <p key={`experience-skills-${idx}`} className={styles.skill}>
                             {skill}
                         </p>
                     ))}
@@ -57,7 +61,7 @@ export default function ExperienceDetail({item}: Props) {
                 {detailShow && (
                     <ul className={styles.summaryDetailList}>
                         {item.summaryList?.map((summary, idx) => (
-                            <li key={idx} className={styles.summaryDetail}>
+                            <li key={`experience-summary-${idx}`} className={styles.summaryDetail}>
                                 {summary}
                             </li>
                         ))}

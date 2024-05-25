@@ -47,7 +47,7 @@ export default function Footer() {
                     <div className={styles.profileLinkList}>
                         {linkList.map((link) => (
                             <Link
-                                key={link.id}
+                                key={`footer-link-${link.id}`}
                                 title={link.id}
                                 href={link.href}
                                 target={"_blank"}
