@@ -1,5 +1,5 @@
 import withMDX from '@next/mdx'
-import {withContentlayer} from "next-contentlayer";
+import {withContentlayer} from "next-contentlayer2";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

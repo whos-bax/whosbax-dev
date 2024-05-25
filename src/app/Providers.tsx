@@ -2,11 +2,15 @@
 'use client'
 
 import {NextUIProvider} from '@nextui-org/react'
+import NextNProgress from "nextjs-progressbar";
 
 export function Providers({children}: { children: React.ReactNode }) {
     return (
-        <NextUIProvider>
-            {children}
-        </NextUIProvider>
+        <>
+            <NextNProgress/>
+            <NextUIProvider>
+                {children}
+            </NextUIProvider>
+        </>
     )
 }

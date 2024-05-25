@@ -7,6 +7,7 @@ import Link from "next/link";
 import {usePathname} from "next/navigation";
 import Icons from "@/app/_component/headerIcon/icons";
 import {useState} from "react";
+import NextNProgress from "nextjs-progressbar";
 
 export default function Header() {
     const pathname = usePathname();
@@ -30,6 +31,7 @@ export default function Header() {
 
     return (
         <nav className={styles.header}>
+            <NextNProgress/>
             <div className={styles.container}>
                 <Link href={`/`} className={styles.mainTitle}>
                     {utils.title}

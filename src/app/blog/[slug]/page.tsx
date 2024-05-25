@@ -29,7 +29,7 @@ const Posts = ({params}: { params: { slug: string } }) => {
             <h1 className={styles.title}>{post?.title}</h1>
             <h3 className={styles.description}>{post?.description}</h3>
             <time dateTime={post?.created_at} className={styles.date}>
-                {dayjs(post?.created_at).format("YYYY년 MM월 DD일 dd요일 hh시 mm분")}
+                {dayjs(post?.created_at).format("YYYY년 MM월 DD일 ddd요일 hh시 mm분")}
             </time>
             <div className={cx(styles.content, 'markdown-body')}>
                 <Content/>

@@ -8,7 +8,6 @@ import 'dayjs/locale/ko';
 import dayjs from "dayjs";
 import {Providers} from "@/app/Providers";
 import {customMeta} from "@/app/_utils/customMeta";
-
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
