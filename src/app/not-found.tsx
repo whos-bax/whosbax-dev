@@ -4,7 +4,7 @@ import Link from "next/link";
 import {redirect} from "next/navigation";
 
 const NotFound: NextPage = () => {
-    redirect('/')
+    // redirect('/')
     return null;
     // return (
     //     <div className={styles.container}>

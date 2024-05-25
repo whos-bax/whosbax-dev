@@ -11,10 +11,10 @@ import {useState} from "react";
 export default function Header() {
     const pathname = usePathname();
     const linkItems = [
-        // {
-        //     title: 'blog',
-        //     link: '/blog'
-        // },
+        {
+            title: 'blog',
+            link: '/blog'
+        },
         {
             title: 'about',
             link: '/about'
@@ -37,7 +37,7 @@ export default function Header() {
                 <ul className={cx(styles.headerItemsList)}>
                     {linkItems.map((item, idx) => (
                         <li
-                            className={cx(pathname === item.link && styles.pageBorderBottom)}
+                            className={cx(pathname.includes(item.link) && styles.pageBorderBottom)}
                             key={`header-link-${idx}`}
                         >
                             <Link href={item.link}>
@@ -59,10 +59,10 @@ export default function Header() {
                     <div className={cx(styles.headerMobileList, barShow && styles.headerMobileListShow)}>
                         {linkItems.map((item, idx) => (
                             <li
-                                className={cx(pathname === item.link && styles.pageBorderBottom)}
+                                className={cx(pathname.includes(item.link) && styles.pageBorderBottom)}
                                 key={`header-link-m-${idx}`}
                             >
-                                <Link href={item.link}>
+                                <Link href={item.link} onClick={clickBarShow}>
                                     {item.title.toUpperCase()}
                                 </Link>
                             </li>

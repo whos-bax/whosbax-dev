@@ -1,17 +1,12 @@
 import styles from '../blog.module.scss'
 import Image from "next/image";
 import dayjs from "dayjs";
+import Link from "next/link";
+import {Blog as TBlog} from 'contentlayer/generated'
 
-type Props = {
-    title: string,
-    content: string,
-    created_at: Date,
-    image: string,
-}
-
-const BlogEach = ({blog}: { blog: Props }) => {
+const BlogEach = ({blog}: { blog: TBlog }) => {
     return (
-        <div className={styles.blogEach}>
+        <Link href={blog.url} className={styles.blogEach}>
             <div className={styles.summaryDiv}>
                 <h3 className={styles.title}>
                     {blog.title}
@@ -24,14 +19,16 @@ const BlogEach = ({blog}: { blog: Props }) => {
                 </p>
             </div>
             <div className={styles.imageDiv}>
-                <Image
-                    src={blog.image}
-                    alt={blog.title}
-                    width={300}
-                    height={300}
-                />
+                {blog.image && (
+                    <Image
+                        src={blog.image}
+                        alt={blog.title}
+                        width={300}
+                        height={300}
+                    />
+                )}
             </div>
-        </div>
+        </Link>
     )
 }
 
