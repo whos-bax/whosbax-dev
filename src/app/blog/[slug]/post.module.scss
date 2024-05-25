@@ -11,23 +11,36 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 2.4rem;
+  line-height: 1.4;
   font-weight: 700;
+  margin-bottom: .5rem;
 
   @media (max-width: 700px) {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
   }
 }
-.date {
-  font-size: 0.8rem;
+
+.description {
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--gray800);
-  padding: 0.5rem 0;
-  border-bottom: solid 1px var(--gray100);
+  line-height: 1.4;
+  color: var(--gray600);
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--gray700);
+  padding: 0.8rem 0;
+  border-bottom: solid 2px var(--orange);
   display: flex;
   justify-content: flex-end;
 }
 
 .content {
-  padding: 2rem 0;
+  padding: 4rem 2rem;
+
+  @media (max-width: 700px) {
+    padding: 3rem 0;
+  }
 }

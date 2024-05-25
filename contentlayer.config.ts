@@ -5,17 +5,18 @@ const Blog = defineDocumentType(() => ({
     filePathPattern: `**/*.mdx`,
     contentType: 'mdx',
     fields: {
-        id: {
-            type: 'number',
-            required: true,
-        },
         title: {
             type: 'string',
             required: true,
         },
-        content: {
+        description: {
             type: 'string',
             required: true,
+        },
+        tags: {
+            type: 'list',
+            of: {type: 'string'},
+            default: [],
         },
         created_at: {
             type: 'date',

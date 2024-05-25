@@ -12,22 +12,31 @@ const BlogEach = ({blog}: { blog: TBlog }) => {
                     {blog.title}
                 </h3>
                 <p className={styles.content}>
-                    {blog.content}
+                    {blog.description}
                 </p>
                 <p className={styles.date}>
                     {dayjs(blog.created_at).fromNow()}
                 </p>
             </div>
-            <div className={styles.imageDiv}>
-                {blog.image && (
-                    <Image
-                        src={blog.image}
-                        alt={blog.title}
-                        width={300}
-                        height={300}
-                    />
-                )}
-            </div>
+            {blog.image &&
+                <div className={styles.imageDiv}>
+                    {blog.image?.includes("http") ? (
+                        <img
+                            src={blog.image}
+                            alt={blog.title}
+                            width={300}
+                            height={300}
+                        />
+                    ) : (
+                        <Image
+                            src={blog.image}
+                            alt={blog.title}
+                            width={300}
+                            height={300}
+                        />
+                    )}
+                </div>
+            }
         </Link>
     )
 }

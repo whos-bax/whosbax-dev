@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
+    "@mui/icons-material": "^5.15.18",
+    "@mui/material": "^5.15.18",
     "@next/mdx": "^14.2.3",
     "@nextui-org/react": "^2.3.6",
     "@types/mdx": "^2.0.13",
@@ -19,6 +23,7 @@
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.11",
     "framer-motion": "^11.1.9",
+    "github-markdown-css": "^5.5.1",
     "next": "14.2.3",
     "next-contentlayer": "^0.3.4",
     "react": "^18",

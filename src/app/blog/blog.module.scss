@@ -69,7 +69,7 @@
   }
 
   .title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 500;
     transition: all 0.1s;
 
@@ -98,7 +98,7 @@
 
   .date {
     margin-top: auto;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 300;
     color: var(--gray800);
   }
@@ -140,5 +140,31 @@
     .content {
       font-size: 0.8rem;
     }
+  }
+}
+
+.blogBody {
+  display: flex;
+  flex-direction: column;
+  min-height: 50dvh;
+  gap: 1rem;
+
+  &.noPosts {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .total, .total > span {
+    width: 100%;
+    font-size: 0.9rem;
+    span {
+      font-weight: 500;
+      color: var(--orange);
+    }
+  }
+
+  .notice {
+    font-size: 1.4em;
+    color: var(--gray600);
   }
 }

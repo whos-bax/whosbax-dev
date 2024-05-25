@@ -6,11 +6,12 @@ export const customMeta = {
     description: `하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - 꿈이 많은 어른 아이`,
     applicationName: "whosbax",
     authors: [{ name: "whosbax", url: "https://whosbax.netlify.app" }],
+    siteName: "꿈이 많은 어른 아이",
     openGraph: {
         title: `꿈이 많은 어른 아이 | 박상호`,
         description: "하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - 꿈이 많은 어른 아이",
         url: "https://whosbax.netlify.app",
-        siteName: "whosbax",
+        siteName: "꿈이 많은 어른 아이",
         images: [
             {
                 url: new URL('https://whosbax.netlify.app/assets/images/profile.jpg'),
