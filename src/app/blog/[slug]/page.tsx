@@ -3,8 +3,9 @@ import {allBlogs} from "contentlayer/generated";
 import {getMDXComponent} from "mdx-bundler/client";
 import dayjs from "dayjs";
 import cx from "classnames";
-import 'github-markdown-css';
+import 'github-markdown-css/github-markdown-light.css';
 import {customMeta} from "@/app/_utils/customMeta";
+
 export const generateMetadata = ({params}: { params: { slug: string } }) => {
     const post = allBlogs.find((post) => post._raw.flattenedPath === params.slug)
     return {
