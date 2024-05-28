@@ -14,9 +14,11 @@ const BlogEach = ({blog}: { blog: TBlog }) => {
                 <p className={styles.content}>
                     {blog.description}
                 </p>
-                <p className={styles.date}>
-                    {dayjs(blog.created_at).fromNow()}
-                </p>
+                {blog.created_at && (
+                    <p className={styles.date}>
+                        {dayjs(blog.created_at).fromNow()}
+                    </p>
+                )}
             </div>
             {blog.image &&
                 <div className={styles.imageDiv}>

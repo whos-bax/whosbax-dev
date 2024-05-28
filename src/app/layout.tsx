@@ -1,17 +1,24 @@
 import type {Metadata} from "next";
-import {Inter} from "next/font/google";
 import "./globals.css";
 import Header from "@/app/_component/Header";
 import Footer from "@/app/_component/Footer";
-import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
-import dayjs from "dayjs";
+import relativeTime from 'dayjs/plugin/relativeTime';
 import {Providers} from "@/app/Providers";
 import {customMeta} from "@/app/_utils/customMeta";
-dayjs.locale('ko');
-dayjs.extend(relativeTime)
 
-const inter = Inter({subsets: ["latin"]});
+dayjs.locale('ko');
+dayjs.extend(relativeTime);
+
+import localFont from "next/font/local";
+
+const pretendard = localFont({
+    src: "../fonts/PretendardVariable.woff2",
+    display: "swap",
+    weight: "45 920",
+    variable: "--font-pretendard",
+});
 
 export const metadata: Metadata = customMeta;
 
@@ -22,7 +29,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ko">
-        <body className={inter.className}>
+        <body className={`${pretendard.variable} font-pretendard`}>
         <Providers>
             <Header/>
             {children}
