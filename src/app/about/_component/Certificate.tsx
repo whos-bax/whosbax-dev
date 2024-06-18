@@ -13,7 +13,7 @@ export default function Certificate({title}: Props) {
             </h4>
 
             <div className={styles.educationList}>
-                <li>정보처리기사 : 2024.06.18 (예정)</li>
+                <li>정보처리기사 : 2024.06.18</li>
             </div>
         </div>
     )
