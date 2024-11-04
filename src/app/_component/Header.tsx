@@ -12,10 +12,10 @@ import NextNProgress from "nextjs-progressbar";
 export default function Header() {
     const pathname = usePathname();
     const linkItems = [
-        {
-            title: 'blog',
-            link: '/blog'
-        },
+        // {
+        //     title: 'blog',
+        //     link: '/blog'
+        // },
         {
             title: 'about',
             link: '/about'

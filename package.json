@@ -24,7 +24,7 @@
     "dayjs": "^1.11.11",
     "framer-motion": "^11.1.9",
     "github-markdown-css": "^5.5.1",
-    "next": "14.2.3",
+    "next": "14.2.13",
     "next-contentlayer2": "^0.4.6",
     "nextjs-progressbar": "^0.0.16",
     "react": "^18",
@@ -41,6 +41,7 @@
     "eslint-config-next": "14.2.3",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
+    "prettier": "^3.1.1",
     "typescript": "^5"
   }
 }

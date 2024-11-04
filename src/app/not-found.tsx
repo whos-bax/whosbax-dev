@@ -1,11 +1,11 @@
 import { NextPage } from "next";
-import styles from './page.module.scss';
-import Link from "next/link";
+// import styles from './page.module.scss';
+// import Link from "next/link";
 import {redirect} from "next/navigation";
 
 const NotFound: NextPage = () => {
-    // redirect('/')
-    return null;
+    redirect('/')
+    // return null;
     // return (
     //     <div className={styles.container}>
     //         <div>

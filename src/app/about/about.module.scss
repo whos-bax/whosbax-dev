@@ -222,12 +222,31 @@
       }
     }
 
+    .department {
+      width: fit-content;
+      padding: 0.5rem 0;
+      li {
+        margin-left: 1rem;
+        padding-top: 0.5rem;
+        list-style: disc;
+        font-weight: 600;
+        &.inside {
+          margin-left: 2rem;
+          padding: 0;
+          list-style: circle;
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
+      }
+    }
+
     .description {
-      background-color: var(--gray100);
+      background-color: var(--gray50);
       width: fit-content;
       border-radius: var(--border-radius);
       margin: 0.5rem 0;
       padding: 10px 15px;
+      color: var(--green);
 
       b {
         font-weight: bold;
