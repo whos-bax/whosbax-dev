@@ -19,7 +19,7 @@ const summaryList: SummaryType[] = [
     name: '텐서큐브',
     department: [
       {
-        position: '프론트엔드 개발자 및 개발 팀장 (24.07 ~ )',
+        position: '프론트엔드 개발자 (24.07 ~ )',
         tasks: [],
       },
     ],
