@@ -82,7 +82,7 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           '이슈 및 일정 관리로 프로젝트 조율 역할 수행',
           '다양한 브라우저 환경에서 호환성 문제 해결 및 반응형 웹 개발',
           'PortOne 서비스를 이용하여 결제 시스템 개발',
-          'SEO 최적화를 위해 React에서 Next.js로 마이그레이션을 진행하여 검색 엔진 가시성을 크게 개선',
+          'SEO 최적화를 위해 React에서 Next.js로 마이그레이션을 진행하여 검색 엔진 가시성을 크게 개선 (매출 10배 증가 기여)',
           'Axios를 이용하여 REST API 연동',
           'Zustand를 활용하여 전역 상태 관리',
           '이미지 로딩 속도를 개선하고 UX를 향상시키기 위해, AWS S3에 저장된 이미지를 CDN을 통해 배포',
@@ -143,12 +143,13 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           'Git Action',
           'AWS (EC2, S3, CloudFront)',
         ],
-        description: '사용자(인플루언서) 맞춤형',
+        description:
+          '사용자(인플루언서) 맞춤형 개인 페이지 제공 및 이를 관리할 수 있는 관리자 페이지 개발 및 운영',
         summaryList: [
           '이슈 및 일정 관리로 프로젝트 조율 역할 수행',
           '다양한 브라우저 환경에서 호환성 문제 해결 및 반응형 웹 개발',
           '카테고리, 영양제, 댓글 관리 기능을 포함한 백엔드 CRUD 개발',
-          'GitHub Actions를 이용한 자동화된 빌드/배포',
+          'GitHub Action을 이용한 자동화된 빌드/배포',
           'Chart.js를 사용하여 매출 및 유입량을 시각화, UX 개선',
           '모바일 UX 향상을 위해 무한 스크롤과 컴포넌트 배치 최적화',
           '가비아를 통해 사용자별 도메인 제공',
@@ -171,7 +172,7 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           },
         ],
         skills: [
-          'React-Native',
+          'React Native',
           'JavaScript',
           'GitHub',
           'AWS(S3)',
@@ -205,7 +206,7 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           },
         ],
         skills: [
-          'React-Native',
+          'React Native',
           'JavaScript',
           'GitHub',
           'AWS(S3)',
