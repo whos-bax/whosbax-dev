@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import styles from '../about.module.scss';
 import cx from 'classnames';
 import dayjs from 'dayjs';
@@ -72,7 +73,7 @@ export default function Experience({ title }: Props) {
             )}
             <ol className={styles.department}>
               {item.department.map((value, idx) => (
-                <>
+                <React.Fragment key={idx}>
                   <li key={`department-${idx}`}>{value.position}</li>
 
                   {value.tasks.length > 0 && (
@@ -87,7 +88,7 @@ export default function Experience({ title }: Props) {
                       ))}
                     </ul>
                   )}
-                </>
+                </React.Fragment>
               ))}
             </ol>
             <p
