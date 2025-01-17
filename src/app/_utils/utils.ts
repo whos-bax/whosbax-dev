@@ -40,6 +40,7 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
         summaryList: [
           'AI 개발을 위한 클라우드 스토리지, 데이터셋 관리 및 라벨링 도구 개발',
           'WebSocket을 통한 업로드/다운로드 기능으로 트래픽 비용 절감',
+          'Stream API를 활용하여 데이터 스트리밍을 구현, 업로드/다운로드 과정에서 메모리 효율성을 향상시키고 대용량 파일 처리 성능을 최적화',
           'Canvas API와 Onnx 모델을 활용한 데이터 라벨링 도구 개발 및 AI 모델 지원 기능 구현',
           'Vultr의 단일 IP 서버에서 Nginx로 3개의 서브 도메인을 호스팅, 각 도메인을 Docker로 컨테이너화하여 독립적인 상태 관리 설정',
           'MSA(Microservice Architecture) 적용으로 서비스 간 의존성을 줄이고 독립성을 강화하여, 확장성과 안정성을 높였으며, 기능 추가 및 수정 시 다른 서비스에 미치는 영향을 최소화',
