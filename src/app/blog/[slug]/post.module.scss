@@ -1,20 +1,20 @@
 .container {
-  width: 92%;
-  height: 100%;
-  margin: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
-  padding: 2rem 0 6rem;
+  width: 90%;
   max-width: 800px;
+  height: 100%;
   min-height: 80dvh;
+  margin: auto;
+  padding: 2rem 0 6rem;
 }
 
 .title {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
   font-size: 2.4rem;
   line-height: 1.4;
-  font-weight: 700;
-  margin-bottom: .5rem;
 
   @media (max-width: 700px) {
     font-size: 1.8rem;
@@ -22,19 +22,19 @@
 }
 
 .description {
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.4;
   color: var(--gray600);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .date {
-  font-size: 0.85rem;
-  color: var(--gray700);
-  padding: 0.8rem 0;
-  border-bottom: solid 2px var(--orange);
   display: flex;
   justify-content: flex-end;
+  padding: 0.8rem 0;
+  color: var(--gray700);
+  font-size: 0.85rem;
+  border-bottom: solid 2px var(--orange);
 }
 
 .content {

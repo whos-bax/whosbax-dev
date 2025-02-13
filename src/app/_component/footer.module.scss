@@ -3,15 +3,15 @@
 }
 
 .container {
-  max-width: var(--max-width);
-  width: 92%;
-  height: 100%;
-  padding: 4rem 0 6rem;
-  margin: auto;
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 2rem;
+  align-items: center;
+  width: 90%;
+  max-width: var(--max-width);
+  height: 100%;
+  margin: auto;
+  padding: 4rem 0 6rem;
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -19,11 +19,11 @@
   }
 
   .profileImage {
-    border-radius: var(--border-radius);
-    object-fit: contain;
-    height: 15rem;
-    width: auto;
     position: relative;
+    width: auto;
+    height: 15rem;
+    object-fit: contain;
+    border-radius: var(--border-radius);
   }
 
   .profileDiv {
@@ -36,21 +36,21 @@
     }
 
     h3 {
-      font-size: 2rem;
       margin-bottom: 0.5rem;
-      letter-spacing: 2px;
       font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: 2px;
 
       @media (max-width: 700px) {
-        text-align: center;
-        white-space: pre-wrap;
         font-size: 1.6rem;
+        white-space: pre-wrap;
+        text-align: center;
       }
     }
 
     p {
-      font-weight: 200;
       color: var(--gray700);
+      font-weight: 200;
       line-height: 1.8;
 
       @media (max-width: 700px) {
@@ -62,16 +62,16 @@
 
       &.copyRight {
         margin-top: auto;
-        font-size: 0.9rem;
         color: var(--gray500);
+        font-size: 0.9rem;
       }
     }
   }
 
   .profileLinkList {
     display: flex;
-    align-items: center;
     gap: 0.6rem;
+    align-items: center;
     margin-top: 1.5rem;
 
     @media (max-width: 700px) {
@@ -79,30 +79,30 @@
     }
 
     .profileLinkIcon {
-      width: 2rem;
-      height: 2rem;
-      padding: 4px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      width: 2rem;
+      height: 2rem;
+      padding: 4px;
 
       &:hover {
-        border-radius: var(--border-radius);
         background-color: var(--gray200);
+        border-radius: var(--border-radius);
       }
 
       &[title]:hover:before {
-        animation: fadeIn 0.6s;
         position: absolute;
         top: 100%;
         left: 50%;
-        transform: translate(-50%, 8px);
-        content: attr(title);
-        border-radius: var(--border-radius);
+        padding: 3px 8px;
         font-size: 0.8rem;
         background-color: var(--gray200);
-        padding: 3px 8px;
+        border-radius: var(--border-radius);
+        transform: translate(-50%, 8px);
+        animation: fadeIn 0.6s;
+        content: attr(title);
       }
     }
   }

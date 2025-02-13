@@ -1,15 +1,15 @@
 .container {
-  width: 100%;
-  height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .backgroundImage {
-  height: calc(100dvh - var(--navbar-height));
   width: 100%;
+  height: calc(100dvh - var(--navbar-height));
   object-fit: cover;
   object-position: center;
 
@@ -20,23 +20,23 @@
 
 .overlay {
   position: absolute;
-  height: calc(100dvh - var(--navbar-height));
-  width: 100%;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  background-color: transparent;
-  animation: overlay 1s 0.2s forwards;
-  backdrop-filter: brightness(100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: calc(100dvh - var(--navbar-height));
+  background-color: transparent;
+  backdrop-filter: brightness(100%);
+  animation: overlay 1s 0.2s forwards;
 
   .progress {
     position: absolute;
-    max-width: 30%;
     bottom: 8rem;
+    max-width: 30%;
 
     @media (max-width: 700px) {
       max-width: 80%;
@@ -48,30 +48,30 @@
   }
 
   .progressButton {
-    animation: textShow 0.5s forwards;
-    background-color: var(--green);
-    border-radius: var(--border-radius);
     padding: 3px 12px;
     color: white;
-    transition: all .4s;
+    background-color: var(--green);
+    border-radius: var(--border-radius);
+    transition: all 0.4s;
+    animation: textShow 0.5s forwards;
 
     &:hover {
-      background-color: white;
       color: var(--green);
+      background-color: white;
     }
   }
 
   .overlayText {
-    color: white;
-    font-size: 3.5rem;
-    font-weight: bold;
-    animation: textShow 1.5s forwards;
+    width: 90%;
     height: fit-content;
-    overflow: hidden;
-    opacity: 0;
-    width: 92%;
-    text-align: center;
     padding-bottom: 4rem;
+    overflow: hidden;
+    color: white;
+    font-weight: bold;
+    font-size: 3.5rem;
+    text-align: center;
+    opacity: 0;
+    animation: textShow 1.5s forwards;
 
     @media (max-width: 700px) {
       font-size: 1.6rem;
@@ -80,20 +80,20 @@
   }
 
   .overlayAllTextDiv {
-    animation: textShowAll 1.5s forwards;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 8px;
+    align-items: center;
     width: 100%;
+    animation: textShowAll 1.5s forwards;
 
     .overlayAllText {
-      color: white;
-      font-size: 2.4rem;
-      font-weight: bold;
+      width: 90%;
       height: fit-content;
       overflow: hidden;
-      width: 92%;
+      color: white;
+      font-weight: bold;
+      font-size: 2.4rem;
       text-align: center;
 
       &:last-child {
@@ -121,41 +121,41 @@
 
 @keyframes textShow {
   from {
-    opacity: 0;
     transform: translateY(30%);
+    opacity: 0;
     //backdrop-filter: brightness(100%);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
     //backdrop-filter: brightness(50%);
   }
 }
 
 @keyframes textShowAll {
   from {
-    opacity: 0;
     transform: translateY(30%);
+    opacity: 0;
     //backdrop-filter: brightness(100%);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
     //backdrop-filter: brightness(30%);
   }
 }
 
 .resetButton {
   position: absolute;
-  z-index: 1;
-  background-color: white;
-  bottom: 1.5rem;
   right: 1.5rem;
-  width: 2rem;
-  fill: var(--green);
-  padding: 8px;
-  border-radius: 50%;
+  bottom: 1.5rem;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 2rem;
+  padding: 8px;
+  background-color: white;
+  border-radius: 50%;
+  fill: var(--green);
 }

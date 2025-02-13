@@ -19,6 +19,7 @@ export type SummaryType = {
   endDate: string;
   name: string;
   department: Department[];
-  link: string;
-  description: string;
+  link: string | null;
+  description: string | null;
+  isBreakTime?: boolean;
 };

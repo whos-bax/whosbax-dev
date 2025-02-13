@@ -1,23 +1,23 @@
 .container {
-  max-width: var(--max-width);
-  width: 92%;
-  height: 100%;
-  margin: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
-  animation: containerHeight 0.6s;
+  width: 90%;
+  max-width: var(--max-width);
+  height: 100%;
+  margin: auto;
   padding-bottom: 6rem;
+  animation: containerHeight 0.6s;
 }
 
 @keyframes containerHeight {
   from {
-    opacity: 0;
     transform: translateY(-3rem);
+    opacity: 0;
   }
   to {
-    opacity: 1;
     transform: translateY(0%);
+    opacity: 1;
   }
 }
 
@@ -39,31 +39,31 @@
 
   @media (max-width: 700px) {
     flex-direction: column-reverse;
-    align-items: center;
     gap: 1rem;
+    align-items: center;
   }
 
   .profileSummaryContent {
     display: flex;
-    flex-direction: column;
     flex: 1;
+    flex-direction: column;
     @media (max-width: 700px) {
       width: 100%;
     }
 
     h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
       color: var(--green);
+      font-weight: 600;
+      font-size: 1.2rem;
       letter-spacing: 1px;
     }
 
     h3.profileName {
-      font-size: 2.7rem;
-      font-weight: 700;
       color: var(--black);
-      border-bottom: solid 1.5px var(--green);
+      font-weight: 700;
+      font-size: 2.7rem;
       letter-spacing: 2px;
+      border-bottom: solid 1.5px var(--green);
 
       @media (max-width: 700px) {
         font-size: 2rem;
@@ -81,24 +81,24 @@
 
       .contactEach {
         display: flex;
-        font-size: 1rem;
+        gap: 5px;
         color: var(--black);
         font-weight: 300;
-        gap: 5px;
+        font-size: 1rem;
 
         @media (max-width: 700px) {
           flex-direction: column;
         }
 
         p {
-          font-weight: 600;
           color: var(--green);
+          font-weight: 600;
         }
 
         a {
           color: var(--black);
-          transition: color 0.1s;
           white-space: pre-wrap;
+          transition: color 0.1s;
 
           &:hover {
             color: var(--orange);
@@ -109,28 +109,28 @@
   }
 
   .profileImageBackground {
-    background-color: var(--green);
     padding: 4rem 1.2rem 1.2rem;
+    background-color: var(--green);
   }
 
   .profileImageDiv {
-    width: 15rem;
     position: relative;
+    width: 15rem;
     margin: auto;
     overflow: hidden;
 
     &:after {
-      padding-bottom: 100%;
       display: block;
+      padding-bottom: 100%;
       content: '';
     }
 
     img {
       position: absolute;
-      width: 100%;
-      height: 100%;
       top: 0;
       display: block;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center 20%;
       scale: 1;
@@ -144,20 +144,20 @@
 }
 
 .componentTitle {
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-  color: var(--green);
-  padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 1.4px;
   border-bottom: solid 1px var(--gray400);
 }
 
 .componentBody {
-  padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 0.5rem 0;
 
   p {
     font-weight: 300;
@@ -177,8 +177,8 @@
 
   @media (max-width: 700px) {
     flex-direction: column;
-    width: 100%;
     gap: 0.5rem;
+    width: 100%;
   }
 
   .period {
@@ -201,18 +201,19 @@
     }
 
     .companyName {
-      font-size: 1.4rem;
-      font-weight: 700;
-      transition: color 0.1s;
       display: flex;
-      align-items: center;
       gap: 3px;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.4rem;
+      transition: color 0.1s;
 
       svg {
         transition: fill 0.1s;
         fill: var(--black);
       }
-
+    }
+    a.companyName {
       &:hover {
         color: var(--orange);
 
@@ -228,25 +229,25 @@
       li {
         margin-left: 1rem;
         padding-top: 0.5rem;
-        list-style: disc;
         font-weight: 600;
+        list-style: disc;
         &.inside {
           margin-left: 2rem;
           padding: 0;
-          list-style: circle;
-          font-size: 0.9rem;
           font-weight: 300;
+          font-size: 0.9rem;
+          list-style: circle;
         }
       }
     }
 
     .description {
-      background-color: var(--gray50);
       width: fit-content;
-      border-radius: var(--border-radius);
       margin: 0.5rem 0;
       padding: 10px 15px;
       color: var(--green);
+      background-color: var(--gray50);
+      border-radius: var(--border-radius);
 
       b {
         font-weight: bold;
@@ -256,12 +257,12 @@
 }
 
 .moreShowButton {
+  margin: 1rem 0;
+  color: var(--gray600);
   background-color: white;
   border: none;
-  cursor: pointer;
-  color: var(--gray600);
-  margin: 1rem 0;
   border-bottom: solid 1px var(--white);
+  cursor: pointer;
 
   &:hover {
     border-bottom: solid 1px var(--gray500);
@@ -273,22 +274,21 @@
   flex-direction: column;
   gap: 0.8rem;
 }
-
 .experienceDetail {
-  width: 100%;
-  height: fit-content;
+  position: relative;
   display: flex;
   flex-direction: column;
-  border: solid 1px var(--gray100);
-  background-color: var(--beige);
-  padding: 1.2rem;
-  border-radius: var(--border-radius);
-  position: relative;
   gap: 0.3rem;
+  width: 100%;
+  height: fit-content;
+  padding: 1.2rem;
+  background-color: var(--beige);
+  border: solid 1px var(--gray100);
+  border-radius: var(--border-radius);
 
   .title {
-    font-size: 1.1rem;
     font-weight: 600;
+    font-size: 1.1rem;
   }
 
   .date {
@@ -298,15 +298,15 @@
 
   .linkList {
     display: flex;
-    align-items: center;
-    gap: 5px;
     flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
 
     .linkSvg {
-      background-color: inherit;
-      fill: var(--green);
       display: flex;
       align-items: center;
+      background-color: inherit;
+      fill: var(--green);
 
       svg {
         width: 1rem;
@@ -315,27 +315,27 @@
     }
 
     a.link {
-      display: inline-block;
       position: relative;
+      z-index: 1;
+      display: inline-block;
+      padding: 3px 8px;
       color: var(--green);
+      font-size: 0.9rem;
+      white-space: nowrap;
       background-color: white;
       border-radius: var(--border-radius);
-      padding: 3px 8px;
-      font-size: 0.9rem;
       transition: all 0.3s;
-      z-index: 1;
-      white-space: nowrap;
 
       &:after {
-        content: '';
-        width: 0;
-        height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-        border-radius: var(--border-radius);
+        width: 0;
+        height: 100%;
         background-color: var(--green);
+        border-radius: var(--border-radius);
         transition: all 0.3s;
+        content: '';
       }
 
       &:hover {
@@ -343,8 +343,8 @@
       }
 
       &:hover:after {
-        width: 100%;
         z-index: -1;
+        width: 100%;
       }
     }
   }
@@ -352,44 +352,44 @@
   .descriptionBody {
     display: flex;
     flex-direction: column;
-    padding: 1rem 1.5rem;
-    margin: 0.5rem 0;
-    border-radius: var(--border-radius);
-    background-color: var(--white);
     gap: 0.5rem;
+    margin: 0.5rem 0;
+    padding: 1rem 1.5rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
 
     @media (max-width: 700px) {
       padding: 0.8rem;
     }
 
     .detailDescription {
-      font-size: 1rem;
       font-weight: 600;
+      font-size: 1rem;
       //color: var(--orange);
     }
 
     .skillList {
       display: flex;
-      align-items: center;
-      gap: 5px;
       flex-wrap: wrap;
+      gap: 5px;
+      align-items: center;
 
       .skill {
-        font-size: 0.8rem;
-        font-weight: 400;
-        background-color: white;
-        color: var(--gray400);
-        border-radius: var(--border-radius);
-        border: solid 1px var(--gray400);
         padding: 2px 8px;
+        color: var(--gray400);
+        font-weight: 400;
+        font-size: 0.8rem;
         font-style: italic;
+        background-color: white;
+        border: solid 1px var(--gray400);
+        border-radius: var(--border-radius);
       }
     }
 
     .summaryDetailListButton {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       width: fit-content;
       margin: auto;
       padding: 6px;
@@ -428,32 +428,43 @@
       }
 
       .summaryDetail {
-        font-weight: 300;
         color: var(--black);
+        font-weight: 300;
       }
     }
   }
 }
 
+.experienceBreakTime {
+  margin-top: 1rem;
+  padding: 0;
+  background-color: white;
+  border: 0;
+  .descriptionBody {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .skillItemList {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
-  flex-wrap: wrap;
 
   .skillItem {
-    list-style: none;
-    cursor: pointer;
-    background-color: var(--gray100);
     width: fit-content;
-    border-radius: var(--border-radius);
     padding: 5px 16px;
-    transition: all 0.2s;
     font-size: 0.9rem;
+    list-style: none;
+    background-color: var(--gray100);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s;
 
     &:hover {
-      font-size: 1rem;
       color: var(--green);
+      font-size: 1rem;
     }
   }
 }
@@ -464,7 +475,7 @@
   gap: 0.5rem;
 
   li {
-    list-style: circle;
     font-weight: 300;
+    list-style: circle;
   }
 }
