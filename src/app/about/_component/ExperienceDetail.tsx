@@ -28,8 +28,9 @@ export default function ExperienceDetail({ summary, item }: Props) {
           ? cx(styles.experienceDetail, styles.experienceBreakTime)
           : styles.experienceDetail
       }
+      data-print={'experienceDetail'}
     >
-      <div>
+      <div data-print={'experienceDetailTitle'}>
         <h6 className={styles.title}>{item.title}</h6>
         <p className={styles.date}>
           {dayjs(item.startDate).format('YYYY.MM')} -{' '}
@@ -37,7 +38,7 @@ export default function ExperienceDetail({ summary, item }: Props) {
         </p>
       </div>
       {item.linkList.length > 0 && (
-        <div className={styles.linkList}>
+        <div className={styles.linkList} data-print={'linkList'}>
           <div
             className={styles.linkSvg}
             dangerouslySetInnerHTML={{ __html: linkSvg }}
@@ -54,12 +55,12 @@ export default function ExperienceDetail({ summary, item }: Props) {
           ))}
         </div>
       )}
-      <div className={styles.descriptionBody}>
+      <div className={styles.descriptionBody} data-print={'descriptionBody'}>
         {item.description.length > 0 && (
           <p className={styles.detailDescription}>{item.description}</p>
         )}
         {item.skills.length > 0 && (
-          <div className={styles.skillList}>
+          <div className={styles.skillList} data-print={'skillList'}>
             {item.skills.map((skill, idx) => (
               <p key={`experience-skills-${idx}`} className={styles.skill}>
                 {skill}
@@ -70,6 +71,7 @@ export default function ExperienceDetail({ summary, item }: Props) {
         {!isBreakTime && (
           <button
             className={styles.summaryDetailListButton}
+            id={'summary-button'}
             onClick={handleDetailShow}
             dangerouslySetInnerHTML={{
               __html: detailShow ? angleUp : angleDown,

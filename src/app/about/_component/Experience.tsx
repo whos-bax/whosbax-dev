@@ -25,48 +25,53 @@ export default function Experience({ title }: Props) {
           <div className={styles.period}>
             <p>
               {dayjs(item.startDate).format('YYYY.MM')} -{' '}
-              {item.endDate ? dayjs(item.endDate).format('YYYY.MM') : '진행중'}
+              {item.endDate ? dayjs(item.endDate).format('YYYY.MM') : '재직중'}
             </p>
           </div>
           <div className={styles.content}>
-            {item.link ? (
-              <Link
-                href={item.link}
-                target={'_blank'}
-                className={styles.companyName}
-                dangerouslySetInnerHTML={{ __html: item.name + ' ' + linkSvg }}
-              />
-            ) : (
-              <p className={styles.companyName}>{item.name}</p>
-            )}
-            {item.department.length > 0 && (
-              <ol className={styles.department}>
-                {item.department.map((value, idx) => (
-                  <React.Fragment key={idx}>
-                    <li key={`department-${idx}`}>{value.position}</li>
+            <div data-print={'experienceSummary'}>
+              {item.link ? (
+                <Link
+                  href={item.link}
+                  target={'_blank'}
+                  className={styles.companyName}
+                  dangerouslySetInnerHTML={{
+                    __html: item.name + ' ' + linkSvg,
+                  }}
+                />
+              ) : (
+                <p className={styles.companyName}>{item.name}</p>
+              )}
+              {item.department.length > 0 && (
+                <ol className={styles.department} data-print={'department'}>
+                  {item.department.map((value, idx) => (
+                    <React.Fragment key={idx}>
+                      <li key={`department-${idx}`}>{value.position}</li>
 
-                    {value.tasks.length > 0 && (
-                      <ul>
-                        {value.tasks.map((task, i) => (
-                          <li
-                            className={styles.inside}
-                            key={`department-task-${i}`}
-                          >
-                            {task}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </React.Fragment>
-                ))}
-              </ol>
-            )}
-            {item.description && (
-              <p
-                className={styles.description}
-                dangerouslySetInnerHTML={{ __html: item.description }}
-              />
-            )}
+                      {value.tasks.length > 0 && (
+                        <ul>
+                          {value.tasks.map((task, i) => (
+                            <li
+                              className={styles.inside}
+                              key={`department-task-${i}`}
+                            >
+                              {task}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </ol>
+              )}
+              {item.description && (
+                <p
+                  className={styles.description}
+                  data-print="description"
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                />
+              )}
+            </div>
             <div className={cx(styles.experienceList)}>
               {experienceList
                 .find((value) => value.company === item.name)

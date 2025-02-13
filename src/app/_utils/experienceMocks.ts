@@ -69,7 +69,9 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           'Jotai',
           'GitHub (GitHub Action)',
           'Docker',
-          'Vultr (Nginx)',
+          'Nginx',
+          'Vultr',
+          'ncloud',
         ],
         description:
           '초기 단계 스타트업에서 프로젝트 설정, 배포 및 운영에 기여',

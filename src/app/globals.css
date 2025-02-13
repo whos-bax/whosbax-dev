@@ -139,3 +139,59 @@ body {
 /*    color-scheme: dark;*/
 /*  }*/
 /*}*/
+
+@media print {
+  nav, footer {
+    display: none !important;
+  }
+  #summary-button, #print-button {
+    display: none !important;
+  }
+  [data-print="profileImage"] {
+    width: 12rem !important;
+  }
+  [data-print="link-svg"] {
+    display: none !important;
+  }
+  [data-print="experienceSummary"] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  [data-print="department"] {
+    padding: 0 !important;
+  }
+  [data-print="description"] {
+    background-color: white !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    font-weight: 500 !important;
+  }
+  [data-print="experienceDetail"] {
+    background-color: white !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+    border: 0 !important;
+    /*page-break-inside: ;*/
+  }
+  [data-print="experienceDetailTitle"] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  [data-print="linkList"] {
+    display: none !important;
+  }
+  [data-print="descriptionBody"] {
+    background-color: white !important;
+    padding: 0 !important;
+  }
+  [data-print="skillList"] {
+    p {
+      color: var(--gray600) !important;
+    }
+  }
+  ol, ul, li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

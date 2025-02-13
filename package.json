@@ -24,6 +24,7 @@
     "dayjs": "^1.11.11",
     "framer-motion": "^11.1.9",
     "github-markdown-css": "^5.5.1",
+    "html2pdf.js": "^0.9.3",
     "next": "14.2.13",
     "next-contentlayer2": "^0.4.6",
     "nextjs-progressbar": "^0.0.16",
