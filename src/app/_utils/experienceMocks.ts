@@ -4,11 +4,11 @@ import dayjs from 'dayjs';
 export const summaryList: SummaryType[] = [
   {
     startDate: '2024-07-01',
-    endDate: '',
+    endDate: '2025-03-01',
     name: '텐서큐브',
     department: [
       {
-        position: '프론트엔드 개발자 (24.07 ~ )',
+        position: '프론트엔드 개발자 (24.07 ~ 25.03)',
         tasks: [],
       },
     ],
@@ -51,7 +51,7 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
         id: 0,
         title: `텐서큐브`,
         startDate: new Date(`2024-07-01`),
-        endDate: null,
+        endDate: new Date(`2025-03-01`),
         linkList: [
           {
             title: `텐서큐브`,
