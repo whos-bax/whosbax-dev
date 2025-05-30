@@ -1,4 +1,4 @@
-import { ExperienceType } from '@/model/ExperienceType';
+import { ExperienceType } from '@/type/ExperienceType';
 
 export const utils = {
   title: `꿈이 많은 어른 아이`,
@@ -27,6 +27,7 @@ export const skillList = [
   'IntelliJ',
   'WebStorm',
   'VSCode',
+  'Cursor',
   'Nginx',
   'AWS (EC2, S3, CloudFront 등)',
   'Vultr',

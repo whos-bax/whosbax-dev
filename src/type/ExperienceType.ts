@@ -1,12 +1,12 @@
 export interface ExperienceType {
-  id: number;
   title: string;
   startDate: Date;
   endDate: Date | null;
-  linkList: { title: string; link: string }[];
+  linkList: { label: string; url: string }[];
   skills: string[];
   description: string;
   summaryList: string[];
+  isBreakTime?: boolean;
 }
 
 type Department = {

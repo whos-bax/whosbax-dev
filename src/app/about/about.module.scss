@@ -15,6 +15,7 @@
     transform: translateY(-3rem);
     opacity: 0;
   }
+
   to {
     transform: translateY(0%);
     opacity: 1;
@@ -47,6 +48,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+
     @media (max-width: 700px) {
       width: 100%;
     }
@@ -207,12 +209,14 @@
       font-weight: 700;
       font-size: 1.4rem;
       transition: color 0.1s;
+      width: fit-content;
 
       svg {
         transition: fill 0.1s;
         fill: var(--black);
       }
     }
+
     a.companyName {
       &:hover {
         color: var(--orange);
@@ -226,11 +230,13 @@
     .department {
       width: fit-content;
       padding: 0.5rem 0;
+
       li {
         margin-left: 1rem;
         padding-top: 0.5rem;
         font-weight: 600;
         list-style: disc;
+
         &.inside {
           margin-left: 2rem;
           padding: 0;
@@ -274,6 +280,7 @@
   flex-direction: column;
   gap: 0.8rem;
 }
+
 .experienceDetail {
   position: relative;
   display: flex;
@@ -408,9 +415,11 @@
       0% {
         transform: translateY(0%);
       }
+
       50% {
         transform: translateY(25%);
       }
+
       100% {
         transform: translateY(0%);
       }
@@ -421,15 +430,29 @@
       flex-direction: column;
       gap: 3px;
       padding: 0.5rem 1.5rem;
-      list-style: circle;
 
       @media (max-width: 700px) {
         padding: 0.5rem 1.2rem;
       }
 
       .summaryDetail {
+        list-style: disc;
         color: var(--black);
+        font-weight: 500;
+
+        &.detailBreak {
+          font-weight: 300;
+        }
+      }
+
+      .nestedList {
+        list-style: circle;
+        margin-left: 1rem;
         font-weight: 300;
+
+        li::marker {
+          color: var(--black);
+        }
       }
     }
   }
@@ -440,6 +463,7 @@
   padding: 0;
   background-color: white;
   border: 0;
+
   .descriptionBody {
     margin: 0;
     padding: 0;

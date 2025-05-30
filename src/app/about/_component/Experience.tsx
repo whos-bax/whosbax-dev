@@ -37,7 +37,7 @@ export default function Experience({ title }: Props) {
                   className={styles.companyName}
                   dangerouslySetInnerHTML={{
                     __html: item.name + ' ' + linkSvg,
-                  }}
+                  }}                
                 />
               ) : (
                 <p className={styles.companyName}>{item.name}</p>

@@ -1,7 +1,7 @@
 'use client';
 
 import styles from '../about.module.scss';
-import { ExperienceType, SummaryType } from '@/model/ExperienceType';
+import { ExperienceType, SummaryType } from '@/type/ExperienceType';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { linkSvg } from '@/app/_utils/utils';
@@ -45,12 +45,12 @@ export default function ExperienceDetail({ summary, item }: Props) {
           />
           {item.linkList?.map((link, idx) => (
             <Link
-              href={link.link}
+              href={link.url}
               key={`experience-${idx}`}
               className={styles.link}
               target={'_blank'}
             >
-              {link.title}
+              {link.label}
             </Link>
           ))}
         </div>
@@ -80,14 +80,31 @@ export default function ExperienceDetail({ summary, item }: Props) {
         )}
         {item.summaryList && detailShow && (
           <ul className={styles.summaryDetailList}>
-            {item.summaryList?.map((summary, idx) => (
-              <li
-                key={`experience-summary-${idx}`}
-                className={styles.summaryDetail}
-              >
-                {summary}
-              </li>
-            ))}
+            {item.summaryList?.map((summary, idx) => {
+              const isNested = summary.trim().startsWith('-');
+              const text = isNested
+                ? summary.trim().replace(/^-+\s*/, '')  // 맨 앞의 '-' 제거
+                : summary;
+
+              if (isNested) {
+                return (
+                  // 중첩 리스트
+                  <ul key={`nested-summary-${idx}`} className={styles.nestedList}>
+                    <li className={styles.nestedItem}>{text}</li>
+                  </ul>
+                );
+              } else {
+                return (
+                  // 일반 리스트
+                  <li
+                  key={`summary-${idx}`}
+                  className={`${styles.summaryDetail} ${item.isBreakTime ? styles.detailBreak : ''}`}
+                  >
+                    {text}
+                  </li>
+                );
+              }
+            })}
           </ul>
         )}
       </div>
