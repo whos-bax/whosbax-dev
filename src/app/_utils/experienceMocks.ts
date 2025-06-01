@@ -8,7 +8,7 @@ export const summaryList: SummaryType[] = [
     name: '데이티움',
     department: [
       {
-        position: 'Software Developer (24.07 ~)',
+        position: 'Software Developer (25.04 ~)',
         tasks: [],
       },
     ],
