@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 
 export const summaryList: SummaryType[] = [
   {
-    startDate: '2024-07-01',
+    startDate: '2025-04-21',
     endDate: '',
     name: '데이티움',
     department: [
