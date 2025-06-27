@@ -79,13 +79,14 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           'Google Cloud Platform',
         ],
         description:
-          '매출 증대를 위한 LLM 활용 기능 개발 및 웹/앱 UI/UX 개선 및 운영',
+          '매출 증대를 위한 LLM 활용 기능 개발 및 웹/앱 UI/UX/성능 개선 및 운영',
         summaryList: [
           'LLM 활용 홍보 기능 개발',
           '- GPT, Claude 모델을 활용해 정비소별 맞춤형 홍보 블로그 콘텐츠 자동 생성 시스템 설계',
           '- 기능 출시 후 1개월 내 첫 매출 발생',
           '앱 UI/UX 개선',
           '- React Native 기반 코드베이스 리팩토링으로 로딩 속도 20% 단축',
+          '- 컴포넌트 재사용성 개선 및 코드 품질 개선',
           '- 사용자 행동 로그 및 VOC 분석을 통해 핵심 니즈 파악, 우선순위 기능 기획 및 개발',
         ],
       },
@@ -137,7 +138,7 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           'CI/CD & 무중단 배포',
           '- GitHub Actions와 Blue/Green 배포 전략으로 배포 안정성 확보',
           '정부 사업 과제 참여',
-          '- Unreal Engine 5 기반 라벨링용 영상/이미지 제작'
+          '- Unreal Engine 5 기반 라벨링용 영상/이미지 제작',
         ],
       },
     ],
@@ -188,7 +189,7 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           'GitHub',
           'AWS (EC2, S3, CloudFront)',
           'Spring Boot',
-          'QueryDsl'
+          'QueryDsl',
         ],
         description:
           '기존 AI 추천 웹/앱 서비스에서 커머스 플랫폼으로 전환하면서, 신규 서비스 개시 수준의 프로젝트 설정과 Next.js로의 마이그레이션 진행, 서비스 개발/배포/운영',
@@ -223,7 +224,7 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           'GitHub',
           'AWS (EC2, S3, CloudFront)',
           'Spring Boot',
-          'QueryDsl'
+          'QueryDsl',
         ],
         description:
           'React,AntD 기반 백오피스 시스템 개선 프로젝트: 물류/CS/상품등록/정산 관리 기능 재설계 및 CI/CD 자동화 구축',
