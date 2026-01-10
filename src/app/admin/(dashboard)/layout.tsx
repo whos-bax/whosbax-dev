@@ -15,7 +15,9 @@ export default function AdminLayout({
     <div className={styles.adminLayout}>
       <AdminSidebar />
       <div className={styles.mainContent}>
-        <AdminHeader />
+        <div className={styles.headerWrapper}>
+          <AdminHeader />
+        </div>
         <main className={styles.pageContent}>{children}</main>
       </div>
     </div>

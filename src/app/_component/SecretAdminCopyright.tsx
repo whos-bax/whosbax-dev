@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { createClient } from '@/shared/lib/supabase-browser';
 import CustomModal from './CustomModal';
 import styles from './secretAdminCopyright.module.scss';
 
@@ -9,8 +10,15 @@ export default function SecretAdminCopyright() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    setIsOpen(true);
+  const handleClick = async () => {
+    const supabase = createClient();
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (session) {
+      router.push('/admin');
+    } else {
+      setIsOpen(true);
+    }
   };
 
   const handleConfirm = () => {

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { signOut } from '@/features/auth';
+import Icons from '@/app/_component/headerIcon/icons';
 import styles from '../admin.module.scss';
 
 const pageTitles: Record<string, string> = {
@@ -64,7 +65,7 @@ export default function AdminHeader() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="메뉴 열기"
         >
-          {mobileMenuOpen ? '✕' : '☰'}
+          {mobileMenuOpen ? <Icons.close /> : <Icons.hamburger />}
         </button>
         <h2 className={styles.headerTitle}>{getTitle()}</h2>
       </div>
