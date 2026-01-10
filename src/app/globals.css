@@ -27,6 +27,20 @@
   --brand-text-subtle: #bbb;
   --brand-divider: #ddd;
 
+  /* Theme Colors (for dark mode support) */
+  --theme-bg: #faf9f7;
+  --theme-bg-secondary: #f2f4f6;
+  --theme-bg-tertiary: #e5e8eb;
+  --theme-text: #1a1a1a;
+  --theme-text-muted: #6b7684;
+  --theme-text-subtle: #8b95a1;
+  --theme-border: #e5e8eb;
+  --theme-border-muted: #d1d6db;
+  --theme-accent: #17C964;
+  --theme-accent-hover: #14b85c;
+  --theme-error: #ef4444;
+  --theme-error-bg: rgba(239, 68, 68, 0.1);
+
   --gray50: #f9fafb;
   --gray100: #f2f4f6;
   --gray200: #e5e8eb;

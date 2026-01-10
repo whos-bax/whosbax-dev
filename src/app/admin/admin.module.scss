@@ -1,13 +1,13 @@
 .adminLayout {
   display: flex;
   min-height: 100vh;
-  background-color: #0a0a0a;
+  background-color: var(--theme-bg);
 }
 
 .sidebar {
   width: 240px;
-  background-color: #111;
-  border-right: 1px solid #222;
+  background-color: var(--theme-bg-secondary);
+  border-right: 1px solid var(--theme-border);
   padding: 1.5rem 0;
   position: fixed;
   height: 100vh;
@@ -20,19 +20,19 @@
 
 .sidebarHeader {
   padding: 0 1.5rem 1.5rem;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--theme-border);
   margin-bottom: 1rem;
 
   h1 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--theme-text);
     margin: 0;
   }
 
   p {
     font-size: 0.75rem;
-    color: #666;
+    color: var(--theme-text-subtle);
     margin: 0.25rem 0 0;
   }
 }
@@ -49,14 +49,14 @@
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1.5rem;
-    color: #888;
+    color: var(--theme-text-muted);
     text-decoration: none;
     font-size: 0.875rem;
     transition: all 0.2s;
 
     &:hover {
-      background-color: #1a1a1a;
-      color: #fff;
+      background-color: var(--theme-bg-tertiary);
+      color: var(--theme-text);
     }
 
     svg {
@@ -66,15 +66,15 @@
   }
 
   &.active a {
-    background-color: #17C964;
-    color: #000;
+    background-color: var(--theme-accent);
+    color: #fff;
     font-weight: 500;
   }
 }
 
 .navDivider {
   height: 1px;
-  background-color: #222;
+  background-color: var(--theme-border);
   margin: 1rem 0;
 }
 
@@ -94,8 +94,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #111;
-  border-bottom: 1px solid #222;
+  background-color: var(--theme-bg-secondary);
+  border-bottom: 1px solid var(--theme-border);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -104,7 +104,7 @@
 .headerTitle {
   font-size: 1rem;
   font-weight: 500;
-  color: #fff;
+  color: var(--theme-text);
   margin: 0;
 }
 
@@ -116,8 +116,8 @@
 
 .logoutButton {
   background: none;
-  border: 1px solid #333;
-  color: #888;
+  border: 1px solid var(--theme-border-muted);
+  color: var(--theme-text-muted);
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-size: 0.875rem;
@@ -125,8 +125,8 @@
   transition: all 0.2s;
 
   &:hover {
-    border-color: #555;
-    color: #fff;
+    border-color: var(--theme-text-subtle);
+    color: var(--theme-text);
   }
 }
 
@@ -141,30 +141,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0a0a0a;
+  background-color: var(--theme-bg);
 }
 
 .loginForm {
   width: 100%;
   max-width: 400px;
   padding: 2rem;
-  background-color: #111;
+  background-color: var(--theme-bg-secondary);
   border-radius: 12px;
-  border: 1px solid #222;
+  border: 1px solid var(--theme-border);
 }
 
 .loginTitle {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--theme-text);
   margin: 0 0 1.5rem;
   text-align: center;
 }
 
 .loginError {
-  background-color: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #ef4444;
+  background-color: var(--theme-error-bg);
+  border: 1px solid var(--theme-error);
+  color: var(--theme-error);
   padding: 0.75rem;
   border-radius: 6px;
   font-size: 0.875rem;
@@ -177,26 +177,26 @@
   label {
     display: block;
     font-size: 0.875rem;
-    color: #888;
+    color: var(--theme-text-muted);
     margin-bottom: 0.5rem;
   }
 
   input {
     width: 100%;
     padding: 0.75rem 1rem;
-    background-color: #0a0a0a;
-    border: 1px solid #333;
+    background-color: var(--theme-bg);
+    border: 1px solid var(--theme-border-muted);
     border-radius: 6px;
-    color: #fff;
+    color: var(--theme-text);
     font-size: 1rem;
 
     &:focus {
       outline: none;
-      border-color: #17C964;
+      border-color: var(--theme-accent);
     }
 
     &::placeholder {
-      color: #555;
+      color: var(--theme-text-subtle);
     }
   }
 }
@@ -204,10 +204,10 @@
 .loginButton {
   width: 100%;
   padding: 0.875rem;
-  background-color: #17C964;
+  background-color: var(--theme-accent);
   border: none;
   border-radius: 6px;
-  color: #000;
+  color: #fff;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -215,7 +215,7 @@
   margin-top: 0.5rem;
 
   &:hover:not(:disabled) {
-    background-color: #14b85c;
+    background-color: var(--theme-accent-hover);
   }
 
   &:disabled {
@@ -228,12 +228,12 @@
   display: block;
   text-align: center;
   margin-top: 1.5rem;
-  color: #666;
+  color: var(--theme-text-subtle);
   font-size: 0.875rem;
   text-decoration: none;
 
   &:hover {
-    color: #888;
+    color: var(--theme-text-muted);
   }
 }
 
@@ -242,7 +242,7 @@
   h1 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--theme-text);
     margin: 0 0 2rem;
   }
 }
@@ -255,42 +255,42 @@
 }
 
 .statCard {
-  background-color: #111;
-  border: 1px solid #222;
+  background-color: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border);
   border-radius: 12px;
   padding: 1.5rem;
 
   h3 {
     font-size: 0.875rem;
     font-weight: 400;
-    color: #666;
+    color: var(--theme-text-subtle);
     margin: 0 0 0.5rem;
   }
 
   .statValue {
     font-size: 2rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--theme-text);
     margin: 0;
   }
 
   .statChange {
     font-size: 0.75rem;
-    color: #17C964;
+    color: var(--theme-accent);
     margin-top: 0.5rem;
   }
 }
 
 .recentSection {
-  background-color: #111;
-  border: 1px solid #222;
+  background-color: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border);
   border-radius: 12px;
   padding: 1.5rem;
 
   h2 {
     font-size: 1rem;
     font-weight: 500;
-    color: #fff;
+    color: var(--theme-text);
     margin: 0 0 1rem;
   }
 }
@@ -306,7 +306,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 0;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--theme-border);
 
   &:last-child {
     border-bottom: none;
@@ -314,12 +314,12 @@
 
   .path {
     font-size: 0.875rem;
-    color: #fff;
+    color: var(--theme-text);
     font-family: monospace;
   }
 
   .time {
     font-size: 0.75rem;
-    color: #666;
+    color: var(--theme-text-subtle);
   }
 }
