@@ -1,19 +1,21 @@
+const BASE_URL = 'https://whoamiiii04.netlify.app';
+
 export const customMeta = {
-  metadataBase: new URL('https://whosbax.netlify.app'),
+  metadataBase: new URL(BASE_URL),
   title: `꿈이 많은 어른 아이 | 박상호`,
   description: `하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - 꿈이 많은 어른 아이`,
   applicationName: 'whosbax',
-  authors: [{ name: 'whosbax', url: 'https://whosbax.netlify.app' }],
+  authors: [{ name: 'whosbax', url: BASE_URL }],
   siteName: '꿈이 많은 어른 아이',
   openGraph: {
     title: `꿈이 많은 어른 아이 | 박상호`,
     description:
       '하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - 꿈이 많은 어른 아이',
-    url: 'https://whosbax.netlify.app',
+    url: BASE_URL,
     siteName: '꿈이 많은 어른 아이',
     images: [
       {
-        url: new URL('https://whosbax.netlify.app/assets/images/profile.jpg'),
+        url: new URL(`${BASE_URL}/assets/images/profile.jpg`),
         width: 300,
         height: 300,
         alt: 'whosbax',
@@ -24,7 +26,7 @@ export const customMeta = {
   },
 
   verification: {
-    google: 'fnbVuGcloYRlhH7UEXxToSY-MD0I0G_X8c5ZRw-xmOA',
+    google: 'yJgnVXswYekwtLuOtXwY2tp2FwGmZVOwDmAI7l1_9Z0',
     other: {
       'naver-site-verification': ['25e28f0d4a8d3e8b9c24cc094a4e18f569c678b0'],
     },
