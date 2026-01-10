@@ -92,8 +92,19 @@ export function usePageView() {
     const handleBeforeUnload = () => {
       if (currentRecordIdRef.current) {
         const url = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/page_views?id=eq.${currentRecordIdRef.current}`;
-        const body = JSON.stringify({ viewed_at: new Date().toISOString() });
-        navigator.sendBeacon(url, new Blob([body], { type: 'application/json' }));
+
+        // fetch with keepalive allows the request to complete even after page unload
+        fetch(url, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''}`,
+            'Prefer': 'return=minimal',
+          },
+          body: JSON.stringify({ viewed_at: new Date().toISOString() }),
+          keepalive: true,
+        });
       }
     };
 
