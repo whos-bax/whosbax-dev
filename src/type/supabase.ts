@@ -157,6 +157,29 @@ export type Database = {
         };
         Update: Partial<Database['public']['Tables']['skills']['Insert']>;
       };
+      page_views: {
+        Row: {
+          id: number;
+          page_path: string;
+          session_id: string;
+          created_at: string;
+          viewed_at: string | null;
+        };
+        Insert: {
+          id?: number;
+          page_path: string;
+          session_id: string;
+          created_at?: string;
+          viewed_at?: string | null;
+        };
+        Update: {
+          id?: number;
+          page_path?: string;
+          session_id?: string;
+          created_at?: string;
+          viewed_at?: string | null;
+        };
+      };
     };
   };
 };
@@ -172,6 +195,9 @@ export type ExperienceLink = Database['public']['Tables']['experience_links']['R
 export type ExperienceSkill = Database['public']['Tables']['experience_skills']['Row'];
 export type ExperienceSummaryItem = Database['public']['Tables']['experience_summary_items']['Row'];
 export type Skill = Database['public']['Tables']['skills']['Row'];
+export type PageView = Database['public']['Tables']['page_views']['Row'];
+export type PageViewInsert = Database['public']['Tables']['page_views']['Insert'];
+export type PageViewUpdate = Database['public']['Tables']['page_views']['Update'];
 
 // Extended types with relations
 export type TimelineWithTracks = Timeline & {

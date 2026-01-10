@@ -13,6 +13,8 @@ import type {
   ExperienceSummaryItem,
   ExperienceDetailFull,
   Skill,
+  PageView,
+  PageViewInsert,
 } from '@/type/supabase';
 
 // =============================================
@@ -176,4 +178,62 @@ export async function getSkills(): Promise<Skill[]> {
 export async function getSkillNames(): Promise<string[]> {
   const skills = await getSkills();
   return skills.map((s) => s.name);
+}
+
+// =============================================
+// PAGE VIEWS QUERIES
+// =============================================
+export async function insertPageView(data: PageViewInsert): Promise<void> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { error } = await supabase.from('page_views').insert(data as never);
+
+  if (error) throw error;
+}
+
+export async function getPageViewCount(pagePath: string): Promise<number> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { count, error } = await supabase
+    .from('page_views')
+    .select('*', { count: 'exact', head: true })
+    .eq('page_path', pagePath);
+
+  if (error) throw error;
+  return count || 0;
+}
+
+export async function getAllPageViewCounts(): Promise<{ page_path: string; count: number }[]> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { data, error } = await supabase
+    .from('page_views')
+    .select('page_path');
+
+  if (error) throw error;
+  if (!data) return [];
+
+  // Group by page_path and count
+  const counts = data.reduce((acc, { page_path }) => {
+    acc[page_path] = (acc[page_path] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+  return Object.entries(counts).map(([page_path, count]) => ({
+    page_path,
+    count,
+  }));
+}
+
+export async function getRecentPageViews(limit: number = 50): Promise<PageView[]> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { data, error } = await supabase
+    .from('page_views')
+    .select('*')
+    .order('viewed_at', { ascending: false })
+    .limit(limit);
+
+  if (error) throw error;
+  return (data || []) as PageView[];
 }

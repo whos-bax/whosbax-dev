@@ -154,6 +154,23 @@ CREATE POLICY "Allow public read access" ON experience_summary_items FOR SELECT 
 CREATE POLICY "Allow public read access" ON skills FOR SELECT USING (true);
 
 -- =============================================
+-- PAGE VIEWS TABLE
+-- =============================================
+CREATE TABLE page_views (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  page_path VARCHAR(200) NOT NULL,
+  session_id VARCHAR(100) NOT NULL,
+  viewed_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Enable RLS
+ALTER TABLE page_views ENABLE ROW LEVEL SECURITY;
+
+-- Allow public read and insert access
+CREATE POLICY "Allow public read access" ON page_views FOR SELECT USING (true);
+CREATE POLICY "Allow public insert access" ON page_views FOR INSERT WITH CHECK (true);
+
+-- =============================================
 -- INDEXES for better query performance
 -- =============================================
 CREATE INDEX idx_timeline_type ON timeline(type);
@@ -163,3 +180,6 @@ CREATE INDEX idx_experience_summary_sort ON experience_summary(sort_order);
 CREATE INDEX idx_experience_detail_company ON experience_detail(company_name);
 CREATE INDEX idx_experience_detail_sort ON experience_detail(sort_order);
 CREATE INDEX idx_skills_sort ON skills(sort_order);
+CREATE INDEX idx_page_views_path ON page_views(page_path);
+CREATE INDEX idx_page_views_viewed_at ON page_views(viewed_at);
+CREATE INDEX idx_page_views_session ON page_views(session_id);
