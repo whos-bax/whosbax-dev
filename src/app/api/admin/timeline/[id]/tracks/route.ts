@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '@/features/auth';
-import { createTimelineTrack } from '@/features/timeline';
+import { createMusicTrack } from '@/features/timeline';
 
 export async function POST(
   request: Request,
@@ -15,7 +15,7 @@ export async function POST(
   const body = await request.json();
 
   try {
-    const track = await createTimelineTrack({
+    const track = await createMusicTrack({
       timeline_id: id,
       ...body,
     });

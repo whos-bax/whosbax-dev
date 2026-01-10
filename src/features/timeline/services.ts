@@ -1,13 +1,13 @@
 import { supabase } from '@/shared/lib/supabase';
 import { convertLegacyImagePath } from '@/shared/lib/storage';
 import type { Database } from '@/types/supabase';
-import type { Timeline, TimelineTrack, TimelineWithTracks, TimelineItem } from './types';
+import type { Timeline, MusicTrack, TimelineWithTracks, TimelineItem } from './types';
 
 // =============================================
 // ADMIN CRUD OPERATIONS
 // =============================================
 export type TimelineInput = Database['public']['Tables']['timeline']['Insert'];
-export type TimelineTrackInput = Database['public']['Tables']['timeline_tracks']['Insert'];
+export type MusicTrackInput = Database['public']['Tables']['music_tracks']['Insert'];
 
 export async function getTimelineById(id: string): Promise<TimelineWithTracks | null> {
   if (!supabase) throw new Error('Supabase client not configured');
@@ -22,7 +22,7 @@ export async function getTimelineById(id: string): Promise<TimelineWithTracks | 
   if (!timeline) return null;
 
   const { data: tracks, error: tracksError } = await supabase
-    .from('timeline_tracks')
+    .from('music_tracks')
     .select('*')
     .eq('timeline_id', id)
     .order('sort_order', { ascending: true });
@@ -33,7 +33,7 @@ export async function getTimelineById(id: string): Promise<TimelineWithTracks | 
   return {
     ...timelineData,
     cover: convertLegacyImagePath(timelineData.cover),
-    tracks: (tracks || []) as TimelineTrack[],
+    tracks: (tracks || []) as MusicTrack[],
   };
 }
 
@@ -68,43 +68,43 @@ export async function deleteTimeline(id: string): Promise<void> {
   if (!supabase) throw new Error('Supabase client not configured');
 
   // Delete tracks first (cascade)
-  await supabase.from('timeline_tracks').delete().eq('timeline_id', id);
+  await supabase.from('music_tracks').delete().eq('timeline_id', id);
 
   const { error } = await supabase.from('timeline').delete().eq('id', id);
   if (error) throw error;
 }
 
-export async function createTimelineTrack(input: TimelineTrackInput): Promise<TimelineTrack> {
+export async function createMusicTrack(input: MusicTrackInput): Promise<MusicTrack> {
   if (!supabase) throw new Error('Supabase client not configured');
 
   const { data, error } = await (supabase as any)
-    .from('timeline_tracks')
+    .from('music_tracks')
     .insert(input)
     .select()
     .single();
 
   if (error) throw error;
-  return data as TimelineTrack;
+  return data as MusicTrack;
 }
 
-export async function updateTimelineTrack(id: string, input: Partial<TimelineTrackInput>): Promise<TimelineTrack> {
+export async function updateMusicTrack(id: string, input: Partial<MusicTrackInput>): Promise<MusicTrack> {
   if (!supabase) throw new Error('Supabase client not configured');
 
   const { data, error } = await (supabase as any)
-    .from('timeline_tracks')
+    .from('music_tracks')
     .update(input)
     .eq('id', id)
     .select()
     .single();
 
   if (error) throw error;
-  return data as TimelineTrack;
+  return data as MusicTrack;
 }
 
-export async function deleteTimelineTrack(id: string): Promise<void> {
+export async function deleteMusicTrack(id: string): Promise<void> {
   if (!supabase) throw new Error('Supabase client not configured');
 
-  const { error } = await supabase.from('timeline_tracks').delete().eq('id', id);
+  const { error } = await supabase.from('music_tracks').delete().eq('id', id);
   if (error) throw error;
 }
 
@@ -137,14 +137,14 @@ export async function getTimeline(): Promise<TimelineWithTracks[]> {
   if (!timeline) return [];
 
   const { data: tracks, error: tracksError } = await supabase
-    .from('timeline_tracks')
+    .from('music_tracks')
     .select('*')
     .order('sort_order', { ascending: true });
 
   if (tracksError) throw tracksError;
 
   const timelineItems = timeline as Timeline[];
-  const trackItems = (tracks || []) as TimelineTrack[];
+  const trackItems = (tracks || []) as MusicTrack[];
 
   return timelineItems.map((item) => ({
     ...item,

@@ -1,7 +1,7 @@
 // Timeline 관련 타입 정의
 // Supabase 스키마와 동기화됨
 
-export interface TimelineTrack {
+export interface MusicTrack {
   id: string;
   timeline_id: string;
   name: string;
@@ -28,7 +28,7 @@ export interface Timeline {
 }
 
 export interface TimelineWithTracks extends Timeline {
-  tracks: TimelineTrack[];
+  tracks: MusicTrack[];
 }
 
 // 컴포넌트에서 사용하는 변환된 타입

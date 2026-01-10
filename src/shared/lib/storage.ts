@@ -39,9 +39,12 @@ export function isSupabaseStorageUrl(url: string): boolean {
 }
 
 /**
- * Convert legacy local path to Supabase storage URL
- * @param path - Legacy path like '/assets/images/albums/aspiration.jpg'
- * @returns Supabase storage URL or original if not a legacy path
+ * Convert image path to Supabase storage URL
+ * @param path - Can be:
+ *   - Full URL (https://...) - returned as is
+ *   - Legacy path (/assets/images/albums/filename.jpg)
+ *   - Plain filename (filename.jpg)
+ * @returns Supabase storage URL or null
  */
 export function convertLegacyImagePath(path: string | null | undefined): string | null {
   if (!path) return null;
@@ -55,6 +58,11 @@ export function convertLegacyImagePath(path: string | null | undefined): string 
   const albumMatch = path.match(/\/assets\/images\/albums\/(.+)$/);
   if (albumMatch) {
     return getAlbumCoverUrl(albumMatch[1]);
+  }
+
+  // Plain filename (e.g., 'im-not-alone.jpg')
+  if (/\.(jpg|jpeg|png|gif|webp)$/i.test(path)) {
+    return getAlbumCoverUrl(path);
   }
 
   // Return original if no match

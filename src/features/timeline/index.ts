@@ -10,10 +10,10 @@ export {
   createTimeline,
   updateTimeline,
   deleteTimeline,
-  createTimelineTrack,
-  updateTimelineTrack,
-  deleteTimelineTrack,
+  createMusicTrack,
+  updateMusicTrack,
+  deleteMusicTrack,
   // Types
   type TimelineInput,
-  type TimelineTrackInput,
+  type MusicTrackInput,
 } from './services';

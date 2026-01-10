@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import { toast } from 'sonner';
-import type { TimelineTrack } from '@/features/timeline';
+import type { MusicTrack } from '@/features/timeline';
 import styles from '../admin.module.scss';
 
 interface Props {
   timelineId: string;
-  initialTracks: TimelineTrack[];
+  initialTracks: MusicTrack[];
 }
 
 interface LocalTrack {

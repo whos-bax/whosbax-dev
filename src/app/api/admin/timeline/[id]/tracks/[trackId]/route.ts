@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '@/features/auth';
-import { updateTimelineTrack, deleteTimelineTrack } from '@/features/timeline';
+import { updateMusicTrack, deleteMusicTrack } from '@/features/timeline';
 
 export async function PATCH(
   request: Request,
@@ -15,7 +15,7 @@ export async function PATCH(
   const body = await request.json();
 
   try {
-    const track = await updateTimelineTrack(trackId, body);
+    const track = await updateMusicTrack(trackId, body);
     return NextResponse.json(track);
   } catch (error) {
     console.error('Update track error:', error);
@@ -35,7 +35,7 @@ export async function DELETE(
   const { trackId } = await params;
 
   try {
-    await deleteTimelineTrack(trackId);
+    await deleteMusicTrack(trackId);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Delete track error:', error);

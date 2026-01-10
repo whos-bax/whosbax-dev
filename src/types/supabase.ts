@@ -32,7 +32,7 @@ export type Database = {
         };
         Update: Partial<Database['public']['Tables']['timeline']['Insert']>;
       };
-      timeline_tracks: {
+      music_tracks: {
         Row: {
           id: string;
           timeline_id: string;
@@ -41,10 +41,10 @@ export type Database = {
           is_title: boolean;
           sort_order: number;
         };
-        Insert: Omit<Database['public']['Tables']['timeline_tracks']['Row'], 'id'> & {
+        Insert: Omit<Database['public']['Tables']['music_tracks']['Row'], 'id'> & {
           id?: string;
         };
-        Update: Partial<Database['public']['Tables']['timeline_tracks']['Insert']>;
+        Update: Partial<Database['public']['Tables']['music_tracks']['Insert']>;
       };
       experience_summary: {
         Row: {
@@ -186,7 +186,7 @@ export type Database = {
 
 // Utility types for easier usage
 export type Timeline = Database['public']['Tables']['timeline']['Row'];
-export type TimelineTrack = Database['public']['Tables']['timeline_tracks']['Row'];
+export type MusicTrack = Database['public']['Tables']['music_tracks']['Row'];
 export type ExperienceSummary = Database['public']['Tables']['experience_summary']['Row'];
 export type ExperiencePosition = Database['public']['Tables']['experience_positions']['Row'];
 export type ExperiencePositionTask = Database['public']['Tables']['experience_position_tasks']['Row'];
@@ -201,7 +201,7 @@ export type PageViewUpdate = Database['public']['Tables']['page_views']['Update'
 
 // Extended types with relations
 export type TimelineWithTracks = Timeline & {
-  tracks: TimelineTrack[];
+  tracks: MusicTrack[];
 };
 
 export type ExperienceSummaryWithPositions = ExperienceSummary & {
