@@ -1,11 +1,13 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
+
+const BASE_URL = 'https://whoamiiii04.netlify.app';
 
 export default function robots(): MetadataRoute.Robots {
-    return {
-        rules: {
-            userAgent: '*',
-            allow: '/',
-        },
-        sitemap: 'https://whosbax.netlify.app/sitemap.xml',
-    }
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+    },
+    sitemap: `${BASE_URL}/sitemap.xml`,
+  };
 }
