@@ -1,3 +1,5 @@
+import type { FooterLinkType } from '@/types/footer';
+
 export const footerLinkList: FooterLinkType[] = [
   {
     id: 'Email',

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase-browser';
+import { createClient } from '@/shared/lib/supabase-browser';
 import { toast } from 'sonner';
 import styles from '../../admin.module.scss';
 

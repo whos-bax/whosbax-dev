@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { signOut } from '@/lib/auth';
+import { signOut } from '@/features/auth';
 import styles from '../admin.module.scss';
 
 const pageTitles: Record<string, string> = {

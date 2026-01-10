@@ -2,7 +2,7 @@ import styles from './timeline.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import Fab from '@/app/_component/Fab';
-import { fetchTimelineData } from '@/lib/data';
+import { fetchTimelineData } from '@/features/timeline';
 
 export default async function Timeline() {
   const timelineData = await fetchTimelineData();

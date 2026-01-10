@@ -7,7 +7,8 @@ import Skill from '@/app/about/_component/Skill';
 import Education from '@/app/about/_component/Education';
 import Certificate from '@/app/about/_component/Certificate';
 import Fab from '@/app/_component/Fab';
-import { fetchExperienceSummary, fetchExperienceDetail, fetchSkills } from '@/lib/data';
+import { fetchExperienceSummary, fetchExperienceDetail } from '@/features/experience';
+import { fetchSkills } from '@/features/skills';
 
 export default async function About() {
   const [summaryList, experienceList, skillList] = await Promise.all([

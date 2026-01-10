@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import Link from 'next/link';
 import { linkSvg } from '@/app/_utils/utils';
 import ExperienceDetail from '@/app/about/_component/ExperienceDetail';
-import type { SummaryType, ExperienceType } from '@/type/ExperienceType';
+import type { SummaryType, ExperienceType } from '@/features/experience';
 
 type Props = {
   title: string;

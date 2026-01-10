@@ -1,5 +1,5 @@
-import { ExperienceType, SummaryType } from '@/type/ExperienceType';
 import dayjs from 'dayjs';
+import type { ExperienceType, SummaryType } from './types';
 
 export const summaryList: SummaryType[] = [
   {
@@ -271,7 +271,6 @@ export const experienceList: { company: string; list: ExperienceType[] }[] = [
           '데이터 시각화 및 CRUD 기능',
           '- Chart.js 도입해 매출·유입량 실시간 시각화 대시보드 구축',
           '- 카테고리,영양제,댓글 관리용 CRUD 기능 개발',
-
           'CI/CD 및 코드 품질 보장',
           '- GitHub Actions로 빌드/배포 자동화, 배포 성공률 99% 확보',
           '- ESLint, Prettier, Husky, lint-staged 도입하여 코드 표준화 적용',

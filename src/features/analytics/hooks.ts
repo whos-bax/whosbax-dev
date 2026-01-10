@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '@/shared/lib/supabase';
 
 const SESSION_ID_KEY = 'whosbax_session_id';
 const SESSION_DATE_KEY = 'whosbax_session_date';
@@ -99,9 +99,9 @@ export function usePageView() {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
-            'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
-            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''}`,
-            'Prefer': 'return=minimal',
+            apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''}`,
+            Prefer: 'return=minimal',
           },
           body: JSON.stringify({ viewed_at: new Date().toISOString() }),
           keepalive: true,
