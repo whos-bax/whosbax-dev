@@ -177,6 +177,23 @@ body {
 /*}*/
 
 @media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background-color: white !important;
+  }
+  body {
+    padding-top: 0 !important;
+  }
+  #main-content {
+    height: auto !important;
+    overflow: visible !important;
+  }
   nav, footer {
     display: none !important;
   }
