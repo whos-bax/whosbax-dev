@@ -1,5 +1,126 @@
 import { supabase } from '@/shared/lib/supabase';
+import { convertLegacyImagePath } from '@/shared/lib/storage';
+import type { Database } from '@/types/supabase';
 import type { Timeline, TimelineTrack, TimelineWithTracks, TimelineItem } from './types';
+
+// =============================================
+// ADMIN CRUD OPERATIONS
+// =============================================
+export type TimelineInput = Database['public']['Tables']['timeline']['Insert'];
+export type TimelineTrackInput = Database['public']['Tables']['timeline_tracks']['Insert'];
+
+export async function getTimelineById(id: string): Promise<TimelineWithTracks | null> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { data: timeline, error } = await supabase
+    .from('timeline')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) throw error;
+  if (!timeline) return null;
+
+  const { data: tracks, error: tracksError } = await supabase
+    .from('timeline_tracks')
+    .select('*')
+    .eq('timeline_id', id)
+    .order('sort_order', { ascending: true });
+
+  if (tracksError) throw tracksError;
+
+  const timelineData = timeline as Timeline;
+  return {
+    ...timelineData,
+    cover: convertLegacyImagePath(timelineData.cover),
+    tracks: (tracks || []) as TimelineTrack[],
+  };
+}
+
+export async function createTimeline(input: TimelineInput): Promise<Timeline> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { data, error } = await (supabase as any)
+    .from('timeline')
+    .insert(input)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data as Timeline;
+}
+
+export async function updateTimeline(id: string, input: Partial<TimelineInput>): Promise<Timeline> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { data, error } = await (supabase as any)
+    .from('timeline')
+    .update(input)
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data as Timeline;
+}
+
+export async function deleteTimeline(id: string): Promise<void> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  // Delete tracks first (cascade)
+  await supabase.from('timeline_tracks').delete().eq('timeline_id', id);
+
+  const { error } = await supabase.from('timeline').delete().eq('id', id);
+  if (error) throw error;
+}
+
+export async function createTimelineTrack(input: TimelineTrackInput): Promise<TimelineTrack> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { data, error } = await (supabase as any)
+    .from('timeline_tracks')
+    .insert(input)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data as TimelineTrack;
+}
+
+export async function updateTimelineTrack(id: string, input: Partial<TimelineTrackInput>): Promise<TimelineTrack> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { data, error } = await (supabase as any)
+    .from('timeline_tracks')
+    .update(input)
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data as TimelineTrack;
+}
+
+export async function deleteTimelineTrack(id: string): Promise<void> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { error } = await supabase.from('timeline_tracks').delete().eq('id', id);
+  if (error) throw error;
+}
+
+export async function getMaxSortOrder(): Promise<number> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const { data, error } = await (supabase as any)
+    .from('timeline')
+    .select('sort_order')
+    .order('sort_order', { ascending: false })
+    .limit(1)
+    .single();
+
+  if (error && error.code !== 'PGRST116') throw error;
+  return (data as { sort_order: number } | null)?.sort_order ?? 0;
+}
 
 // =============================================
 // API QUERIES
@@ -27,6 +148,7 @@ export async function getTimeline(): Promise<TimelineWithTracks[]> {
 
   return timelineItems.map((item) => ({
     ...item,
+    cover: convertLegacyImagePath(item.cover),
     tracks: trackItems.filter((track) => track.timeline_id === item.id),
   }));
 }
@@ -43,7 +165,9 @@ function transformTimelineData(data: TimelineWithTracks[]): TimelineItem[] {
       title: item.title,
     };
 
-    if (item.cover) base.cover = item.cover;
+    // Convert legacy image paths to Supabase storage URLs
+    const coverUrl = convertLegacyImagePath(item.cover);
+    if (coverUrl) base.cover = coverUrl;
     if (item.artist) base.artist = item.artist;
     if (item.album) base.album = item.album;
     if (item.role) base.role = item.role;

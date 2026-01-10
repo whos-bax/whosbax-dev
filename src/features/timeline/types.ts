@@ -1,17 +1,17 @@
 // Timeline 관련 타입 정의
+// Supabase 스키마와 동기화됨
 
 export interface TimelineTrack {
-  id: number;
-  timeline_id: number;
+  id: string;
+  timeline_id: string;
   name: string;
   track_num: number;
   is_title: boolean;
   sort_order: number;
-  created_at: string;
 }
 
 export interface Timeline {
-  id: number;
+  id: string;
   date: string;
   type: 'music' | 'featuring' | 'career' | 'gap' | 'activity';
   tag: string;

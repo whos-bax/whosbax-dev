@@ -2,3 +2,9 @@
 export { supabase } from './supabase';
 export { createClient } from './supabase-browser';
 export { createServerSupabaseClient } from './supabase-server';
+export {
+  getStorageUrl,
+  getAlbumCoverUrl,
+  isSupabaseStorageUrl,
+  convertLegacyImagePath,
+} from './storage';

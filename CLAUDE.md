@@ -24,3 +24,8 @@ npm run lint     # Run ESLint
 - Private folders: `_` prefix (`_component/`, `_utils/`)
 - Styles: SCSS Modules (`*.module.scss`)
 - Feature modules: Barrel exports via `index.ts`
+
+## Workflow
+
+- Run `npm run build` only when commit is requested, check for errors
+- During development, proceed with coding without running build

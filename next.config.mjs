@@ -15,6 +15,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'whoamiiii04.netlify.app',
             },
+            {
+                protocol: 'https',
+                hostname: 'ordhsjmydtojtkkwbzcq.supabase.co',
+            },
         ],
     },
 }
