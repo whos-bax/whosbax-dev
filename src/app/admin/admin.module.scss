@@ -1,17 +1,19 @@
 .adminLayout {
   display: flex;
-  min-height: 100vh;
+  height: 100%;
   background-color: var(--theme-bg);
 }
 
 .sidebar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
   width: 240px;
+  height: calc(100dvh - var(--navbar-height));
+  padding: 1.5rem 0;
+  overflow-y: auto;
   background-color: var(--theme-bg-secondary);
   border-right: 1px solid var(--theme-border);
-  padding: 1.5rem 0;
-  position: fixed;
-  height: 100vh;
-  overflow-y: auto;
 
   @media (max-width: 768px) {
     display: none;
@@ -19,44 +21,44 @@
 }
 
 .sidebarHeader {
+  margin-bottom: 1rem;
   padding: 0 1.5rem 1.5rem;
   border-bottom: 1px solid var(--theme-border);
-  margin-bottom: 1rem;
 
   h1 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--theme-text);
     margin: 0;
+    color: var(--theme-text);
+    font-weight: 600;
+    font-size: 1.25rem;
   }
 
   p {
-    font-size: 0.75rem;
-    color: var(--theme-text-subtle);
     margin: 0.25rem 0 0;
+    color: var(--theme-text-subtle);
+    font-size: 0.75rem;
   }
 }
 
 .navList {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .navItem {
   a {
     display: flex;
-    align-items: center;
     gap: 0.75rem;
+    align-items: center;
     padding: 0.75rem 1.5rem;
     color: var(--theme-text-muted);
-    text-decoration: none;
     font-size: 0.875rem;
+    text-decoration: none;
     transition: all 0.2s;
 
     &:hover {
-      background-color: var(--theme-bg-tertiary);
       color: var(--theme-text);
+      background-color: var(--theme-bg-tertiary);
     }
 
     svg {
@@ -66,24 +68,49 @@
   }
 
   &.active a {
-    background-color: var(--theme-accent);
     color: #fff;
     font-weight: 500;
+    background-color: var(--theme-accent);
   }
 }
 
 .navDivider {
   height: 1px;
-  background-color: var(--theme-border);
   margin: 1rem 0;
+  background-color: var(--theme-border);
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--theme-border);
+}
+
+.sidebarLogoutButton {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem;
+  color: var(--theme-text-muted);
+  font-size: 0.875rem;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--theme-text);
+    background-color: var(--theme-bg-tertiary);
+  }
 }
 
 .mainContent {
-  flex: 1;
-  margin-left: 240px;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  min-height: 100vh;
+  margin-left: 240px;
 
   @media (max-width: 768px) {
     margin-left: 0;
@@ -99,32 +126,32 @@
 .header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   height: var(--navbar-height);
   padding: 0 2rem;
   background-color: var(--theme-bg-secondary);
   border-bottom: 1px solid var(--theme-border);
 
   @media (max-width: 768px) {
-    padding: 0 1rem;
     position: relative;
+    padding: 0 1rem;
   }
 }
 
 .headerLeft {
   display: flex;
-  align-items: center;
   gap: 0.75rem;
+  align-items: center;
 }
 
 .mobileMenuButton {
   display: none;
+  padding: 0.25rem;
+  color: var(--theme-text);
   background: none;
   border: none;
-  color: var(--theme-text);
   cursor: pointer;
-  padding: 0.25rem;
 
   @media (max-width: 768px) {
     display: flex;
@@ -138,31 +165,31 @@
 }
 
 .headerTitle {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--theme-text);
   margin: 0;
+  color: var(--theme-text);
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .headerActions {
   display: flex;
-  align-items: center;
   gap: 1rem;
+  align-items: center;
 }
 
 .logoutButton {
+  padding: 0.5rem 1rem;
+  color: var(--theme-text-muted);
+  font-size: 0.875rem;
   background: none;
   border: 1px solid var(--theme-border-muted);
-  color: var(--theme-text-muted);
-  padding: 0.5rem 1rem;
   border-radius: 6px;
-  font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s;
 
   &:hover {
-    border-color: var(--theme-text-subtle);
     color: var(--theme-text);
+    border-color: var(--theme-text-subtle);
   }
 }
 
@@ -170,16 +197,16 @@
   display: none;
 
   @media (max-width: 768px) {
-    display: block;
     position: absolute;
     top: 100%;
-    left: 0;
     right: 0;
+    left: 0;
+    display: block;
+    max-height: 0;
+    overflow: hidden;
     background-color: var(--theme-bg-secondary);
     border-bottom: 1px solid var(--theme-border);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-height: 0;
-    overflow: hidden;
     opacity: 0;
     transition:
       max-height 0.3s ease,
@@ -195,20 +222,20 @@
 }
 
 .mobileNavList {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .mobileNavItem {
   a {
     display: flex;
-    align-items: center;
     gap: 0.75rem;
+    align-items: center;
     padding: 0.75rem 0;
     color: var(--theme-text-muted);
-    text-decoration: none;
     font-size: 0.875rem;
+    text-decoration: none;
     transition: color 0.2s;
 
     &:hover {
@@ -224,20 +251,20 @@
 
 .mobileNavDivider {
   height: 1px;
-  background-color: var(--theme-border);
   margin: 0.5rem 0;
+  background-color: var(--theme-border);
 }
 
 .mobileLogoutButton {
   display: flex;
-  align-items: center;
   gap: 0.75rem;
+  align-items: center;
   width: 100%;
   padding: 0.75rem 0;
-  background: none;
-  border: none;
   color: var(--theme-text-muted);
   font-size: 0.875rem;
+  background: none;
+  border: none;
   cursor: pointer;
   transition: color 0.2s;
 
@@ -258,12 +285,12 @@
 // 로그인 페이지
 .loginContainer {
   position: fixed;
-  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--theme-bg);
   overflow: hidden;
+  background-color: var(--theme-bg);
+  inset: 0;
 }
 
 .loginForm {
@@ -271,26 +298,26 @@
   max-width: 400px;
   padding: 2rem;
   background-color: var(--theme-bg-secondary);
-  border-radius: 12px;
   border: 1px solid var(--theme-border);
+  border-radius: 12px;
 }
 
 .loginTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--theme-text);
   margin: 0 0 1.5rem;
+  color: var(--theme-text);
+  font-weight: 600;
+  font-size: 1.5rem;
   text-align: center;
 }
 
 .loginError {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  color: var(--theme-error);
+  font-size: 0.875rem;
   background-color: var(--theme-error-bg);
   border: 1px solid var(--theme-error);
-  color: var(--theme-error);
-  padding: 0.75rem;
   border-radius: 6px;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
 }
 
 .inputGroup {
@@ -298,23 +325,23 @@
 
   label {
     display: block;
-    font-size: 0.875rem;
-    color: var(--theme-text-muted);
     margin-bottom: 0.5rem;
+    color: var(--theme-text-muted);
+    font-size: 0.875rem;
   }
 
   input {
     width: 100%;
     padding: 0.75rem 1rem;
+    color: var(--theme-text);
+    font-size: 1rem;
     background-color: var(--theme-bg);
     border: 1px solid var(--theme-border-muted);
     border-radius: 6px;
-    color: var(--theme-text);
-    font-size: 1rem;
 
     &:focus {
-      outline: none;
       border-color: var(--theme-accent);
+      outline: none;
     }
 
     &::placeholder {
@@ -325,33 +352,33 @@
 
 .loginButton {
   width: 100%;
+  margin-top: 0.5rem;
   padding: 0.875rem;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
   background-color: var(--theme-accent);
   border: none;
   border-radius: 6px;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-top: 0.5rem;
 
   &:hover:not(:disabled) {
     background-color: var(--theme-accent-hover);
   }
 
   &:disabled {
-    opacity: 0.6;
     cursor: not-allowed;
+    opacity: 0.6;
   }
 }
 
 .backLink {
   display: block;
-  text-align: center;
   margin-top: 1.5rem;
   color: var(--theme-text-subtle);
   font-size: 0.875rem;
+  text-align: center;
   text-decoration: none;
 
   &:hover {
@@ -362,14 +389,14 @@
 // 대시보드
 .dashboard {
   h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--theme-text);
     margin: 0 0 2rem;
+    color: var(--theme-text);
+    font-weight: 600;
+    font-size: 1.5rem;
 
     @media (max-width: 768px) {
-      font-size: 1.25rem;
       margin: 0 0 1.5rem;
+      font-size: 1.25rem;
     }
   }
 }
@@ -388,27 +415,27 @@
 }
 
 .statCard {
+  padding: 1.5rem;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 12px;
-  padding: 1.5rem;
 
   @media (max-width: 768px) {
     padding: 1rem;
   }
 
   h3 {
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: var(--theme-text-subtle);
     margin: 0 0 0.5rem;
+    color: var(--theme-text-subtle);
+    font-weight: 400;
+    font-size: 0.875rem;
   }
 
   .statValue {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--theme-text);
     margin: 0;
+    color: var(--theme-text);
+    font-weight: 600;
+    font-size: 2rem;
 
     @media (max-width: 768px) {
       font-size: 1.5rem;
@@ -416,9 +443,9 @@
   }
 
   .statChange {
-    font-size: 0.75rem;
-    color: var(--theme-accent);
     margin-top: 0.5rem;
+    color: var(--theme-accent);
+    font-size: 0.75rem;
   }
 }
 
@@ -434,33 +461,33 @@
 }
 
 .recentSection {
+  padding: 1.5rem;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 12px;
-  padding: 1.5rem;
 
   @media (max-width: 768px) {
     padding: 1rem;
   }
 
   h2 {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--theme-text);
     margin: 0 0 1rem;
+    color: var(--theme-text);
+    font-weight: 500;
+    font-size: 1rem;
   }
 }
 
 .recentList {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .recentItem {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--theme-border);
 
@@ -469,8 +496,8 @@
   }
 
   .path {
-    font-size: 0.875rem;
     color: var(--theme-text);
+    font-size: 0.875rem;
     font-family: monospace;
     word-break: break-all;
 
@@ -480,10 +507,10 @@
   }
 
   .time {
-    font-size: 0.75rem;
-    color: var(--theme-text-subtle);
-    white-space: nowrap;
     margin-left: 0.5rem;
+    color: var(--theme-text-subtle);
+    font-size: 0.75rem;
+    white-space: nowrap;
   }
 }
 
@@ -499,22 +526,22 @@
 }
 
 .chartSection {
+  min-width: 0;
+  margin-bottom: 0;
+  padding: 1.5rem;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 0;
-  min-width: 0;
 
   @media (max-width: 768px) {
     padding: 1rem;
   }
 
   h2 {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--theme-text);
     margin: 0 0 1rem;
+    color: var(--theme-text);
+    font-weight: 500;
+    font-size: 1rem;
   }
 }
 
@@ -555,8 +582,8 @@
 
 .customRange {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
+  align-items: center;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -568,14 +595,14 @@
 }
 
 .dateInput {
+  min-width: 0;
+  max-width: 130px;
   padding: 0.375rem 0.5rem;
+  color: var(--theme-text);
+  font-size: 0.8rem;
   background-color: var(--theme-bg);
   border: 1px solid var(--theme-border);
   border-radius: 6px;
-  color: var(--theme-text);
-  font-size: 0.8rem;
-  min-width: 0;
-  max-width: 130px;
 
   @media (max-width: 400px) {
     flex: 1;
@@ -583,8 +610,8 @@
   }
 
   &:focus {
-    outline: none;
     border-color: var(--theme-accent);
+    outline: none;
   }
 }
 
@@ -599,23 +626,23 @@
 
 .periodButton {
   padding: 0.375rem 0.75rem;
-  background-color: var(--theme-bg);
-  border: 1px solid var(--theme-border);
-  border-radius: 6px;
   color: var(--theme-text-muted);
   font-size: 0.8rem;
   text-decoration: none;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 6px;
   transition: all 0.2s;
 
   &:hover {
-    border-color: var(--theme-accent);
     color: var(--theme-accent);
+    border-color: var(--theme-accent);
   }
 
   &.active {
+    color: #fff;
     background-color: var(--theme-accent);
     border-color: var(--theme-accent);
-    color: #fff;
   }
 }
 
@@ -625,23 +652,23 @@
 
 .barChart {
   display: flex;
-  align-items: flex-end;
   gap: 0.5rem;
-  height: 200px;
+  align-items: flex-end;
   min-width: fit-content;
+  height: 200px;
   padding-bottom: 1.5rem;
 
   @media (max-width: 768px) {
-    height: 150px;
     gap: 0.25rem;
+    height: 150px;
   }
 }
 
 .barGroup {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
-  flex: 1;
   min-width: 40px;
 
   @media (max-width: 768px) {
@@ -650,11 +677,11 @@
 }
 
 .barWrapper {
-  width: 100%;
-  height: 160px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  width: 100%;
+  height: 160px;
 
   @media (max-width: 768px) {
     height: 120px;
@@ -662,12 +689,12 @@
 }
 
 .bar {
+  position: relative;
   width: 70%;
   max-width: 40px;
+  min-height: 4px;
   background-color: var(--theme-accent);
   border-radius: 4px 4px 0 0;
-  min-height: 4px;
-  position: relative;
   transition: height 0.3s ease;
 }
 
@@ -675,16 +702,16 @@
   position: absolute;
   top: -1.5rem;
   left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.7rem;
   color: var(--theme-text-muted);
+  font-size: 0.7rem;
   white-space: nowrap;
+  transform: translateX(-50%);
 }
 
 .barLabel {
-  font-size: 0.7rem;
-  color: var(--theme-text-subtle);
   margin-top: 0.5rem;
+  color: var(--theme-text-subtle);
+  font-size: 0.7rem;
   white-space: nowrap;
 }
 
@@ -702,8 +729,8 @@
 .chartWrapper {
   position: relative;
   width: 100%;
-  min-height: 280px;
   max-width: 100%;
+  min-height: 280px;
 
   svg:focus {
     outline: none;
@@ -713,8 +740,8 @@
 .pieChartWrapper {
   position: relative;
   width: 100%;
-  min-height: 320px;
   max-width: 100%;
+  min-height: 320px;
 
   svg:focus {
     outline: none;
@@ -726,9 +753,9 @@
   gap: 1.5rem;
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--theme-border);
-  font-size: 0.875rem;
   color: var(--theme-text-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--theme-border);
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -746,10 +773,10 @@
 
 .legendItem {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
+  align-items: center;
   color: var(--theme-text-muted);
+  font-size: 0.875rem;
 }
 
 .legendDot {
@@ -759,35 +786,35 @@
 }
 
 .tableSection {
+  min-width: 0;
+  padding: 1.5rem;
+  overflow: hidden;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 12px;
-  padding: 1.5rem;
-  min-width: 0;
-  overflow: hidden;
 
   @media (max-width: 768px) {
     padding: 1rem;
   }
 
   h2 {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--theme-text);
     margin: 0;
+    color: var(--theme-text);
+    font-weight: 500;
+    font-size: 1rem;
   }
 }
 
 .tableHeader {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
 }
 
 .totalCount {
-  font-size: 0.875rem;
   color: var(--theme-text-subtle);
+  font-size: 0.875rem;
 }
 
 .tableWrapper {
@@ -811,16 +838,16 @@
   }
 
   th {
-    font-size: 0.75rem;
-    font-weight: 500;
     color: var(--theme-text-subtle);
-    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.75rem;
     letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   td {
-    font-size: 0.875rem;
     color: var(--theme-text);
+    font-size: 0.875rem;
   }
 
   tbody tr:hover {
@@ -829,9 +856,9 @@
 }
 
 .pathCell {
+  max-width: 150px;
   font-family: monospace;
   word-break: break-all;
-  max-width: 150px;
 
   @media (max-width: 480px) {
     max-width: 100px;
@@ -840,8 +867,8 @@
 }
 
 .sessionCell {
-  font-family: monospace;
   color: var(--theme-text-muted) !important;
+  font-family: monospace;
 
   @media (max-width: 480px) {
     font-size: 0.75rem;
@@ -849,26 +876,26 @@
 }
 
 .timeCell {
-  white-space: nowrap;
   color: var(--theme-text-muted) !important;
+  white-space: nowrap;
 
   @media (max-width: 480px) {
-    white-space: normal;
     font-size: 0.75rem;
+    white-space: normal;
   }
 }
 
 .emptyCell {
-  text-align: center !important;
-  color: var(--theme-text-subtle) !important;
   padding: 2rem !important;
+  color: var(--theme-text-subtle) !important;
+  text-align: center !important;
 }
 
 .pagination {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
+  align-items: center;
+  justify-content: center;
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--theme-border);
@@ -876,29 +903,29 @@
 
 .pageButton {
   padding: 0.5rem 1rem;
-  background-color: var(--theme-bg);
-  border: 1px solid var(--theme-border-muted);
-  border-radius: 6px;
   color: var(--theme-text);
   font-size: 0.875rem;
   text-decoration: none;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-border-muted);
+  border-radius: 6px;
   transition: all 0.2s;
 
   &:hover:not(.disabled) {
-    border-color: var(--theme-accent);
     color: var(--theme-accent);
+    border-color: var(--theme-accent);
   }
 
   &.disabled {
-    opacity: 0.4;
     cursor: not-allowed;
+    opacity: 0.4;
     pointer-events: none;
   }
 }
 
 .pageInfo {
-  font-size: 0.875rem;
   color: var(--theme-text-muted);
+  font-size: 0.875rem;
 }
 
 // =============================================
@@ -910,23 +937,23 @@
 
 .pageHeader {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 1.5rem;
 }
 
 .addButton {
   display: inline-flex;
-  align-items: center;
   gap: 0.25rem;
+  align-items: center;
   padding: 0.5rem 1rem;
-  background-color: var(--theme-accent);
   color: white;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+  background-color: var(--theme-accent);
   border: none;
   border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-decoration: none;
   cursor: pointer;
   transition: opacity 0.2s;
 
@@ -943,9 +970,9 @@
 
 .timelineCard {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
   padding: 1rem;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
@@ -959,31 +986,31 @@
 
 .timelineCardLeft {
   display: flex;
-  align-items: center;
-  gap: 1rem;
   flex: 1;
+  gap: 1rem;
+  align-items: center;
   min-width: 0;
 }
 
 .timelineCover {
+  flex-shrink: 0;
   width: 48px;
   height: 48px;
-  border-radius: 6px;
   object-fit: cover;
-  flex-shrink: 0;
   background-color: #e5e7eb;
+  border-radius: 6px;
 }
 
 .timelineCoverPlaceholder {
-  width: 48px;
-  height: 48px;
-  border-radius: 6px;
-  background-color: var(--theme-bg);
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
+  width: 48px;
+  height: 48px;
   font-size: 1.25rem;
-  flex-shrink: 0;
+  background-color: var(--theme-bg);
+  border-radius: 6px;
 }
 
 .timelineCardInfo {
@@ -993,70 +1020,70 @@
 
 .timelineCardMeta {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
+  align-items: center;
   margin-bottom: 0.25rem;
 }
 
 .timelineCardDate {
-  font-size: 0.75rem;
   color: var(--theme-text-muted);
+  font-size: 0.75rem;
 }
 
 .timelineCardType {
-  font-size: 0.625rem;
   padding: 0.125rem 0.375rem;
-  border-radius: 4px;
   font-weight: 500;
+  font-size: 0.625rem;
   text-transform: uppercase;
+  border-radius: 4px;
 
   &.music {
-    background-color: rgba(23, 201, 100, 0.15);
     color: #17c964;
+    background-color: rgba(23, 201, 100, 0.15);
   }
   &.featuring {
-    background-color: rgba(0, 114, 245, 0.15);
     color: #0072f5;
+    background-color: rgba(0, 114, 245, 0.15);
   }
   &.career {
-    background-color: rgba(245, 165, 36, 0.15);
     color: #f5a524;
+    background-color: rgba(245, 165, 36, 0.15);
   }
   &.gap {
-    background-color: rgba(136, 144, 150, 0.15);
     color: #889096;
+    background-color: rgba(136, 144, 150, 0.15);
   }
   &.activity {
-    background-color: rgba(120, 40, 200, 0.15);
     color: #7828c8;
+    background-color: rgba(120, 40, 200, 0.15);
   }
 }
 
 .timelineCardTitle {
-  font-size: 0.9375rem;
-  font-weight: 500;
   margin: 0;
-  white-space: nowrap;
   overflow: hidden;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .timelineCardArtist {
-  font-size: 0.75rem;
-  color: var(--theme-text-muted);
   margin: 0.125rem 0 0;
+  color: var(--theme-text-muted);
+  font-size: 0.75rem;
 }
 
 .timelineCardTracks {
-  font-size: 0.6875rem;
-  color: var(--theme-text-subtle);
   margin: 0.25rem 0 0;
+  color: var(--theme-text-subtle);
+  font-size: 0.6875rem;
 }
 
 .timelineCardActions {
   display: flex;
-  gap: 0.5rem;
   flex-shrink: 0;
+  gap: 0.5rem;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -1066,8 +1093,8 @@
 .editButton,
 .deleteButton {
   padding: 0.375rem 0.75rem;
-  border-radius: 6px;
   font-size: 0.8125rem;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
 
@@ -1078,36 +1105,36 @@
 }
 
 .editButton {
-  background-color: var(--theme-bg);
-  border: 1px solid var(--theme-border);
   color: var(--theme-text);
   text-decoration: none;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-border);
 
   &:hover {
-    border-color: var(--theme-accent);
     color: var(--theme-accent);
+    border-color: var(--theme-accent);
   }
 }
 
 .deleteButton {
+  color: #f31260;
   background-color: transparent;
   border: 1px solid rgba(243, 18, 96, 0.3);
-  color: #f31260;
 
   &:hover:not(:disabled) {
     background-color: rgba(243, 18, 96, 0.1);
   }
 
   &:disabled {
-    opacity: 0.5;
     cursor: not-allowed;
+    opacity: 0.5;
   }
 }
 
 .emptyState {
-  text-align: center;
   padding: 3rem 1rem;
   color: var(--theme-text-muted);
+  text-align: center;
 
   p {
     margin-bottom: 1rem;
@@ -1116,10 +1143,10 @@
 
 // Timeline Form
 .timelineForm {
+  padding: 1.5rem;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 12px;
-  padding: 1.5rem;
 
   @media (max-width: 600px) {
     padding: 1rem;
@@ -1141,10 +1168,10 @@
 
   label {
     display: block;
-    font-size: 0.8125rem;
-    font-weight: 500;
     margin-bottom: 0.375rem;
     color: var(--theme-text);
+    font-weight: 500;
+    font-size: 0.8125rem;
   }
 
   input,
@@ -1152,16 +1179,16 @@
   textarea {
     width: 100%;
     padding: 0.625rem 0.75rem;
+    color: var(--theme-text);
+    font-size: 0.875rem;
     background-color: var(--theme-bg);
     border: 1px solid var(--theme-border);
     border-radius: 8px;
-    font-size: 0.875rem;
-    color: var(--theme-text);
     transition: border-color 0.2s;
 
     &:focus {
-      outline: none;
       border-color: var(--theme-accent);
+      outline: none;
     }
 
     &::placeholder {
@@ -1170,8 +1197,8 @@
   }
 
   textarea {
-    resize: vertical;
     min-height: 80px;
+    resize: vertical;
   }
 
   select {
@@ -1186,8 +1213,8 @@
 
   label {
     display: flex;
-    align-items: center;
     gap: 0.5rem;
+    align-items: center;
     font-size: 0.875rem;
     cursor: pointer;
   }
@@ -1201,8 +1228,8 @@
 
 .formActions {
   display: flex;
-  justify-content: flex-end;
   gap: 0.75rem;
+  justify-content: flex-end;
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--theme-border);
@@ -1210,11 +1237,11 @@
 
 .cancelButton {
   padding: 0.625rem 1.25rem;
+  color: var(--theme-text);
+  font-size: 0.875rem;
   background-color: transparent;
   border: 1px solid var(--theme-border);
   border-radius: 8px;
-  color: var(--theme-text);
-  font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s;
 
@@ -1225,12 +1252,12 @@
 
 .submitButton {
   padding: 0.625rem 1.25rem;
+  color: white;
+  font-weight: 500;
+  font-size: 0.875rem;
   background-color: var(--theme-accent);
   border: none;
   border-radius: 8px;
-  color: white;
-  font-size: 0.875rem;
-  font-weight: 500;
   cursor: pointer;
   transition: opacity 0.2s;
 
@@ -1239,8 +1266,8 @@
   }
 
   &:disabled {
-    opacity: 0.6;
     cursor: not-allowed;
+    opacity: 0.6;
   }
 }
 
@@ -1250,10 +1277,10 @@
 
 // Track Editor
 .trackEditor {
+  padding: 1.5rem;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 12px;
-  padding: 1.5rem;
 
   @media (max-width: 600px) {
     padding: 1rem;
@@ -1262,53 +1289,53 @@
 
 .trackEditorHeader {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
 
   h3 {
-    font-size: 1rem;
-    font-weight: 600;
     margin: 0;
+    font-weight: 600;
+    font-size: 1rem;
   }
 }
 
 .addTrackButton {
   padding: 0.375rem 0.75rem;
+  color: var(--theme-text);
+  font-size: 0.8125rem;
   background-color: var(--theme-bg);
   border: 1px solid var(--theme-border);
   border-radius: 6px;
-  color: var(--theme-text);
-  font-size: 0.8125rem;
   cursor: pointer;
   transition: all 0.2s;
 
   &:hover {
-    border-color: var(--theme-accent);
     color: var(--theme-accent);
+    border-color: var(--theme-accent);
   }
 }
 
 .noTracks {
-  text-align: center;
   padding: 1.5rem;
   color: var(--theme-text-muted);
   font-size: 0.875rem;
+  text-align: center;
 }
 
 .trackList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .trackItem {
   display: flex;
-  align-items: center;
   gap: 0.75rem;
+  align-items: center;
   padding: 0.5rem;
   background-color: var(--theme-bg);
   border: 1px solid var(--theme-border);
@@ -1322,25 +1349,25 @@
 .trackOrder {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 0.125rem;
+  align-items: center;
   min-width: 2rem;
 
   span {
-    font-size: 0.75rem;
-    font-weight: 500;
     color: var(--theme-text-muted);
+    font-weight: 500;
+    font-size: 0.75rem;
   }
 }
 
 .orderButton {
-  padding: 0;
   width: 1.25rem;
   height: 1rem;
-  background: none;
-  border: none;
+  padding: 0;
   color: var(--theme-text-subtle);
   font-size: 0.5rem;
+  background: none;
+  border: none;
   cursor: pointer;
   transition: color 0.2s;
 
@@ -1349,8 +1376,8 @@
   }
 
   &:disabled {
-    opacity: 0.3;
     cursor: not-allowed;
+    opacity: 0.3;
   }
 }
 
@@ -1358,24 +1385,24 @@
   flex: 1;
   min-width: 0;
   padding: 0.5rem 0.75rem;
+  color: var(--theme-text);
+  font-size: 0.875rem;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 6px;
-  font-size: 0.875rem;
-  color: var(--theme-text);
 
   &:focus {
-    outline: none;
     border-color: var(--theme-accent);
+    outline: none;
   }
 }
 
 .trackTitleCheck {
   display: flex;
-  align-items: center;
   gap: 0.375rem;
-  font-size: 0.75rem;
+  align-items: center;
   color: var(--theme-text-muted);
+  font-size: 0.75rem;
   white-space: nowrap;
   cursor: pointer;
 
@@ -1388,10 +1415,10 @@
 .removeTrackButton {
   width: 1.5rem;
   height: 1.5rem;
-  background: none;
-  border: none;
   color: var(--theme-text-subtle);
   font-size: 1.25rem;
+  background: none;
+  border: none;
   cursor: pointer;
   transition: color 0.2s;
 
@@ -1404,12 +1431,12 @@
   width: 100%;
   margin-top: 1rem;
   padding: 0.625rem;
+  color: white;
+  font-weight: 500;
+  font-size: 0.875rem;
   background-color: var(--theme-accent);
   border: none;
   border-radius: 8px;
-  color: white;
-  font-size: 0.875rem;
-  font-weight: 500;
   cursor: pointer;
   transition: opacity 0.2s;
 
@@ -1418,8 +1445,8 @@
   }
 
   &:disabled {
-    opacity: 0.6;
     cursor: not-allowed;
+    opacity: 0.6;
   }
 }
 
@@ -1432,15 +1459,15 @@
 
 .sectionHeader {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
 
   h2 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--theme-text);
     margin: 0;
+    color: var(--theme-text);
+    font-weight: 600;
+    font-size: 1.125rem;
   }
 }
 
@@ -1452,8 +1479,8 @@
 
 .dataCard {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
@@ -1461,11 +1488,12 @@
 }
 
 .dataCardInfo {
-  h3, h4 {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--theme-text);
+  h3,
+  h4 {
     margin: 0 0 0.25rem;
+    color: var(--theme-text);
+    font-weight: 500;
+    font-size: 1rem;
   }
 
   h4 {
@@ -1474,15 +1502,15 @@
 }
 
 .dateMeta {
-  font-size: 0.8rem;
-  color: var(--theme-text-subtle);
   margin: 0;
+  color: var(--theme-text-subtle);
+  font-size: 0.8rem;
 }
 
 .positionCount {
-  font-size: 0.75rem;
-  color: var(--theme-accent);
   margin: 0.25rem 0 0;
+  color: var(--theme-accent);
+  font-size: 0.75rem;
 }
 
 .dataCardActions {
@@ -1494,19 +1522,19 @@
   margin-bottom: 1.5rem;
 
   .companyName {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--theme-text);
     margin: 0 0 0.75rem;
     padding-left: 0.5rem;
+    color: var(--theme-text);
+    font-weight: 600;
+    font-size: 1rem;
     border-left: 3px solid var(--theme-accent);
   }
 }
 
 .emptyText {
+  padding: 2rem;
   color: var(--theme-text-subtle);
   text-align: center;
-  padding: 2rem;
 }
 
 // Skills List Styles
@@ -1518,12 +1546,12 @@
 
 .skillCategory {
   h3 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--theme-text-subtle);
     margin: 0 0 0.75rem;
-    text-transform: uppercase;
+    color: var(--theme-text-subtle);
+    font-weight: 600;
+    font-size: 0.9rem;
     letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 }
 
@@ -1535,14 +1563,14 @@
 
 .skillTag {
   display: inline-flex;
-  align-items: center;
   gap: 0.5rem;
+  align-items: center;
   padding: 0.5rem 0.75rem;
+  color: var(--theme-text);
+  font-size: 0.875rem;
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 20px;
-  font-size: 0.875rem;
-  color: var(--theme-text);
 
   &:hover {
     border-color: var(--theme-accent);
@@ -1551,15 +1579,15 @@
 
 .skillTagActions {
   display: flex;
-  align-items: center;
   gap: 0.25rem;
+  align-items: center;
 }
 
 .editIcon {
   font-size: 0.75rem;
+  text-decoration: none;
   cursor: pointer;
   opacity: 0.7;
-  text-decoration: none;
 
   &:hover {
     opacity: 1;
@@ -1567,21 +1595,21 @@
 }
 
 .deleteIcon {
+  padding: 0;
+  color: var(--theme-text-subtle);
+  font-size: 1rem;
+  line-height: 1;
   background: none;
   border: none;
-  font-size: 1rem;
-  color: var(--theme-text-subtle);
   cursor: pointer;
-  padding: 0;
-  line-height: 1;
 
   &:hover:not(:disabled) {
     color: #ef4444;
   }
 
   &:disabled {
-    opacity: 0.5;
     cursor: not-allowed;
+    opacity: 0.5;
   }
 }
 
@@ -1604,28 +1632,28 @@
 }
 
 .coverImage {
-  border-radius: 8px;
   object-fit: cover;
-  border: 1px solid var(--theme-border);
   background-color: #e5e7eb;
+  border: 1px solid var(--theme-border);
+  border-radius: 8px;
 }
 
 .removeCoverButton {
   position: absolute;
   top: -8px;
   right: -8px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #ef4444;
-  color: white;
-  border: 2px solid var(--theme-bg);
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: white;
+  font-size: 1rem;
+  line-height: 1;
+  background-color: #ef4444;
+  border: 2px solid var(--theme-bg);
+  border-radius: 50%;
+  cursor: pointer;
 
   &:hover {
     background-color: #dc2626;
@@ -1633,23 +1661,23 @@
 }
 
 .coverPlaceholder {
-  width: 120px;
-  height: 120px;
-  border: 2px dashed var(--theme-border);
-  border-radius: 8px;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
+  width: 120px;
+  height: 120px;
   color: var(--theme-text-subtle);
   font-size: 0.8rem;
-  flex-shrink: 0;
+  border: 2px dashed var(--theme-border);
+  border-radius: 8px;
 }
 
 .coverActions {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 0.75rem;
-  flex: 1;
 }
 
 .fileInput {
@@ -1657,42 +1685,42 @@
 }
 
 .uploadButton {
+  width: fit-content;
   padding: 0.5rem 1rem;
-  background-color: var(--theme-accent);
   color: white;
+  font-size: 0.875rem;
+  background-color: var(--theme-accent);
   border: none;
   border-radius: 6px;
-  font-size: 0.875rem;
   cursor: pointer;
-  width: fit-content;
 
   &:hover:not(:disabled) {
     opacity: 0.9;
   }
 
   &:disabled {
-    opacity: 0.6;
     cursor: not-allowed;
+    opacity: 0.6;
   }
 }
 
 .uploadHint {
-  font-size: 0.75rem;
   color: var(--theme-text-subtle);
+  font-size: 0.75rem;
 }
 
 .coverUrlInput {
+  width: 100%;
   padding: 0.5rem 0.75rem;
+  color: var(--theme-text);
+  font-size: 0.875rem;
   background-color: var(--theme-bg);
   border: 1px solid var(--theme-border);
   border-radius: 6px;
-  color: var(--theme-text);
-  font-size: 0.875rem;
-  width: 100%;
 
   &:focus {
-    outline: none;
     border-color: var(--theme-accent);
+    outline: none;
   }
 
   &::placeholder {

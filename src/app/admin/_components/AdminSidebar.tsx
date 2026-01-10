@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { signOut } from '@/features/auth';
 import styles from '../admin.module.scss';
 
 const navItems = [
@@ -15,6 +16,12 @@ const navItems = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await signOut();
+    router.push('/admin/login');
+  };
 
   const isActive = (href: string) => {
     if (href === '/admin') {
@@ -47,6 +54,12 @@ export default function AdminSidebar() {
           );
         })}
       </ul>
+      <div className={styles.sidebarFooter}>
+        <button onClick={handleLogout} className={styles.sidebarLogoutButton}>
+          <span>🚪</span>
+          <span>로그아웃</span>
+        </button>
+      </div>
     </aside>
   );
 }
