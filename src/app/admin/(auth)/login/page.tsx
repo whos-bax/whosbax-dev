@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase-browser';
 import { toast } from 'sonner';
@@ -11,6 +12,7 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,7 +33,8 @@ export default function AdminLoginPage() {
       }
 
       toast.success('로그인 성공!');
-      window.location.href = '/admin';
+      router.push('/admin');
+      router.refresh();
     } catch {
       setError('로그인 중 오류가 발생했습니다.');
     } finally {
