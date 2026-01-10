@@ -85,7 +85,8 @@
   --card-border-rgb: 131, 134, 135;
 }
 
-p, h1, h2, h3, h4, h5, h6, span, a, div {
+p, h1, h2, h3, h4, h5, h6, span, a, div, li, label, input, textarea, button {
+  font-family: inherit;
   font-size: 1rem;
   line-height: 1.6;
   letter-spacing: -0.3px;
