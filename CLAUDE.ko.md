@@ -12,21 +12,15 @@ npm run build    # 프로덕션 빌드
 npm run lint     # ESLint 실행
 ```
 
-## 핵심 파일
+## 아키텍처
 
-| 수정 대상 | 파일 경로 |
-|----------|----------|
-| 경력/프로젝트 | `src/app/_utils/experienceMocks.ts` |
-| 자기소개 | `src/app/_utils/introduce.md` |
-| 기술 스택 | `src/app/_utils/utils.ts` → `skillList` |
-| 소셜 링크 | `src/app/_utils/footerLinkList.ts` |
-
-## 기술 스택
-
-Next.js 15, TypeScript, SCSS Modules, Tailwind, HeroUI, Material UI 6
+- **Feature-Based 구조**: 도메인별 비즈니스 로직은 `src/features/`에 구성
+- **공유 인프라**: Supabase 클라이언트는 `src/shared/lib/`에 위치
+- **App Router**: 페이지와 UI 컴포넌트는 `src/app/`에 위치
 
 ## 컨벤션
 
 - 컴포넌트: PascalCase
 - Private 폴더: `_` prefix (`_component/`, `_utils/`)
 - 스타일: SCSS Modules (`*.module.scss`)
+- Feature 모듈: `index.ts`를 통한 Barrel exports

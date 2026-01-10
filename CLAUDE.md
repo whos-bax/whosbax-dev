@@ -12,21 +12,15 @@ npm run build    # Production build
 npm run lint     # Run ESLint
 ```
 
-## Key Files
+## Architecture
 
-| To Modify | File Path |
-|-----------|-----------|
-| Career/Projects | `src/app/_utils/experienceMocks.ts` |
-| Introduction | `src/app/_utils/introduce.md` |
-| Skills | `src/app/_utils/utils.ts` → `skillList` |
-| Social Links | `src/app/_utils/footerLinkList.ts` |
-
-## Tech Stack
-
-Next.js 15, TypeScript, SCSS Modules, Tailwind, HeroUI, Material UI 6
+- **Feature-Based Structure**: Business logic organized by domain in `src/features/`
+- **Shared Infrastructure**: Supabase clients in `src/shared/lib/`
+- **App Router**: Pages and UI components in `src/app/`
 
 ## Conventions
 
 - Components: PascalCase
 - Private folders: `_` prefix (`_component/`, `_utils/`)
 - Styles: SCSS Modules (`*.module.scss`)
+- Feature modules: Barrel exports via `index.ts`
