@@ -971,6 +971,7 @@
   border-radius: 6px;
   object-fit: cover;
   flex-shrink: 0;
+  background-color: #e5e7eb;
 }
 
 .timelineCoverPlaceholder {
@@ -1606,6 +1607,7 @@
   border-radius: 8px;
   object-fit: cover;
   border: 1px solid var(--theme-border);
+  background-color: #e5e7eb;
 }
 
 .removeCoverButton {
