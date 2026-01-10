@@ -69,11 +69,6 @@ export default function AdminHeader() {
         </button>
         <h2 className={styles.headerTitle}>{getTitle()}</h2>
       </div>
-      <div className={styles.headerActions}>
-        <button onClick={handleLogout} className={styles.logoutButton}>
-          로그아웃
-        </button>
-      </div>
 
       <nav className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
         <ul className={styles.mobileNavList}>
@@ -93,6 +88,13 @@ export default function AdminHeader() {
               </li>
             );
           })}
+          <li className={styles.mobileNavDivider} />
+          <li className={styles.mobileNavItem}>
+            <button onClick={handleLogout} className={styles.mobileLogoutButton}>
+              <span>🚪</span>
+              <span>로그아웃</span>
+            </button>
+          </li>
         </ul>
       </nav>
     </header>

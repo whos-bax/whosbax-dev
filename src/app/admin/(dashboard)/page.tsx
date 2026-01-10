@@ -21,8 +21,6 @@ export default async function AdminDashboardPage() {
 
   return (
     <div className={styles.dashboard}>
-      <h1>대시보드</h1>
-
       <div className={styles.statsGrid}>
         <div className={styles.statCard}>
           <h3>오늘 방문자</h3>

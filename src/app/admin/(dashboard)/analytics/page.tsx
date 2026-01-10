@@ -1,15 +1,18 @@
 import Link from 'next/link';
-import { getDailyStats, getPaginatedPageViews } from '@/features/analytics';
+import {
+  getDailyStats,
+  getPaginatedPageViews,
+  getAllPageViewCounts,
+} from '@/features/analytics';
+import { DailyVisitorChart, PageViewPieChart } from '../../_components/AnalyticsCharts';
+import DateRangePicker from '../../_components/DateRangePicker';
 import styles from '../../admin.module.scss';
 
 interface Props {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; days?: string; start?: string; end?: string }>;
 }
 
-function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  return `${date.getMonth() + 1}/${date.getDate()}`;
-}
+const VALID_DAY_OPTIONS = [1, 3, 7, 14, 30, 90];
 
 function formatFullDate(dateString: string) {
   const date = new Date(dateString);
@@ -25,44 +28,50 @@ function formatFullDate(dateString: string) {
 export default async function AnalyticsPage({ searchParams }: Props) {
   const params = await searchParams;
   const currentPage = parseInt(params.page || '1', 10);
+  const days = parseInt(params.days || '3', 10);
+  const startDate = params.start;
+  const endDate = params.end;
 
-  const [dailyStats, pageViews] = await Promise.all([
-    getDailyStats(14),
+  const isCustomRange = startDate && endDate;
+  const validDays = VALID_DAY_OPTIONS.includes(days) ? days : 3;
+
+  const [dailyStats, pageViews, pageStats] = await Promise.all([
+    isCustomRange
+      ? getDailyStats(undefined, startDate, endDate)
+      : getDailyStats(validDays),
     getPaginatedPageViews(currentPage, 15),
+    isCustomRange
+      ? getAllPageViewCounts(undefined, startDate, endDate)
+      : getAllPageViewCounts(validDays),
   ]);
 
-  const maxViews = Math.max(...dailyStats.map((d) => d.views), 1);
+  const sortedPageStats = pageStats.sort((a, b) => b.count - a.count);
+
+  const paginationQuery = isCustomRange
+    ? `start=${startDate}&end=${endDate}`
+    : `days=${validDays}`;
 
   return (
     <div className={styles.analytics}>
-      <h1>Analytics</h1>
+      <div className={styles.filterSection}>
+        <DateRangePicker />
+      </div>
 
-      <section className={styles.chartSection}>
-        <h2>일별 방문 추이 (최근 14일)</h2>
-        <div className={styles.chartContainer}>
-          <div className={styles.barChart}>
-            {dailyStats.map((stat) => (
-              <div key={stat.date} className={styles.barGroup}>
-                <div className={styles.barWrapper}>
-                  <div
-                    className={styles.bar}
-                    style={{ height: `${(stat.views / maxViews) * 100}%` }}
-                  >
-                    {stat.views > 0 && (
-                      <span className={styles.barValue}>{stat.views}</span>
-                    )}
-                  </div>
-                </div>
-                <span className={styles.barLabel}>{formatDate(stat.date)}</span>
-              </div>
-            ))}
+      <div className={styles.chartsGrid}>
+        <section className={styles.chartSection}>
+          <h2>일별 방문 추이</h2>
+          <DailyVisitorChart data={dailyStats} />
+          <div className={styles.chartSummary}>
+            <span>총 조회수: {dailyStats.reduce((sum, d) => sum + d.views, 0)}</span>
+            <span>총 방문자: {dailyStats.reduce((sum, d) => sum + d.unique, 0)}</span>
           </div>
-        </div>
-        <div className={styles.chartLegend}>
-          <span>총 조회수: {dailyStats.reduce((sum, d) => sum + d.views, 0)}</span>
-          <span>총 방문자: {dailyStats.reduce((sum, d) => sum + d.unique, 0)}</span>
-        </div>
-      </section>
+        </section>
+
+        <section className={styles.chartSection}>
+          <h2>페이지별 조회수</h2>
+          <PageViewPieChart data={sortedPageStats} />
+        </section>
+      </div>
 
       <section className={styles.tableSection}>
         <div className={styles.tableHeader}>
@@ -82,7 +91,7 @@ export default async function AnalyticsPage({ searchParams }: Props) {
               {pageViews.data.map((view) => (
                 <tr key={view.id}>
                   <td className={styles.pathCell}>{view.page_path}</td>
-                  <td className={styles.sessionCell}>{view.session_id.slice(0, 8)}...</td>
+                  <td className={styles.sessionCell}>{view.session_id.slice(0, 4)}</td>
                   <td className={styles.timeCell}>{formatFullDate(view.created_at)}</td>
                 </tr>
               ))}
@@ -100,7 +109,7 @@ export default async function AnalyticsPage({ searchParams }: Props) {
         {pageViews.totalPages > 1 && (
           <div className={styles.pagination}>
             <Link
-              href={`/admin/analytics?page=${currentPage - 1}`}
+              href={`/admin/analytics?${paginationQuery}&page=${currentPage - 1}`}
               className={`${styles.pageButton} ${currentPage <= 1 ? styles.disabled : ''}`}
               aria-disabled={currentPage <= 1}
             >
@@ -110,7 +119,7 @@ export default async function AnalyticsPage({ searchParams }: Props) {
               {currentPage} / {pageViews.totalPages}
             </span>
             <Link
-              href={`/admin/analytics?page=${currentPage + 1}`}
+              href={`/admin/analytics?${paginationQuery}&page=${currentPage + 1}`}
               className={`${styles.pageButton} ${currentPage >= pageViews.totalPages ? styles.disabled : ''}`}
               aria-disabled={currentPage >= pageViews.totalPages}
             >

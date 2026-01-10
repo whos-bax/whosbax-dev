@@ -31,15 +31,32 @@ export async function getPageViewCount(pagePath: string): Promise<number> {
   return count || 0;
 }
 
-export async function getAllPageViewCounts(): Promise<PageStat[]> {
+export async function getAllPageViewCounts(
+  days?: number,
+  startDate?: string,
+  endDate?: string
+): Promise<PageStat[]> {
   if (!supabase) throw new Error('Supabase client not configured');
 
-  const { data, error } = await supabase.from('page_views').select('page_path');
+  let query = supabase.from('page_views').select('page_path, created_at');
+
+  // Apply date filter
+  if (startDate && endDate) {
+    query = query
+      .gte('created_at', startDate)
+      .lte('created_at', endDate + 'T23:59:59');
+  } else if (days) {
+    const start = new Date();
+    start.setDate(start.getDate() - days + 1);
+    query = query.gte('created_at', start.toISOString().split('T')[0]);
+  }
+
+  const { data, error } = await query;
 
   if (error) throw error;
   if (!data) return [];
 
-  const counts = data.reduce(
+  const counts = (data as { page_path: string }[]).reduce(
     (acc, { page_path }) => {
       acc[page_path] = (acc[page_path] || 0) + 1;
       return acc;
@@ -125,16 +142,31 @@ export async function getDashboardStats(): Promise<DashboardStats> {
 // =============================================
 // ANALYTICS PAGE
 // =============================================
-export async function getDailyStats(days: number = 30): Promise<DailyStat[]> {
+export async function getDailyStats(
+  days?: number,
+  startDate?: string,
+  endDate?: string
+): Promise<DailyStat[]> {
   if (!supabase) throw new Error('Supabase client not configured');
 
-  const startDate = new Date();
-  startDate.setDate(startDate.getDate() - days);
+  let start: Date;
+  let end: Date;
+
+  if (startDate && endDate) {
+    start = new Date(startDate);
+    end = new Date(endDate);
+  } else {
+    const daysToFetch = days || 14;
+    end = new Date();
+    start = new Date();
+    start.setDate(start.getDate() - daysToFetch + 1);
+  }
 
   const { data, error } = await supabase
     .from('page_views')
     .select('created_at, session_id')
-    .gte('created_at', startDate.toISOString());
+    .gte('created_at', start.toISOString().split('T')[0])
+    .lte('created_at', end.toISOString().split('T')[0] + 'T23:59:59');
 
   if (error) throw error;
   if (!data) return [];
@@ -156,16 +188,16 @@ export async function getDailyStats(days: number = 30): Promise<DailyStat[]> {
 
   // 모든 날짜를 포함하도록 배열 생성
   const result: DailyStat[] = [];
-  for (let i = days - 1; i >= 0; i--) {
-    const date = new Date();
-    date.setDate(date.getDate() - i);
-    const dateStr = date.toISOString().split('T')[0];
+  const current = new Date(start);
+  while (current <= end) {
+    const dateStr = current.toISOString().split('T')[0];
     const stat = grouped[dateStr];
     result.push({
       date: dateStr,
       views: stat?.views || 0,
       unique: stat?.sessions.size || 0,
     });
+    current.setDate(current.getDate() + 1);
   }
 
   return result;
@@ -198,3 +230,4 @@ export async function getPaginatedPageViews(
     totalPages: Math.ceil(total / pageSize),
   };
 }
+
