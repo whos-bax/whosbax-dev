@@ -4,7 +4,7 @@
 // DATABASE TYPES (Supabase)
 // =============================================
 export interface ExperienceSummary {
-  id: number;
+  id: string;
   company_name: string;
   start_date: string;
   end_date: string | null;
@@ -16,19 +16,17 @@ export interface ExperienceSummary {
 }
 
 export interface ExperiencePosition {
-  id: number;
-  summary_id: number;
+  id: string;
+  summary_id: string;
   position: string;
   sort_order: number;
-  created_at: string;
 }
 
 export interface ExperiencePositionTask {
-  id: number;
-  position_id: number;
+  id: string;
+  position_id: string;
   task: string;
   sort_order: number;
-  created_at: string;
 }
 
 export interface ExperiencePositionWithTasks extends ExperiencePosition {
@@ -40,7 +38,7 @@ export interface ExperienceSummaryWithPositions extends ExperienceSummary {
 }
 
 export interface ExperienceDetail {
-  id: number;
+  id: string;
   company_name: string;
   project_title: string;
   start_date: string;
@@ -52,28 +50,25 @@ export interface ExperienceDetail {
 }
 
 export interface ExperienceLink {
-  id: number;
-  detail_id: number;
+  id: string;
+  detail_id: string;
   label: string;
   url: string;
   sort_order: number;
-  created_at: string;
 }
 
 export interface ExperienceSkill {
-  id: number;
-  detail_id: number;
+  id: string;
+  detail_id: string;
   skill: string;
   sort_order: number;
-  created_at: string;
 }
 
 export interface ExperienceSummaryItem {
-  id: number;
-  detail_id: number;
+  id: string;
+  detail_id: string;
   item: string;
   sort_order: number;
-  created_at: string;
 }
 
 export interface ExperienceDetailFull extends ExperienceDetail {

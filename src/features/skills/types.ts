@@ -1,7 +1,7 @@
 // Skills 관련 타입 정의
 
 export interface Skill {
-  id: number;
+  id: string;
   name: string;
   category: string | null;
   sort_order: number;
