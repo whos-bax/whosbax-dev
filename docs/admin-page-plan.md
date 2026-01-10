@@ -427,22 +427,35 @@ CREATE POLICY "Allow authenticated delete" ON timeline
 
 ## 진행 체크리스트
 
-### 1단계 ✅ 인증 + 기본 레이아웃
-- [ ] `@supabase/auth-helpers-nextjs` 설치
-- [ ] `src/lib/auth.ts` 생성
-- [ ] `src/middleware.ts` 생성
-- [ ] `src/app/admin/login/page.tsx` 생성
-- [ ] `src/app/admin/layout.tsx` 생성
-- [ ] `src/app/admin/_components/` 생성
-- [ ] Supabase에 관리자 계정 생성
-- [ ] 로그인/로그아웃 테스트
+### 1단계 ✅ 인증 + 기본 레이아웃 (완료)
+- [x] `@supabase/ssr` 설치 (auth-helpers-nextjs 대신)
+- [x] `src/lib/auth.ts` 생성
+- [x] `src/lib/supabase-browser.ts` 생성 (SSR 호환)
+- [x] `src/lib/supabase-server.ts` 생성
+- [x] `src/middleware.ts` 생성
+- [x] `src/app/admin/(auth)/login/page.tsx` 생성
+- [x] `src/app/admin/(dashboard)/layout.tsx` 생성
+- [x] `src/app/admin/_components/AdminSidebar.tsx` 생성
+- [x] `src/app/admin/_components/AdminHeader.tsx` 생성 (모바일 메뉴 포함)
+- [x] Supabase에 관리자 계정 생성
+- [x] 로그인/로그아웃 테스트 완료
+- [x] Toast 알림 추가 (sonner)
+- [x] 비밀 Admin 접근 경로 (Footer copyright 클릭)
+- [x] CustomModal 공통 컴포넌트 생성
 
-### 2단계 ⬜ 대시보드 + Analytics
-- [ ] `src/app/admin/page.tsx` (대시보드)
+### 2단계 🔄 대시보드 + Analytics (진행 중)
+- [x] `src/app/admin/(dashboard)/page.tsx` (대시보드)
+  - [x] 오늘 방문자 수 (Unique sessions)
+  - [x] 오늘 페이지뷰 수
+  - [x] 총 페이지뷰 수
+  - [x] 최근 방문 기록 (10건)
+  - [x] 인기 페이지 Top 10 (5건으로 표시)
+  - [x] 모바일 반응형 완료
 - [ ] `src/app/admin/analytics/page.tsx`
-- [ ] 통계 쿼리 함수 추가
-- [ ] StatCard 컴포넌트
-- [ ] 차트 라이브러리 선택 및 설치
+  - [ ] 일별 방문자 추이 차트 (최근 30일)
+  - [ ] 페이지별 조회수 Bar chart
+  - [ ] 시간대별 방문 패턴
+  - [ ] 전체 페이지뷰 테이블 (페이지네이션)
 
 ### 3단계 ⬜ Timeline CRUD
 - [ ] `src/app/admin/timeline/page.tsx`
@@ -455,3 +468,18 @@ CREATE POLICY "Allow authenticated delete" ON timeline
 - [ ] Experience Summary 관리
 - [ ] Experience Detail 관리
 - [ ] Skills 인라인 편집
+
+---
+
+## 구현된 추가 기능
+
+### 모바일 대응
+- 글로벌 Header: max-height 애니메이션으로 모바일 메뉴
+- Admin Header: 모바일 토글 메뉴
+- Dashboard: 반응형 그리드 (768px 이하 1열)
+
+### UI/UX
+- Theme 변수 사용 (`--theme-accent`, `--theme-bg` 등)
+- 로그인 성공 시 Toast 알림
+- 로그인 버튼 로딩 상태 유지 (리다이렉트까지)
+- CustomModal 컴포넌트 (확인 다이얼로그)
