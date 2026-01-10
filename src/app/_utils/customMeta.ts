@@ -7,10 +7,6 @@ export const customMeta = {
   applicationName: 'whosbax',
   authors: [{ name: 'whosbax', url: BASE_URL }],
   siteName: '꿈이 많은 어른 아이',
-  icons: {
-    icon: '/icon.png',
-    apple: '/icon.png',
-  },
   openGraph: {
     title: `꿈이 많은 어른 아이 | 박상호`,
     description:
