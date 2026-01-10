@@ -1583,3 +1583,117 @@
     cursor: not-allowed;
   }
 }
+
+// =============================================
+// Cover Image Upload Styles
+// =============================================
+.coverUpload {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.coverPreview {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.coverImage {
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--theme-border);
+}
+
+.removeCoverButton {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #ef4444;
+  color: white;
+  border: 2px solid var(--theme-bg);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #dc2626;
+  }
+}
+
+.coverPlaceholder {
+  width: 120px;
+  height: 120px;
+  border: 2px dashed var(--theme-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-text-subtle);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.coverActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadButton {
+  padding: 0.5rem 1rem;
+  background-color: var(--theme-accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  width: fit-content;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.uploadHint {
+  font-size: 0.75rem;
+  color: var(--theme-text-subtle);
+}
+
+.coverUrlInput {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 6px;
+  color: var(--theme-text);
+  font-size: 0.875rem;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: var(--theme-accent);
+  }
+
+  &::placeholder {
+    color: var(--theme-text-subtle);
+  }
+}

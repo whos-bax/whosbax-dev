@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { toast } from 'sonner';
 import type { TimelineWithTracks, Timeline } from '@/features/timeline';
 import styles from '../admin.module.scss';
@@ -24,6 +25,8 @@ const TYPE_OPTIONS: { value: TimelineType; label: string }[] = [
 export default function TimelineForm({ initialData, mode }: Props) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState({
     date: initialData?.date || '',
@@ -64,6 +67,43 @@ export default function TimelineForm({ initialData, mode }: Props) {
       type,
       tag: tagMap[type],
     }));
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('bucket', 'albums');
+
+      const res = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.error || '업로드 실패');
+      }
+
+      const data = await res.json();
+      setFormData((prev) => ({ ...prev, cover: data.url }));
+      toast.success('이미지가 업로드되었습니다.');
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : '업로드에 실패했습니다.');
+    } finally {
+      setIsUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  };
+
+  const handleRemoveCover = () => {
+    setFormData((prev) => ({ ...prev, cover: '' }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -169,15 +209,59 @@ export default function TimelineForm({ initialData, mode }: Props) {
       {(showMusicFields || showFeaturingFields) && (
         <>
           <div className={styles.formGroup}>
-            <label htmlFor="cover">커버 이미지 URL</label>
-            <input
-              type="url"
-              id="cover"
-              name="cover"
-              value={formData.cover}
-              onChange={handleChange}
-              placeholder="https://..."
-            />
+            <label>커버 이미지</label>
+            <div className={styles.coverUpload}>
+              {formData.cover ? (
+                <div className={styles.coverPreview}>
+                  <Image
+                    src={formData.cover}
+                    alt="Cover preview"
+                    width={120}
+                    height={120}
+                    className={styles.coverImage}
+                  />
+                  <button
+                    type="button"
+                    onClick={handleRemoveCover}
+                    className={styles.removeCoverButton}
+                  >
+                    ×
+                  </button>
+                </div>
+              ) : (
+                <div className={styles.coverPlaceholder}>
+                  <span>이미지 없음</span>
+                </div>
+              )}
+              <div className={styles.coverActions}>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleImageUpload}
+                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  className={styles.fileInput}
+                  disabled={isUploading}
+                />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={isUploading}
+                  className={styles.uploadButton}
+                >
+                  {isUploading ? '업로드 중...' : '이미지 업로드'}
+                </button>
+                <span className={styles.uploadHint}>또는 URL 직접 입력</span>
+                <input
+                  type="url"
+                  id="cover"
+                  name="cover"
+                  value={formData.cover}
+                  onChange={handleChange}
+                  placeholder="https://..."
+                  className={styles.coverUrlInput}
+                />
+              </div>
+            </div>
           </div>
 
           {showFeaturingFields && (
