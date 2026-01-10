@@ -91,6 +91,7 @@
 
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
@@ -99,6 +100,30 @@
   position: sticky;
   top: 0;
   z-index: 10;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--theme-text);
+  cursor: pointer;
+  padding: 0.25rem;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 }
 
 .headerTitle {
@@ -130,9 +155,72 @@
   }
 }
 
+.mobileMenu {
+  display: none;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease,
+    margin 0.3s ease,
+    padding 0.3s ease;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  &.mobileMenuOpen {
+    max-height: 400px;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--theme-border);
+    opacity: 1;
+  }
+}
+
+.mobileNavList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileNavItem {
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    color: var(--theme-text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--theme-text);
+    }
+  }
+
+  &.active a {
+    color: var(--theme-accent);
+    font-weight: 500;
+  }
+}
+
+.mobileNavDivider {
+  height: 1px;
+  background-color: var(--theme-border);
+  margin: 0.5rem 0;
+}
+
 .pageContent {
   flex: 1;
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 }
 
 // 로그인 페이지
@@ -246,6 +334,11 @@
     font-weight: 600;
     color: var(--theme-text);
     margin: 0 0 2rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.25rem;
+      margin: 0 0 1.5rem;
+    }
   }
 }
 
@@ -254,6 +347,12 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .statCard {
@@ -261,6 +360,10 @@
   border: 1px solid var(--theme-border);
   border-radius: 12px;
   padding: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 
   h3 {
     font-size: 0.875rem;
@@ -274,6 +377,10 @@
     font-weight: 600;
     color: var(--theme-text);
     margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
   }
 
   .statChange {
@@ -283,11 +390,26 @@
   }
 }
 
+.sectionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 .recentSection {
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 12px;
   padding: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 
   h2 {
     font-size: 1rem;
@@ -318,10 +440,17 @@
     font-size: 0.875rem;
     color: var(--theme-text);
     font-family: monospace;
+    word-break: break-all;
+
+    @media (max-width: 768px) {
+      font-size: 0.8rem;
+    }
   }
 
   .time {
     font-size: 0.75rem;
     color: var(--theme-text-subtle);
+    white-space: nowrap;
+    margin-left: 0.5rem;
   }
 }

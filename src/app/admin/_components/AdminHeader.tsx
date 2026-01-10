@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { signOut } from '@/lib/auth';
 import styles from '../admin.module.scss';
@@ -12,16 +14,24 @@ const pageTitles: Record<string, string> = {
   '/admin/skills': 'Skills 관리',
 };
 
+const navItems = [
+  { href: '/admin', label: '대시보드', icon: '📊' },
+  { href: '/admin/analytics', label: 'Analytics', icon: '📈' },
+  { divider: true },
+  { href: '/admin/timeline', label: 'Timeline', icon: '📅' },
+  { href: '/admin/experience', label: 'Experience', icon: '💼' },
+  { href: '/admin/skills', label: 'Skills', icon: '🛠️' },
+];
+
 export default function AdminHeader() {
   const pathname = usePathname();
   const router = useRouter();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const getTitle = () => {
-    // 정확한 매칭 먼저 확인
     if (pageTitles[pathname]) {
       return pageTitles[pathname];
     }
-    // 부분 매칭 확인
     for (const [path, title] of Object.entries(pageTitles)) {
       if (pathname.startsWith(path) && path !== '/admin') {
         return title;
@@ -30,19 +40,60 @@ export default function AdminHeader() {
     return 'Admin';
   };
 
+  const isActive = (href: string) => {
+    if (href === '/admin') {
+      return pathname === '/admin';
+    }
+    return pathname.startsWith(href);
+  };
+
   const handleLogout = async () => {
     await signOut();
     router.push('/admin/login');
   };
 
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className={styles.header}>
-      <h2 className={styles.headerTitle}>{getTitle()}</h2>
+      <div className={styles.headerLeft}>
+        <button
+          className={styles.mobileMenuButton}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="메뉴 열기"
+        >
+          {mobileMenuOpen ? '✕' : '☰'}
+        </button>
+        <h2 className={styles.headerTitle}>{getTitle()}</h2>
+      </div>
       <div className={styles.headerActions}>
         <button onClick={handleLogout} className={styles.logoutButton}>
           로그아웃
         </button>
       </div>
+
+      <nav className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+        <ul className={styles.mobileNavList}>
+          {navItems.map((item, index) => {
+            if ('divider' in item) {
+              return <li key={index} className={styles.mobileNavDivider} />;
+            }
+            return (
+              <li
+                key={item.href}
+                className={`${styles.mobileNavItem} ${isActive(item.href) ? styles.active : ''}`}
+              >
+                <Link href={item.href} onClick={handleNavClick}>
+                  <span>{item.icon}</span>
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
     </header>
   );
 }

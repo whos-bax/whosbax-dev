@@ -90,7 +90,7 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+      <div className={styles.sectionsGrid}>
         <div className={styles.recentSection}>
           <h2>최근 방문</h2>
           <ul className={styles.recentList}>

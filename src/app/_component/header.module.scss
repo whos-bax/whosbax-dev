@@ -3,7 +3,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10;
+  z-index: 1000;
   height: var(--navbar-height);
   background-color: var(--brand-bg);
 }
@@ -134,25 +134,22 @@
         top: var(--navbar-height);
         right: 0;
         left: 0;
-        z-index: -1;
+        z-index: 1;
         flex-direction: column;
         gap: 0;
         width: 100%;
+        max-height: 0;
         overflow: hidden;
         background-color: var(--brand-bg);
         border-bottom: 1px solid var(--brand-divider);
-        transform: translateY(-100%);
-        visibility: hidden;
         opacity: 0;
         transition:
-          transform 0.4s ease,
-          opacity 0.4s ease,
-          visibility 0.4s ease;
+          max-height 0.3s ease,
+          opacity 0.3s ease;
 
         &.headerMobileListShow {
           display: flex;
-          transform: translateY(0%);
-          visibility: visible;
+          max-height: 300px;
           opacity: 1;
         }
 
