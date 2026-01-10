@@ -1,0 +1,325 @@
+.adminLayout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #111;
+  border-right: 1px solid #222;
+  padding: 1.5rem 0;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.sidebarHeader {
+  padding: 0 1.5rem 1.5rem;
+  border-bottom: 1px solid #222;
+  margin-bottom: 1rem;
+
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.75rem;
+    color: #666;
+    margin: 0.25rem 0 0;
+  }
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    color: #888;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &.active a {
+    background-color: #17C964;
+    color: #000;
+    font-weight: 500;
+  }
+}
+
+.navDivider {
+  height: 1px;
+  background-color: #222;
+  margin: 1rem 0;
+}
+
+.mainContent {
+  flex: 1;
+  margin-left: 240px;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #111;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoutButton {
+  background: none;
+  border: 1px solid #333;
+  color: #888;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #555;
+    color: #fff;
+  }
+}
+
+.pageContent {
+  flex: 1;
+  padding: 2rem;
+}
+
+// 로그인 페이지
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a0a;
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #111;
+  border-radius: 12px;
+  border: 1px solid #222;
+}
+
+.loginTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 1.5rem;
+  text-align: center;
+}
+
+.loginError {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.inputGroup {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    font-size: 0.875rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+      border-color: #17C964;
+    }
+
+    &::placeholder {
+      color: #555;
+    }
+  }
+}
+
+.loginButton {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #17C964;
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 0.5rem;
+
+  &:hover:not(:disabled) {
+    background-color: #14b85c;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.backLink {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #666;
+  font-size: 0.875rem;
+  text-decoration: none;
+
+  &:hover {
+    color: #888;
+  }
+}
+
+// 대시보드
+.dashboard {
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 2rem;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background-color: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 1.5rem;
+
+  h3 {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #666;
+    margin: 0 0 0.5rem;
+  }
+
+  .statValue {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+  }
+
+  .statChange {
+    font-size: 0.75rem;
+    color: #17C964;
+    margin-top: 0.5rem;
+  }
+}
+
+.recentSection {
+  background-color: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 1.5rem;
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 0 1rem;
+  }
+}
+
+.recentList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #222;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .path {
+    font-size: 0.875rem;
+    color: #fff;
+    font-family: monospace;
+  }
+
+  .time {
+    font-size: 0.75rem;
+    color: #666;
+  }
+}
