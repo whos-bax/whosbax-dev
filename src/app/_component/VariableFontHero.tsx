@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './variableFontHero.module.scss';
 import InkEffect from './InkEffect';
+import SecretAdminCopyright from './SecretAdminCopyright';
 
 export default function VariableFontHero() {
   const [weight, setWeight] = useState(300);
@@ -74,7 +75,7 @@ export default function VariableFontHero() {
           opacity: isLoaded ? 1 : 0,
         }}
       >
-        © whosbax
+        <SecretAdminCopyright />
       </footer>
     </div>
   );

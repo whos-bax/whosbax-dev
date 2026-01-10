@@ -58,11 +58,13 @@
         white-space: pre-wrap;
         text-align: center;
       }
+    }
 
-      &.copyRight {
-        margin-top: auto;
-        color: var(--gray500);
-        font-size: 0.9rem;
+    .copyRightWrapper {
+      margin-top: auto;
+
+      @media (max-width: 700px) {
+        text-align: center;
       }
     }
   }

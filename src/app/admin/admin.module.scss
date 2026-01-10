@@ -137,11 +137,13 @@
 
 // 로그인 페이지
 .loginContainer {
-  min-height: 100vh;
+  position: fixed;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--theme-bg);
+  overflow: hidden;
 }
 
 .loginForm {

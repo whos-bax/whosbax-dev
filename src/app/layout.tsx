@@ -33,7 +33,19 @@ export default function RootLayout({
         <html lang="ko">
         <body className={`${pretendard.variable} font-pretendard`}>
         <NextTopLoader color="#17C964" showSpinner={false} />
-        <Toaster position="top-center" richColors />
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: 'var(--brand-bg)',
+              border: '1px solid var(--gray200)',
+              color: 'var(--brand-text)',
+            },
+            classNames: {
+              success: 'toast-success',
+            },
+          }}
+        />
         <Providers>
             <PageViewTracker />
             <Header/>

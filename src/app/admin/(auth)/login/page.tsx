@@ -29,15 +29,16 @@ export default function AdminLoginPage() {
 
       if (error) {
         setError('이메일 또는 비밀번호가 올바르지 않습니다.');
+        setLoading(false);
         return;
       }
 
       toast.success('로그인 성공!');
       router.push('/admin');
       router.refresh();
+      // 성공 시 loading 유지 - 페이지 이동 전까지 버튼 상태 유지
     } catch {
       setError('로그인 중 오류가 발생했습니다.');
-    } finally {
       setLoading(false);
     }
   };

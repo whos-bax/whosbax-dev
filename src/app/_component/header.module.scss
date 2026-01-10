@@ -140,6 +140,7 @@
         width: 100%;
         overflow: hidden;
         background-color: var(--brand-bg);
+        border-bottom: 1px solid var(--brand-divider);
         transform: translateY(-100%);
         visibility: hidden;
         opacity: 0;

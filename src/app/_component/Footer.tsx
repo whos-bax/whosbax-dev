@@ -3,6 +3,8 @@ import Image from 'next/image';
 import profile from '../../../public/assets/images/profile.jpg';
 import Link from 'next/link';
 import { footerLinkList } from '@/app/_utils/footerLinkList';
+import SecretAdminCopyright from './SecretAdminCopyright';
+
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -33,7 +35,9 @@ export default function Footer() {
               />
             ))}
           </div>
-          <p className={styles.copyRight}>© whosbax</p>
+          <div className={styles.copyRightWrapper}>
+            <SecretAdminCopyright />
+          </div>
         </div>
       </div>
     </footer>
