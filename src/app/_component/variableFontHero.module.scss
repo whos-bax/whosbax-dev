@@ -8,11 +8,10 @@
 
 .container {
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 24px;
+  padding: 15vh 24px 0;
   text-align: center;
 }
 
@@ -46,29 +45,37 @@
 .name {
   color: var(--brand-text-muted);
   font-weight: 300;
-  font-size: 20px;
-  letter-spacing: 0.2em;
+  font-size: 18px;
+  letter-spacing: 0.15em;
   transition:
     opacity 0.8s ease-out 0.6s,
     transform 0.8s ease-out 0.6s;
 
   @media (max-width: 700px) {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
-.description {
-  margin-top: 28px;
-  color: var(--brand-text-muted);
-  font-weight: 200;
-  font-size: 19px;
-  line-height: 1.8;
-  transition:
-    opacity 0.8s ease-out 0.7s,
-    transform 0.8s ease-out 0.7s;
+.navLinks {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity 0.8s ease-out 0.7s;
 
-  @media (max-width: 700px) {
-    font-size: 17px;
+  a {
+    color: var(--gray400);
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--gray600);
+    }
   }
 }
 

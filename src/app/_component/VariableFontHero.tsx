@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './variableFontHero.module.scss';
 import InkEffect from './InkEffect';
 
@@ -54,17 +55,18 @@ export default function VariableFontHero() {
         >
           박상호 · SANGHO PARK
         </p>
-
-        <p
-          className={styles.description}
-          style={{
-            opacity: isLoaded ? 1 : 0,
-            transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
-          }}
-        >
-          본질을 추구하고 기록하고자 합니다.
-        </p>
       </main>
+
+      <nav
+        className={styles.navLinks}
+        style={{
+          opacity: isLoaded ? 1 : 0,
+        }}
+      >
+        <Link href="/about">about</Link>
+        <Link href="/timeline">timeline</Link>
+        <Link href="/guestbook">guestbook</Link>
+      </nav>
 
       <footer
         className={styles.copyright}

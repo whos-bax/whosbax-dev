@@ -6,8 +6,7 @@ import Experience from '@/app/about/_component/Experience';
 import Skill from '@/app/about/_component/Skill';
 import Education from '@/app/about/_component/Education';
 import Certificate from '@/app/about/_component/Certificate';
-import Activities from '@/app/about/_component/Activities';
-import PrintButton from '@/app/about/_component/PrintButton';
+import Fab from '@/app/_component/Fab';
 
 export default function About() {
   return (
@@ -15,14 +14,13 @@ export default function About() {
       className={cx(styles.container, styles.containerGap)}
       id={'about-container'}
     >
-      <PrintButton />
+      <Fab type="print" />
       <Profile />
       <Introduce title={'Introduce'} />
       <Experience title={'Experience'} />
       <Skill title={'Skill'} />
       <Education title={'Education'} />
       <Certificate title={'Certificate'} />
-      <Activities title={'Activities'} />
     </main>
   );
 }

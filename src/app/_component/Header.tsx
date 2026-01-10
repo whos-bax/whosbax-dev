@@ -16,6 +16,10 @@ export default function Header() {
             link: '/about'
         },
         {
+            title: 'timeline',
+            link: '/timeline'
+        },
+        {
             title: 'guestbook',
             link: '/guestbook'
         }
