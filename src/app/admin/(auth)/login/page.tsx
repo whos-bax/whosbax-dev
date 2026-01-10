@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@/lib/supabase-browser';
 import { toast } from 'sonner';
 import styles from '../../admin.module.scss';
 
@@ -17,11 +17,7 @@ export default function AdminLoginPage() {
     setLoading(true);
     setError('');
 
-    if (!supabase) {
-      setError('Supabase가 설정되지 않았습니다.');
-      setLoading(false);
-      return;
-    }
+    const supabase = createClient();
 
     try {
       const { error } = await supabase.auth.signInWithPassword({
@@ -35,11 +31,7 @@ export default function AdminLoginPage() {
       }
 
       toast.success('로그인 성공!');
-
-      // 세션 쿠키 설정 후 리다이렉트를 위해 잠시 대기
-      setTimeout(() => {
-        window.location.href = '/admin';
-      }, 500);
+      window.location.href = '/admin';
     } catch {
       setError('로그인 중 오류가 발생했습니다.');
     } finally {
