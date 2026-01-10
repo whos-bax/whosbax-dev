@@ -4,7 +4,7 @@
   flex-direction: column;
   width: 100%;
   max-width: var(--max-width);
-  height: 100%;
+  min-height: 100%;
   margin: auto;
   padding: 0 48px 6rem;
   animation: containerHeight 0.6s;
@@ -256,7 +256,7 @@
       margin: 0.5rem 0;
       padding: 10px 15px;
       color: var(--green);
-      background-color: var(--gray50);
+      background-color: var(--gray100);
       border-radius: var(--border-radius);
 
       b {

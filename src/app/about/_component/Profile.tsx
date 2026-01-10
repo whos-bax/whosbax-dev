@@ -27,7 +27,7 @@ export default function Profile() {
   return (
     <div className={styles.profileComponent}>
       <div className={styles.profileSummaryContent}>
-        <h4>FRONTEND DEVELOPER</h4>
+        <h4>PRODUCT ENGINEER</h4>
         <h3 className={styles.profileName}>SANGHO PARK</h3>
         <div className={styles.contactList}>
           {contactList.map((contact, idx) => (
