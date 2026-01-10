@@ -44,7 +44,7 @@ const hardcodedTimelineData: TimelineItem[] = [
     type: 'music',
     tag: 'EP',
     title: "자리 (Where I've Been)",
-    cover: '/assets/images/albums/where-ive-been.jpg',
+    cover: 'https://ordhsjmydtojtkkwbzcq.supabase.co/storage/v1/object/public/albums/where-ive-been.jpg',
     tracks: [
       'Now I Know',
       '진심 (I meant it)',
@@ -92,7 +92,7 @@ const hardcodedTimelineData: TimelineItem[] = [
     type: 'music',
     tag: 'EP',
     title: 'Aspiration',
-    cover: '/assets/images/albums/aspiration.jpg',
+    cover: 'https://ordhsjmydtojtkkwbzcq.supabase.co/storage/v1/object/public/albums/aspiration.jpg',
     tracks: [
       'Open',
       '타협',
@@ -117,7 +117,7 @@ const hardcodedTimelineData: TimelineItem[] = [
     type: 'music',
     tag: 'Single',
     title: "I'm not alone",
-    cover: '/assets/images/albums/im-not-alone.jpg',
+    cover: 'https://ordhsjmydtojtkkwbzcq.supabase.co/storage/v1/object/public/albums/im-not-alone.jpg',
     tracks: [
       { name: "I'm not alone", isTitle: true },
     ],
@@ -145,7 +145,7 @@ const hardcodedTimelineData: TimelineItem[] = [
     type: 'music',
     tag: 'EP',
     title: 'who am I ?',
-    cover: '/assets/images/albums/who-am-i.jpg',
+    cover: 'https://ordhsjmydtojtkkwbzcq.supabase.co/storage/v1/object/public/albums/who-am-i.jpg',
     tracks: [
       'Moonlight',
       'Paradise',
@@ -167,7 +167,7 @@ const hardcodedTimelineData: TimelineItem[] = [
     type: 'music',
     tag: 'Single',
     title: 'Red Rose',
-    cover: '/assets/images/albums/red-rose.jpg',
+    cover: 'https://ordhsjmydtojtkkwbzcq.supabase.co/storage/v1/object/public/albums/red-rose.jpg',
     tracks: [
       'True (Prod. 9una)',
       { name: 'Another Sight (feat. kishy) (Prod. 9una)', isTitle: true },
@@ -187,7 +187,7 @@ const hardcodedTimelineData: TimelineItem[] = [
     type: 'music',
     tag: 'Single',
     title: 'Aurora Caffeine',
-    cover: '/assets/images/albums/aurora-caffeine.jpg',
+    cover: 'https://ordhsjmydtojtkkwbzcq.supabase.co/storage/v1/object/public/albums/aurora-caffeine.jpg',
     tracks: [
       { name: 'Aurora Caffeine (Prod. 9una)', isTitle: true },
     ],
