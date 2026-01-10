@@ -467,3 +467,247 @@
     margin-left: 0.5rem;
   }
 }
+
+// =============================================
+// ANALYTICS PAGE
+// =============================================
+.analytics {
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--theme-text);
+    margin: 0 0 2rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.25rem;
+      margin: 0 0 1.5rem;
+    }
+  }
+}
+
+.chartSection {
+  background-color: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--theme-text);
+    margin: 0 0 1.5rem;
+  }
+}
+
+.chartContainer {
+  overflow-x: auto;
+}
+
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  height: 200px;
+  min-width: fit-content;
+  padding-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    height: 150px;
+    gap: 0.25rem;
+  }
+}
+
+.barGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 40px;
+
+  @media (max-width: 768px) {
+    min-width: 30px;
+  }
+}
+
+.barWrapper {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    height: 120px;
+  }
+}
+
+.bar {
+  width: 70%;
+  max-width: 40px;
+  background-color: var(--theme-accent);
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  position: relative;
+  transition: height 0.3s ease;
+}
+
+.barValue {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: var(--theme-text-muted);
+  white-space: nowrap;
+}
+
+.barLabel {
+  font-size: 0.7rem;
+  color: var(--theme-text-subtle);
+  margin-top: 0.5rem;
+  white-space: nowrap;
+}
+
+.chartLegend {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--theme-border);
+
+  span {
+    font-size: 0.875rem;
+    color: var(--theme-text-muted);
+  }
+}
+
+.tableSection {
+  background-color: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--theme-text);
+    margin: 0;
+  }
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.totalCount {
+  font-size: 0.875rem;
+  color: var(--theme-text-subtle);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--theme-border);
+
+    @media (max-width: 768px) {
+      padding: 0.5rem;
+    }
+  }
+
+  th {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--theme-text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  td {
+    font-size: 0.875rem;
+    color: var(--theme-text);
+  }
+
+  tbody tr:hover {
+    background-color: var(--theme-bg-tertiary);
+  }
+}
+
+.pathCell {
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.sessionCell {
+  font-family: monospace;
+  color: var(--theme-text-muted) !important;
+}
+
+.timeCell {
+  white-space: nowrap;
+  color: var(--theme-text-muted) !important;
+}
+
+.emptyCell {
+  text-align: center !important;
+  color: var(--theme-text-subtle) !important;
+  padding: 2rem !important;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--theme-border);
+}
+
+.pageButton {
+  padding: 0.5rem 1rem;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-border-muted);
+  border-radius: 6px;
+  color: var(--theme-text);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all 0.2s;
+
+  &:hover:not(.disabled) {
+    border-color: var(--theme-accent);
+    color: var(--theme-accent);
+  }
+
+  &.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.pageInfo {
+  font-size: 0.875rem;
+  color: var(--theme-text-muted);
+}

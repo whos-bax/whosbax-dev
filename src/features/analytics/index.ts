@@ -6,5 +6,7 @@ export {
   getAllPageViewCounts,
   getRecentPageViews,
   getDashboardStats,
+  getDailyStats,
+  getPaginatedPageViews,
 } from './services';
 export { usePageView } from './hooks';

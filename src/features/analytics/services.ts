@@ -1,5 +1,12 @@
 import { supabase } from '@/shared/lib/supabase';
-import type { PageView, PageViewInsert, DashboardStats, PageStat } from './types';
+import type {
+  PageView,
+  PageViewInsert,
+  DashboardStats,
+  PageStat,
+  DailyStat,
+  PaginatedPageViews,
+} from './types';
 
 // =============================================
 // PAGE VIEW QUERIES
@@ -112,5 +119,82 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     totalViews: totalViews || 0,
     recentViews: (recentViews || []) as PageView[],
     topPages,
+  };
+}
+
+// =============================================
+// ANALYTICS PAGE
+// =============================================
+export async function getDailyStats(days: number = 30): Promise<DailyStat[]> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - days);
+
+  const { data, error } = await supabase
+    .from('page_views')
+    .select('created_at, session_id')
+    .gte('created_at', startDate.toISOString());
+
+  if (error) throw error;
+  if (!data) return [];
+
+  // 날짜별로 그룹핑
+  const views = data as { created_at: string; session_id: string }[];
+  const grouped = views.reduce(
+    (acc, item) => {
+      const date = item.created_at.split('T')[0];
+      if (!acc[date]) {
+        acc[date] = { views: 0, sessions: new Set<string>() };
+      }
+      acc[date].views++;
+      acc[date].sessions.add(item.session_id);
+      return acc;
+    },
+    {} as Record<string, { views: number; sessions: Set<string> }>
+  );
+
+  // 모든 날짜를 포함하도록 배열 생성
+  const result: DailyStat[] = [];
+  for (let i = days - 1; i >= 0; i--) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    const dateStr = date.toISOString().split('T')[0];
+    const stat = grouped[dateStr];
+    result.push({
+      date: dateStr,
+      views: stat?.views || 0,
+      unique: stat?.sessions.size || 0,
+    });
+  }
+
+  return result;
+}
+
+export async function getPaginatedPageViews(
+  page: number = 1,
+  pageSize: number = 20
+): Promise<PaginatedPageViews> {
+  if (!supabase) throw new Error('Supabase client not configured');
+
+  const from = (page - 1) * pageSize;
+  const to = from + pageSize - 1;
+
+  const { data, error, count } = await supabase
+    .from('page_views')
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .range(from, to);
+
+  if (error) throw error;
+
+  const total = count || 0;
+
+  return {
+    data: (data || []) as PageView[],
+    total,
+    page,
+    pageSize,
+    totalPages: Math.ceil(total / pageSize),
   };
 }

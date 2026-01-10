@@ -25,3 +25,17 @@ export interface PageStat {
   page_path: string;
   count: number;
 }
+
+export interface DailyStat {
+  date: string;
+  views: number;
+  unique: number;
+}
+
+export interface PaginatedPageViews {
+  data: PageView[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
