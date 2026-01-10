@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Personal portfolio website of Sangho Park (Next.js 14 App Router, Netlify deployment)
+Personal portfolio website of Sangho Park (Next.js 15 App Router, Netlify deployment)
 
 **Live URL**: https://whoamiiii04.netlify.app/
 
@@ -23,7 +23,7 @@ npm run lint     # Run ESLint
 
 ## Tech Stack
 
-Next.js 14, TypeScript, SCSS Modules, Tailwind, NextUI, Material UI, Contentlayer2 (MDX)
+Next.js 15, TypeScript, SCSS Modules, Tailwind, HeroUI, Material UI 6
 
 ## Conventions
 

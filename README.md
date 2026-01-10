@@ -10,11 +10,10 @@
 
 ## Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: SCSS, Tailwind CSS
-- **UI Library**: NextUI, Material UI, Framer Motion
-- **Content**: MDX, Contentlayer2
+- **UI Library**: HeroUI, Material UI 6, Framer Motion
 - **Deployment**: Netlify (Static Export)
 
 ## Features
@@ -22,7 +21,6 @@
 - **Home**: 메인 인트로 페이지
 - **About**: 경력, 프로젝트, 기술 스택, 학력, 자격증 등 이력서 형태의 소개 페이지
 - **Guestbook**: Utterances 기반 방명록
-- **Blog**: MDX 기반 블로그 (Contentlayer2 활용)
 
 ## Project Structure
 
@@ -32,7 +30,6 @@ src/
 │   ├── _component/     # 공통 컴포넌트 (Header, Footer, Loading 등)
 │   ├── _utils/         # 유틸리티 함수 및 데이터 (experienceMocks, skillList 등)
 │   ├── about/          # About 페이지 및 관련 컴포넌트
-│   ├── blog/           # 블로그 페이지
 │   └── guestbook/      # 방명록 페이지
 ├── fonts/              # Pretendard 폰트
 └── type/               # TypeScript 타입 정의
@@ -59,4 +56,3 @@ npm run start
 - **Portfolio**: [https://whoamiiii04.netlify.app/](https://whoamiiii04.netlify.app/)
 - **GitHub**: [https://github.com/whos-bax](https://github.com/whos-bax)
 - **LinkedIn**: [https://www.linkedin.com/in/whoamiiii04](https://www.linkedin.com/in/whoamiiii04)
-- **Blog**: [https://whothatsme.tistory.com/](https://whothatsme.tistory.com/)

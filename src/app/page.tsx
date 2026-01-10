@@ -5,7 +5,7 @@ import firstImage from '../../public/assets/images/first-image.jpg';
 import Image from 'next/image';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import cx from 'classnames';
-import { Progress } from '@nextui-org/react';
+import { Progress } from '@heroui/react';
 import Link from 'next/link';
 
 const mentionList = [

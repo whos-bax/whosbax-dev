@@ -1,6 +1,6 @@
 # CLAUDE.ko.md
 
-박상호의 개인 포트폴리오 웹사이트 (Next.js 14 App Router, Netlify 배포)
+박상호의 개인 포트폴리오 웹사이트 (Next.js 15 App Router, Netlify 배포)
 
 **배포 URL**: https://whoamiiii04.netlify.app/
 
@@ -23,7 +23,7 @@ npm run lint     # ESLint 실행
 
 ## 기술 스택
 
-Next.js 14, TypeScript, SCSS Modules, Tailwind, NextUI, Material UI, Contentlayer2 (MDX)
+Next.js 15, TypeScript, SCSS Modules, Tailwind, HeroUI, Material UI 6
 
 ## 컨벤션
 
