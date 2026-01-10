@@ -53,6 +53,7 @@ export function usePageView() {
   useEffect(() => {
     if (!supabase) return;
     if (!pathname) return;
+    if (pathname.startsWith('/admin')) return; // Admin 페이지 제외
     if (isRecordingRef.current) return;
 
     const sessionId = getOrCreateSessionId();
