@@ -6,6 +6,7 @@ import 'dayjs/locale/ko';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import {Providers} from "@/app/Providers";
 import {customMeta} from "@/app/_utils/customMeta";
+import NextTopLoader from 'nextjs-toploader';
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
@@ -29,6 +30,7 @@ export default function RootLayout({
     return (
         <html lang="ko">
         <body className={`${pretendard.variable} font-pretendard`}>
+        <NextTopLoader color="#17C964" showSpinner={false} />
         <Providers>
             <Header/>
             <div id="main-content">
