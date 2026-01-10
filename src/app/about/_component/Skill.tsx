@@ -1,11 +1,11 @@
 import styles from "@/app/about/about.module.scss";
-import {skillList} from "@/app/_utils/utils";
 
 type Props = {
     title: string;
+    skillList: string[];
 }
 
-export default function Skill({title}: Props) {
+export default function Skill({title, skillList}: Props) {
     return (
         <div className={styles.columnComponent}>
             <h4 className={styles.componentTitle}>

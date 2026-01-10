@@ -19,127 +19,159 @@
   transform-origin: center;
 }
 
-// 중앙 메인 blob
+// 10초 주기 동기화: 모든 애니메이션이 10초마다 동시에 재시작
+
+// 중앙 메인 blob - 0.2s 시작, 6.7s 애니메이션, 3.1s 대기 → 10s 주기
 .ink1 {
-  width: 150px;
-  height: 150px;
-  animation: inkCenter 8s ease-in-out 0.2s infinite;
+  width: 140px;
+  height: 140px;
+  animation: inkCenter 9.8s ease-in-out 0.2s infinite;
 }
 
-// 우상단
+// 우상단 - 0.5s 시작, 8.3s 애니메이션, 1.2s 대기 → 10s 주기
 .ink2 {
-  width: 120px;
-  height: 120px;
-  animation: inkTopRight 10s ease-in-out 0.5s infinite;
+  width: 115px;
+  height: 115px;
+  animation: inkTopRight 9.5s ease-in-out 0.5s infinite;
 }
 
-// 좌하단
+// 좌하단 - 0.8s 시작, 9s 애니메이션, 0.2s 대기 → 10s 주기
 .ink3 {
-  width: 100px;
-  height: 100px;
-  animation: inkBottomLeft 11s ease-in-out 0.8s infinite;
+  width: 95px;
+  height: 95px;
+  animation: inkBottomLeft 9.2s ease-in-out 0.8s infinite;
 }
 
-// 좌상단
+// 좌상단 - 1s 시작, 7.4s 애니메이션, 1.6s 대기 → 10s 주기
 .ink4 {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   animation: inkTopLeft 9s ease-in-out 1s infinite;
 }
 
-// 우하단
+// 우하단 - 1.2s 시작, 8.2s 애니메이션, 0.6s 대기 → 10s 주기
 .ink5 {
-  width: 80px;
-  height: 80px;
-  animation: inkBottomRight 10s ease-in-out 1.2s infinite;
+  width: 70px;
+  height: 70px;
+  animation: inkBottomRight 8.8s ease-in-out 1.2s infinite;
 }
 
+// 6.7s 애니메이션을 9.8s에 맞춤 (비율: 68%)
 @keyframes inkCenter {
-  0%, 100% {
+  0% {
     transform: scale(0);
     opacity: 0;
   }
-  15% {
+  10% {
     opacity: 0.4;
   }
-  50% {
-    transform: scale(4);
+  34% {
+    transform: scale(5);
     opacity: 0.2;
     border-radius: 55% 45% 50% 50% / 50% 50% 45% 55%;
   }
-  85% {
-    opacity: 0.1;
+  68% {
+    transform: scale(7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(7);
+    opacity: 0;
   }
 }
 
+// 8.3s 애니메이션을 9.5s에 맞춤 (비율: 87%)
 @keyframes inkTopRight {
-  0%, 100% {
+  0% {
     transform: scale(0) translate(0, 0);
     opacity: 0;
   }
-  15% {
+  13% {
     opacity: 0.35;
   }
-  50% {
-    transform: scale(3) translate(60px, -40px);
+  44% {
+    transform: scale(4) translate(100px, -70px);
     opacity: 0.18;
     border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
   }
-  85% {
-    opacity: 0.08;
+  87% {
+    transform: scale(5.5) translate(140px, -100px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(5.5) translate(140px, -100px);
+    opacity: 0;
   }
 }
 
+// 9s 애니메이션을 9.2s에 맞춤 (비율: 98%)
 @keyframes inkBottomLeft {
-  0%, 100% {
+  0% {
     transform: scale(0) translate(0, 0);
     opacity: 0;
   }
   15% {
     opacity: 0.32;
   }
-  50% {
-    transform: scale(2.8) translate(-50px, 50px);
+  49% {
+    transform: scale(3.5) translate(-90px, 80px);
     opacity: 0.15;
     border-radius: 55% 45% 40% 60% / 55% 50% 50% 45%;
   }
-  85% {
-    opacity: 0.06;
+  98% {
+    transform: scale(5) translate(-130px, 120px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(5) translate(-130px, 120px);
+    opacity: 0;
   }
 }
 
+// 7.4s 애니메이션을 9s에 맞춤 (비율: 82%)
 @keyframes inkTopLeft {
-  0%, 100% {
+  0% {
     transform: scale(0) translate(0, 0);
     opacity: 0;
   }
-  15% {
+  12% {
     opacity: 0.3;
   }
-  50% {
-    transform: scale(2.5) translate(-70px, -30px);
+  41% {
+    transform: scale(3.2) translate(-110px, -50px);
     opacity: 0.14;
     border-radius: 50% 50% 45% 55% / 60% 40% 55% 45%;
   }
-  85% {
-    opacity: 0.05;
+  82% {
+    transform: scale(4.5) translate(-150px, -70px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(4.5) translate(-150px, -70px);
+    opacity: 0;
   }
 }
 
+// 8.2s 애니메이션을 8.8s에 맞춤 (비율: 93%)
 @keyframes inkBottomRight {
-  0%, 100% {
+  0% {
     transform: scale(0) translate(0, 0);
     opacity: 0;
   }
-  15% {
+  14% {
     opacity: 0.28;
   }
-  50% {
-    transform: scale(2.2) translate(80px, 45px);
+  46% {
+    transform: scale(3) translate(120px, 70px);
     opacity: 0.12;
     border-radius: 40% 60% 50% 50% / 45% 55% 45% 55%;
   }
-  85% {
-    opacity: 0.04;
+  93% {
+    transform: scale(4.2) translate(160px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(4.2) translate(160px, 100px);
+    opacity: 0;
   }
 }

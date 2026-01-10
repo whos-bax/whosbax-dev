@@ -7,8 +7,15 @@ import Skill from '@/app/about/_component/Skill';
 import Education from '@/app/about/_component/Education';
 import Certificate from '@/app/about/_component/Certificate';
 import Fab from '@/app/_component/Fab';
+import { fetchExperienceSummary, fetchExperienceDetail, fetchSkills } from '@/lib/data';
 
-export default function About() {
+export default async function About() {
+  const [summaryList, experienceList, skillList] = await Promise.all([
+    fetchExperienceSummary(),
+    fetchExperienceDetail(),
+    fetchSkills(),
+  ]);
+
   return (
     <main
       className={cx(styles.container, styles.containerGap)}
@@ -17,8 +24,12 @@ export default function About() {
       <Fab type="print" />
       <Profile />
       <Introduce title={'Introduce'} />
-      <Experience title={'Experience'} />
-      <Skill title={'Skill'} />
+      <Experience
+        title={'Experience'}
+        summaryList={summaryList}
+        experienceList={experienceList}
+      />
+      <Skill title={'Skill'} skillList={skillList} />
       <Education title={'Education'} />
       <Certificate title={'Certificate'} />
     </main>

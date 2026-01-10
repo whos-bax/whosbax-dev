@@ -7,13 +7,15 @@ import dayjs from 'dayjs';
 import Link from 'next/link';
 import { linkSvg } from '@/app/_utils/utils';
 import ExperienceDetail from '@/app/about/_component/ExperienceDetail';
-import { experienceList, summaryList } from '@/app/_utils/experienceMocks';
+import type { SummaryType, ExperienceType } from '@/type/ExperienceType';
 
 type Props = {
   title: string;
+  summaryList: SummaryType[];
+  experienceList: { company: string; list: ExperienceType[] }[];
 };
 
-export default function Experience({ title }: Props) {
+export default function Experience({ title, summaryList, experienceList }: Props) {
   return (
     <div className={styles.columnComponent}>
       <h4 className={styles.componentTitle}>{title.toUpperCase()}</h4>
