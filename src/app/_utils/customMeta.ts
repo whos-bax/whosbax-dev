@@ -26,7 +26,7 @@ export const customMeta = {
   },
 
   verification: {
-    google: 'yJgnVXswYekwtLuOtXwY2tp2FwGmZVOwDmAI7l1_9Z0',
+    google: 'KY3o6fgIlK1W7fNfbL3Kbu0G_ExmcGC4zoS0PtPSqq0',
     other: {
       'naver-site-verification': ['25e28f0d4a8d3e8b9c24cc094a4e18f569c678b0'],
     },
