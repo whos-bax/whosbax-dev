@@ -8,6 +8,7 @@ import {Providers} from "@/app/Providers";
 import {customMeta} from "@/app/_utils/customMeta";
 import NextTopLoader from 'nextjs-toploader';
 import PageViewTracker from "@/app/_component/PageViewTracker";
+import { Toaster } from 'sonner';
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
@@ -32,6 +33,7 @@ export default function RootLayout({
         <html lang="ko">
         <body className={`${pretendard.variable} font-pretendard`}>
         <NextTopLoader color="#17C964" showSpinner={false} />
+        <Toaster position="top-center" richColors />
         <Providers>
             <PageViewTracker />
             <Header/>

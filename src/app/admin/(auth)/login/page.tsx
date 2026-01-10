@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
+import { toast } from 'sonner';
 import styles from '../../admin.module.scss';
 
 export default function AdminLoginPage() {
@@ -11,7 +11,6 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,8 +34,12 @@ export default function AdminLoginPage() {
         return;
       }
 
-      router.push('/admin');
-      router.refresh();
+      toast.success('로그인 성공!');
+
+      // 세션 쿠키 설정 후 리다이렉트를 위해 잠시 대기
+      setTimeout(() => {
+        window.location.href = '/admin';
+      }, 500);
     } catch {
       setError('로그인 중 오류가 발생했습니다.');
     } finally {
