@@ -14,11 +14,18 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  --green: #3cb371;
+  --green: #2d8a5e;
   --orange: #ffa500;
   --beige: #fff8e7;
   --black: #343434;
   --white: #fff;
+
+  /* Brand Colors */
+  --brand-bg: #faf9f7;
+  --brand-text: #1a1a1a;
+  --brand-text-muted: #888;
+  --brand-text-subtle: #bbb;
+  --brand-divider: #ddd;
 
   --gray50: #f9fafb;
   --gray100: #f2f4f6;
@@ -120,8 +127,37 @@ button {
 html,
 body {
   max-width: 100dvw;
-  min-height: 100dvh;
-  background-color: var(--white);
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--brand-bg);
+}
+
+body {
+  padding-top: var(--navbar-height);
+}
+
+#main-content {
+  height: calc(100dvh - var(--navbar-height));
+  overflow-y: auto;
+}
+
+/* Global scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray300);
+  border: 3px solid var(--brand-bg);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray400);
 }
 
 /*body {*/

@@ -1,7 +1,6 @@
 import type {Metadata} from "next";
 import "./globals.css";
 import Header from "@/app/_component/Header";
-import Footer from "@/app/_component/Footer";
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -32,8 +31,9 @@ export default function RootLayout({
         <body className={`${pretendard.variable} font-pretendard`}>
         <Providers>
             <Header/>
-            {children}
-            <Footer/>
+            <div id="main-content">
+                {children}
+            </div>
         </Providers>
         </body>
         </html>

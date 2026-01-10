@@ -2,12 +2,16 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   max-width: var(--max-width);
   height: 100%;
   margin: auto;
-  padding-bottom: 6rem;
+  padding: 0 48px 6rem;
   animation: containerHeight 0.6s;
+
+  @media (max-width: 700px) {
+    padding: 0 24px 6rem;
+  }
 }
 
 @keyframes containerHeight {

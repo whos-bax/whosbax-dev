@@ -1,0 +1,145 @@
+.inkContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inkBlob {
+  position: absolute;
+  background: var(--green);
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(50px);
+  transform-origin: center;
+}
+
+// 중앙 메인 blob
+.ink1 {
+  width: 150px;
+  height: 150px;
+  animation: inkCenter 8s ease-in-out 0.2s infinite;
+}
+
+// 우상단
+.ink2 {
+  width: 120px;
+  height: 120px;
+  animation: inkTopRight 10s ease-in-out 0.5s infinite;
+}
+
+// 좌하단
+.ink3 {
+  width: 100px;
+  height: 100px;
+  animation: inkBottomLeft 11s ease-in-out 0.8s infinite;
+}
+
+// 좌상단
+.ink4 {
+  width: 90px;
+  height: 90px;
+  animation: inkTopLeft 9s ease-in-out 1s infinite;
+}
+
+// 우하단
+.ink5 {
+  width: 80px;
+  height: 80px;
+  animation: inkBottomRight 10s ease-in-out 1.2s infinite;
+}
+
+@keyframes inkCenter {
+  0%, 100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(4);
+    opacity: 0.2;
+    border-radius: 55% 45% 50% 50% / 50% 50% 45% 55%;
+  }
+  85% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes inkTopRight {
+  0%, 100% {
+    transform: scale(0) translate(0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(3) translate(60px, -40px);
+    opacity: 0.18;
+    border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+  }
+  85% {
+    opacity: 0.08;
+  }
+}
+
+@keyframes inkBottomLeft {
+  0%, 100% {
+    transform: scale(0) translate(0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.32;
+  }
+  50% {
+    transform: scale(2.8) translate(-50px, 50px);
+    opacity: 0.15;
+    border-radius: 55% 45% 40% 60% / 55% 50% 50% 45%;
+  }
+  85% {
+    opacity: 0.06;
+  }
+}
+
+@keyframes inkTopLeft {
+  0%, 100% {
+    transform: scale(0) translate(0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(2.5) translate(-70px, -30px);
+    opacity: 0.14;
+    border-radius: 50% 50% 45% 55% / 60% 40% 55% 45%;
+  }
+  85% {
+    opacity: 0.05;
+  }
+}
+
+@keyframes inkBottomRight {
+  0%, 100% {
+    transform: scale(0) translate(0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.28;
+  }
+  50% {
+    transform: scale(2.2) translate(80px, 45px);
+    opacity: 0.12;
+    border-radius: 40% 60% 50% 50% / 45% 55% 45% 55%;
+  }
+  85% {
+    opacity: 0.04;
+  }
+}
