@@ -1,42 +1,66 @@
 import { NextResponse } from 'next/server';
-import { deleteGuestbookEntryAdmin, toggleGuestbookVisibility } from '@/features/guestbook';
+import { supabase } from '@/shared/lib/supabase';
 
-// PATCH: 숨김/복원 토글
+// PATCH: 복원 (is_hidden = false)
 export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
-    const result = await toggleGuestbookVisibility(id);
 
-    if (!result.success) {
-      return NextResponse.json({ error: result.error }, { status: 400 });
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    const { error } = await (supabase as any)
+      .from('guestbook')
+      .update({ is_hidden: false })
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error restoring guestbook:', error);
+      return NextResponse.json({ error: '복원에 실패했습니다.' }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Error toggling guestbook visibility:', error);
-    return NextResponse.json({ error: '변경에 실패했습니다.' }, { status: 500 });
+    console.error('Error restoring guestbook:', error);
+    return NextResponse.json({ error: '복원에 실패했습니다.' }, { status: 500 });
   }
 }
 
-// DELETE: 완전 삭제
+// DELETE: 숨김 (soft delete, is_hidden = true)
 export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
-    const result = await deleteGuestbookEntryAdmin(id);
+    console.log('DELETE request for id:', id);
 
-    if (!result.success) {
-      return NextResponse.json({ error: result.error }, { status: 400 });
+    if (!supabase) {
+      console.error('Supabase client is null');
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    console.log('Attempting to update is_hidden to true');
+    const { data, error } = await (supabase as any)
+      .from('guestbook')
+      .update({ is_hidden: true })
+      .eq('id', id)
+      .select();
+
+    console.log('Update result - data:', data, 'error:', error);
+
+    if (error) {
+      console.error('Error hiding guestbook:', error);
+      return NextResponse.json({ error: '삭제에 실패했습니다.' }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Error deleting guestbook entry:', error);
+    console.error('Catch error hiding guestbook:', error);
     return NextResponse.json({ error: '삭제에 실패했습니다.' }, { status: 500 });
   }
 }

@@ -935,6 +935,18 @@
   max-width: 100%;
 }
 
+.pageTitle {
+  margin: 0 0 1.5rem;
+  color: var(--theme-text);
+  font-weight: 600;
+  font-size: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+}
+
 .pageHeader {
   display: flex;
   align-items: center;
@@ -1583,28 +1595,32 @@
   align-items: center;
 }
 
-.editIcon {
+.editIcon,
+.deleteIcon {
+  padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
-  text-decoration: none;
+  background: none;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  opacity: 0.7;
+  transition: all 0.2s;
+}
+
+.editIcon {
+  color: var(--theme-text-muted);
 
   &:hover {
-    opacity: 1;
+    color: var(--theme-accent);
+    background-color: var(--theme-bg-tertiary);
   }
 }
 
 .deleteIcon {
-  padding: 0;
   color: var(--theme-text-subtle);
-  font-size: 1rem;
-  line-height: 1;
-  background: none;
-  border: none;
-  cursor: pointer;
 
   &:hover:not(:disabled) {
     color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
   }
 
   &:disabled {
@@ -1731,6 +1747,52 @@
 // =============================================
 // Guestbook Admin Styles
 // =============================================
+.listHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.refreshButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--theme-text-muted);
+  font-size: 0.875rem;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover:not(:disabled) {
+    color: var(--theme-accent);
+    border-color: var(--theme-accent);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &.spinning svg {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .guestbookList {
   display: flex;
   flex-direction: column;
@@ -1742,11 +1804,17 @@
   background-color: var(--theme-bg-secondary);
   border: 1px solid var(--theme-border);
   border-radius: 10px;
-  transition: opacity 0.2s;
 
   &.hidden {
-    opacity: 0.5;
     background-color: var(--theme-bg-tertiary);
+    border-style: dashed;
+
+    // 복원 버튼이 포함된 액션 영역은 제외하고 콘텐츠에만 opacity 적용
+    .guestbookCardInfo,
+    .guestbookMessage,
+    .adminCommentsSection {
+      opacity: 0.5;
+    }
   }
 }
 
@@ -1801,17 +1869,18 @@
 
 .toggleButton {
   padding: 0.375rem 0.75rem;
+  font-weight: 500;
   font-size: 0.8125rem;
-  color: var(--theme-text);
-  background-color: var(--theme-bg);
-  border: 1px solid var(--theme-border);
+  color: var(--green);
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid var(--green);
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
 
   &:hover:not(:disabled) {
-    color: var(--theme-accent);
-    border-color: var(--theme-accent);
+    color: #fff;
+    background-color: var(--green);
   }
 
   &:disabled {
@@ -1832,4 +1901,101 @@
   line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+// Admin Comments Section
+.adminCommentsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--green);
+}
+
+.adminComment {
+  // AuthorBadge와 adminCommentMessage 사이 간격
+  > :first-child {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.adminCommentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.adminCommentActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.adminCommentMessage {
+  margin: 0;
+  color: var(--theme-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+// Comment Form
+.commentFormWrapper {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--theme-border);
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.commentTextarea {
+  width: 100%;
+  padding: 0.75rem;
+  color: var(--theme-text);
+  font-size: 0.875rem;
+  font-family: inherit;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 8px;
+  resize: vertical;
+
+  &:focus {
+    border-color: var(--theme-accent);
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--theme-text-subtle);
+  }
+}
+
+.commentFormActions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.addCommentButton {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--theme-text-muted);
+  font-size: 0.8125rem;
+  background-color: transparent;
+  border: 1px dashed var(--theme-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--theme-accent);
+    border-color: var(--theme-accent);
+    background-color: var(--theme-bg);
+  }
 }

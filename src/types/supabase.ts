@@ -199,6 +199,21 @@ export type Database = {
         };
         Update: Partial<Database['public']['Tables']['guestbook']['Insert']>;
       };
+      guestbook_comments: {
+        Row: {
+          id: string;
+          guestbook_id: string;
+          message: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          guestbook_id: string;
+          message: string;
+          created_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['guestbook_comments']['Insert']>;
+      };
     };
   };
 };
@@ -220,6 +235,9 @@ export type PageViewUpdate = Database['public']['Tables']['page_views']['Update'
 export type Guestbook = Database['public']['Tables']['guestbook']['Row'];
 export type GuestbookInsert = Database['public']['Tables']['guestbook']['Insert'];
 export type GuestbookUpdate = Database['public']['Tables']['guestbook']['Update'];
+export type GuestbookComment = Database['public']['Tables']['guestbook_comments']['Row'];
+export type GuestbookCommentInsert = Database['public']['Tables']['guestbook_comments']['Insert'];
+export type GuestbookCommentUpdate = Database['public']['Tables']['guestbook_comments']['Update'];
 
 // Extended types with relations
 export type TimelineWithTracks = Timeline & {

@@ -13,6 +13,7 @@ const pageTitles: Record<string, string> = {
   '/admin/timeline': 'Timeline 관리',
   '/admin/experience': 'Experience 관리',
   '/admin/skills': 'Skills 관리',
+  '/admin/guestbook': '방명록 관리',
 };
 
 const navItems = [
@@ -22,6 +23,7 @@ const navItems = [
   { href: '/admin/timeline', label: 'Timeline', icon: '📅' },
   { href: '/admin/experience', label: 'Experience', icon: '💼' },
   { href: '/admin/skills', label: 'Skills', icon: '🛠️' },
+  { href: '/admin/guestbook', label: '방명록', icon: '📝' },
 ];
 
 export default function AdminHeader() {

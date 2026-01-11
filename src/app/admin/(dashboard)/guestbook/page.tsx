@@ -7,10 +7,6 @@ export default async function GuestbookAdminPage() {
 
   return (
     <div className={styles.adminPage}>
-      <div className={styles.pageHeader}>
-        <h1>방명록 관리</h1>
-        <span className={styles.totalCount}>총 {entries.length}개</span>
-      </div>
       <GuestbookList initialData={entries} />
     </div>
   );

@@ -16,10 +16,10 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { nickname, password, message } = body;
+    const { nickname, password: pin, message } = body;
 
     // 유효성 검사
-    if (!nickname || !password || !message) {
+    if (!nickname || !pin || !message) {
       return NextResponse.json({ error: '모든 필드를 입력해주세요.' }, { status: 400 });
     }
 
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: '닉네임은 50자 이내로 입력해주세요.' }, { status: 400 });
     }
 
-    if (password.length < 4) {
+    if (pin.length < 4) {
       return NextResponse.json({ error: '비밀번호는 4자 이상 입력해주세요.' }, { status: 400 });
     }
 
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: '메시지는 500자 이내로 입력해주세요.' }, { status: 400 });
     }
 
-    const result = await createGuestbookEntry({ nickname, password, message });
+    const result = await createGuestbookEntry({ nickname, pin, message });
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 500 });
