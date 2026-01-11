@@ -40,13 +40,14 @@
   - [x] 전체 페이지뷰 테이블 (페이지네이션)
   - [x] 모바일 반응형
 
-### 3단계 대기 - Timeline CRUD
-- [ ] 목록/추가/수정/삭제
-- [ ] 트랙 관리 (music 타입)
+### 3단계 완료 - Timeline CRUD
+- [x] 목록/추가/수정/삭제
+- [x] 트랙 관리 (music 타입)
+- [x] 앨범 커버 이미지 업로드
 
-### 4단계 대기 - Experience/Skills CRUD
-- [ ] Experience Summary/Detail 관리
-- [ ] Skills 인라인 편집
+### 4단계 완료 - Experience/Skills CRUD
+- [x] Experience Summary/Detail 관리
+- [x] Skills 인라인 편집
 
 ## 보안 고려사항
 

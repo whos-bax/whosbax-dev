@@ -21,7 +21,7 @@ export default async function Timeline() {
           <span className={styles.labelRight}>Music & Activities</span>
         </div>
         <div className={styles.timelineLabelMobile}>
-          <span>Career & Music</span>
+          <span>Career, Music, Activities</span>
         </div>
         <div className={styles.timeline}>
           {timelineData.map((item, index) => {
@@ -39,12 +39,12 @@ export default async function Timeline() {
                         item.type === 'music'
                           ? styles.timelineTag
                           : item.type === 'featuring'
-                          ? styles.timelineTagFeat
-                          : item.type === 'career'
-                          ? styles.timelineTagCareer
-                          : item.type === 'gap'
-                          ? styles.timelineTagGap
-                          : styles.timelineTagAlt
+                            ? styles.timelineTagFeat
+                            : item.type === 'career'
+                              ? styles.timelineTagCareer
+                              : item.type === 'gap'
+                                ? styles.timelineTagGap
+                                : styles.timelineTagAlt
                       }
                     >
                       {item.tag}
@@ -62,33 +62,46 @@ export default async function Timeline() {
                     )}
                     <h4>
                       {item.link ? (
-                        <Link href={item.link} target="_blank">{item.album || item.title}</Link>
+                        <Link href={item.link} target="_blank">
+                          {item.album || item.title}
+                        </Link>
                       ) : (
                         item.album || item.title
                       )}
-                      {item.isTitle && !item.artist && <span className={styles.titleBadge}>★</span>}
+                      {item.isTitle && !item.artist && (
+                        <span className={styles.titleBadge}>★</span>
+                      )}
                     </h4>
                   </div>
-                  {item.role && (
-                    <p className={styles.itemRole}>{item.role}</p>
-                  )}
+                  {item.role && <p className={styles.itemRole}>{item.role}</p>}
                   {item.artist && (
                     <>
                       <p className={styles.featArtist}>{item.artist}</p>
                       <ul className={styles.trackList}>
                         {item.featTracks ? (
                           item.featTracks.map((track, trackIndex) => (
-                            <li key={trackIndex} className={track.isTitle ? styles.titleTrack : ''}>
-                              <span className={styles.trackNumber}>{track.trackNum}</span>
+                            <li
+                              key={trackIndex}
+                              className={track.isTitle ? styles.titleTrack : ''}
+                            >
+                              <span className={styles.trackNumber}>
+                                {track.trackNum}
+                              </span>
                               {track.name}
-                              {track.isTitle && <span className={styles.titleBadge}>★</span>}
+                              {track.isTitle && (
+                                <span className={styles.titleBadge}>★</span>
+                              )}
                             </li>
                           ))
                         ) : (
                           <li className={item.isTitle ? styles.titleTrack : ''}>
-                            <span className={styles.trackNumber}>{item.trackNum}</span>
+                            <span className={styles.trackNumber}>
+                              {item.trackNum}
+                            </span>
                             {item.title}
-                            {item.isTitle && <span className={styles.titleBadge}>★</span>}
+                            {item.isTitle && (
+                              <span className={styles.titleBadge}>★</span>
+                            )}
                           </li>
                         )}
                       </ul>
@@ -100,13 +113,22 @@ export default async function Timeline() {
                   {item.tracks && (
                     <ul className={styles.trackList}>
                       {item.tracks.map((track, trackIndex) => {
-                        const trackName = typeof track === 'string' ? track : track.name;
-                        const isTitle = typeof track === 'object' && track.isTitle;
+                        const trackName =
+                          typeof track === 'string' ? track : track.name;
+                        const isTitle =
+                          typeof track === 'object' && track.isTitle;
                         return (
-                          <li key={trackIndex} className={isTitle ? styles.titleTrack : ''}>
-                            <span className={styles.trackNumber}>{trackIndex + 1}</span>
+                          <li
+                            key={trackIndex}
+                            className={isTitle ? styles.titleTrack : ''}
+                          >
+                            <span className={styles.trackNumber}>
+                              {trackIndex + 1}
+                            </span>
                             {trackName}
-                            {isTitle && <span className={styles.titleBadge}>★</span>}
+                            {isTitle && (
+                              <span className={styles.titleBadge}>★</span>
+                            )}
                           </li>
                         );
                       })}
