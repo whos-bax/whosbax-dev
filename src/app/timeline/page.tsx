@@ -20,6 +20,9 @@ export default async function Timeline() {
           <span className={styles.labelLeft}>Career</span>
           <span className={styles.labelRight}>Music & Activities</span>
         </div>
+        <div className={styles.timelineLabelMobile}>
+          <span>Career & Music</span>
+        </div>
         <div className={styles.timeline}>
           {timelineData.map((item, index) => {
             const isLeft = ['career', 'gap'].includes(item.type);

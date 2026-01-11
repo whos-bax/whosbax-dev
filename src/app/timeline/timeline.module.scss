@@ -90,6 +90,23 @@
   width: 45%;
 }
 
+.timelineLabelMobile {
+  display: none;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+
+  span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray500);
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 800px) {
+    display: flex;
+  }
+}
+
 .timeline {
   position: relative;
   display: flex;
@@ -193,6 +210,10 @@
 
   &::before {
     left: -26px;
+  }
+
+  @media (max-width: 800px) {
+    padding-left: 40px;
   }
 
   .timelineContent {
