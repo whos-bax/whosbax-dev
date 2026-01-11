@@ -13,6 +13,11 @@
   justify-content: center;
   padding: 15vh 24px 0;
   text-align: center;
+
+  @media (max-width: 700px) {
+    flex: 2;
+    padding: 0 24px;
+  }
 }
 
 .headlineWrapper {
@@ -40,9 +45,15 @@
   margin: 56px 0;
   background: var(--brand-divider);
   transition: opacity 0.8s ease-out 0.5s;
+
+  @media (max-width: 700px) {
+    height: 32px;
+    margin: 32px 0;
+  }
 }
 
 .name {
+  margin-bottom: 48px;
   color: var(--brand-text-muted);
   font-weight: 300;
   font-size: 18px;
@@ -52,6 +63,7 @@
     transform 0.8s ease-out 0.6s;
 
   @media (max-width: 700px) {
+    margin-bottom: 0;
     font-size: 16px;
   }
 }
@@ -60,10 +72,14 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  gap: 8px;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   transition: opacity 0.8s ease-out 0.7s;
+
+  @media (max-width: 700px) {
+    gap: 4px;
+  }
 
   a {
     color: var(--gray400);
@@ -87,4 +103,9 @@
   letter-spacing: 0.05em;
   text-align: center;
   transition: opacity 0.8s ease-out 0.9s;
+
+  @media (max-width: 700px) {
+    padding: 24px 0;
+    font-size: 12px;
+  }
 }
