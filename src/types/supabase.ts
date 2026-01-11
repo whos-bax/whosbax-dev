@@ -180,6 +180,25 @@ export type Database = {
           viewed_at?: string | null;
         };
       };
+      guestbook: {
+        Row: {
+          id: string;
+          nickname: string;
+          password: string;
+          message: string;
+          created_at: string;
+          is_hidden: boolean;
+        };
+        Insert: {
+          id?: string;
+          nickname: string;
+          password: string;
+          message: string;
+          created_at?: string;
+          is_hidden?: boolean;
+        };
+        Update: Partial<Database['public']['Tables']['guestbook']['Insert']>;
+      };
     };
   };
 };
@@ -198,6 +217,9 @@ export type Skill = Database['public']['Tables']['skills']['Row'];
 export type PageView = Database['public']['Tables']['page_views']['Row'];
 export type PageViewInsert = Database['public']['Tables']['page_views']['Insert'];
 export type PageViewUpdate = Database['public']['Tables']['page_views']['Update'];
+export type Guestbook = Database['public']['Tables']['guestbook']['Row'];
+export type GuestbookInsert = Database['public']['Tables']['guestbook']['Insert'];
+export type GuestbookUpdate = Database['public']['Tables']['guestbook']['Update'];
 
 // Extended types with relations
 export type TimelineWithTracks = Timeline & {

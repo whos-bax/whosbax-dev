@@ -1727,3 +1727,109 @@
     color: var(--theme-text-subtle);
   }
 }
+
+// =============================================
+// Guestbook Admin Styles
+// =============================================
+.guestbookList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.guestbookCard {
+  padding: 1rem;
+  background-color: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border);
+  border-radius: 10px;
+  transition: opacity 0.2s;
+
+  &.hidden {
+    opacity: 0.5;
+    background-color: var(--theme-bg-tertiary);
+  }
+}
+
+.guestbookCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+}
+
+.guestbookCardInfo {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.guestbookNickname {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--theme-text);
+}
+
+.guestbookDate {
+  font-size: 0.75rem;
+  color: var(--theme-text-subtle);
+}
+
+.hiddenBadge {
+  padding: 0.125rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+  border-radius: 4px;
+}
+
+.guestbookCardActions {
+  display: flex;
+  gap: 0.5rem;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+}
+
+.toggleButton {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--theme-text);
+  background-color: var(--theme-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover:not(:disabled) {
+    color: var(--theme-accent);
+    border-color: var(--theme-accent);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 600px) {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+.guestbookMessage {
+  margin: 0;
+  color: var(--theme-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

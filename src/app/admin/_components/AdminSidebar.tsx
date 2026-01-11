@@ -12,6 +12,7 @@ const navItems = [
   { href: '/admin/timeline', label: 'Timeline', icon: '📅' },
   { href: '/admin/experience', label: 'Experience', icon: '💼' },
   { href: '/admin/skills', label: 'Skills', icon: '🛠️' },
+  { href: '/admin/guestbook', label: 'Guestbook', icon: '📝' },
 ];
 
 export default function AdminSidebar() {
