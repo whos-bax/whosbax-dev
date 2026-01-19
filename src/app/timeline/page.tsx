@@ -3,6 +3,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Fab from '@/app/_component/Fab';
 import { fetchTimelineData } from '@/features/timeline';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '꿈이 많은 어른 아이 | 박상호',
+  description:
+    '하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - 다양한 삶의 흔적을 작성해 보았습니다.',
+};
 
 export default async function Timeline() {
   const timelineData = await fetchTimelineData();

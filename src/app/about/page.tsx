@@ -9,6 +9,13 @@ import Certificate from '@/app/about/_component/Certificate';
 import Fab from '@/app/_component/Fab';
 import { fetchExperienceSummary, fetchExperienceDetail } from '@/features/experience';
 import { fetchSkills } from '@/features/skills';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '꿈이 많은 어른 아이 | 박상호',
+  description:
+    '하고 싶은 것도 이루고 싶은 것도 너무나 많은, 어른이지만 아이처럼 - 안녕하세요, 박상호입니다.',
+};
 
 export default async function About() {
   const [summaryList, experienceList, skillList] = await Promise.all([
