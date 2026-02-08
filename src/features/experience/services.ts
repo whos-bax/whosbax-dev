@@ -525,29 +525,9 @@ function transformExperienceDetail(
 const isSupabaseConfigured = () => !!supabase;
 
 export async function fetchExperienceSummary(): Promise<SummaryType[]> {
-  if (!isSupabaseConfigured()) {
-    return summaryList;
-  }
-
-  try {
-    const data = await getExperienceSummary();
-    return transformExperienceSummary(data);
-  } catch (error) {
-    console.error('Failed to fetch experience summary from Supabase:', error);
-    return summaryList;
-  }
+  return summaryList;
 }
 
 export async function fetchExperienceDetail(): Promise<{ company: string; list: ExperienceType[] }[]> {
-  if (!isSupabaseConfigured()) {
-    return experienceList;
-  }
-
-  try {
-    const data = await getExperienceDetail();
-    return transformExperienceDetail(data);
-  } catch (error) {
-    console.error('Failed to fetch experience detail from Supabase:', error);
-    return experienceList;
-  }
+  return experienceList;
 }
